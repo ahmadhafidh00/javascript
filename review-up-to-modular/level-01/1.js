@@ -21,26 +21,24 @@
 
 */
 
-// @params arr - Array dua dimensi yang berisi angka 0 dan 1
+// Mutasi (memodifikasi array elements)
 function toggleArr(arr) {
-  const result = [];
-
+  // Iterasi untuk setiap baris dalam array 2D
   for (let i = 0; i < arr.length; i++) {
-    const barisArr = arr[i];
-    const innerArr = [];
+    const barisArr = arr[i]; // Ambil baris array saat ini
 
+    // Iterasi untuk setiap elemen dalam baris array
     for (let j = 0; j < barisArr.length; j++) {
-      // Jika elemen saat ini adalah 0, ganti dengan 1, jika 1 ganti dengan 0
+      // Jika elemen saat ini bernilai 0, ubah menjadi 1
       if (barisArr[j] === 0) {
-        innerArr.push(1);
+        barisArr[j] = 1;
       } else {
-        innerArr.push(0);
+        barisArr[j] = 0; // Jika elemen saat ini bernilai selain 0 (yaitu 1), ubah menjadi 0
       }
     }
-    result.push(innerArr);
   }
 
-  return result;
+  return arr;
 }
 
 console.log(
