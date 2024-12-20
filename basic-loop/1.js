@@ -1,79 +1,42 @@
-/*
+/**
+ * =============
+ * FILTERED WORD
+ * =============
+ * Declare a new variable named "word" for storing any word.
+ * Loop for each character in variable "word" and check whether the character is valid or not.
+ *
+ * Glossary =
+ * |-------------------|
+ * | Removed Character |
+ * |-------------------|
+ * | "!"               |
+ * |-------------------|
+ * | "@"               |
+ * |-------------------|
+ * | "#"               |
+ * |-------------------|
+ * | "$"               |
+ * |-------------------|
+ *
+ * If there is any character matched with the glossary above then removed the character from variable "newWord".
+ * If the character is " " (space) then replace it with "_" (underscore).
+ * Display the new word with the filtered word in your terminal.
+ *
+ */
+let word = "#! L@ve J@v@$cr!pt. s@ Much";
+let newWord = ""; // Expected Output: '_Lve_Jvcrpt._s_Much'
 
-  *Loop / Iterasi / Perulangan
-  - digunakan untuk mengulang instruksi / kumpulan instruksi (sekian kali atau sampai kondisi tertentu)
-  - salah satu control flow di JavaScript
+for (let i = 0; i < word.length; i++) {
+  let char = word[i]; // #, !, (spasi), L, @, v, e, dst
 
-*/
-
-/*
-  *FOR => perulangan diulang hingga kondisi tertentu bernilai false
-
-  Syntax:
-  for (init; condition; step) {
-    <statements>
+  // jika karakter adalah spasi
+  if (char === " ") {
+    newWord += "_";
   }
-
-  init => deklarasi variabel / loop counter
-  condition => limit / exit condition
-  step => langkah loop counter (++, --, +=)
-
-*/
-
-console.log("Awal"); // p1
-
-for (let i = 0; i < 3; i++) {
-  // statement di dalam blok kode ({}) akan diulang sebanyak 3 kali
-  console.log("Hello World!"); // p2a
-} // p2
-
-console.log("Akhir"); // p3
-
-// p1 - p2 (p2a - p2a - p2a) - p3
-
-/*
-  *WHILE => mengeksekusi statementnya selama kondisi yang ditentukan bernilai true
-
-  Syntax:
-  while (condition){
-    <statement>
+  // jika karakter biasa
+  if (char !== "!" && char !== "@" && char !== "#" && char !== "$") {
+    newWord += char;
   }
-
-*/
-let i = 0;
-
-while (i < 3) {
-  console.log("WHILE LOOP");
-  i++;
 }
 
-/*
-  *DO...WHILE
-  - akan dijalankan minimal 1x, baru cek kondisi
-  - pengecekan kondisi diakhir
-
-*/
-let start = 0;
-
-do {
-  console.log("Hello, World!");
-
-  start++;
-} while (start < 3);
-
-
-//? PERBEDAAN WHILE DAN DO...WHILE
-let index = 0;
-
-// while
-while (index < 0) { // blok kode tidak akan di-eksekusi! karena bernilai false
-  console.log(".......");
-  index++;
-}
-
-// do...while
-do {
-  console.log("do...while"); // akan dijalankan minimal 1X
-
-  index++;
-} while (index < 0);
+console.log(newWord);

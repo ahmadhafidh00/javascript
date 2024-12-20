@@ -1,33 +1,27 @@
-/*
+/**
+ * =============
+ * REVERSED WORD
+ * =============
+ * Declare a new variable named "word" for storing any word.
+ * Loop for each character in variable "word" and add it into variable "newWord" with reversed version of the word.
+ * Display the new word with the reversed word in your terminal.
+ *
+ */
+let word = "hello world!";
+let newWord = ""; // Expected Output: !dlrow olleh
 
-  STORE totalLoop AS NUMBER WITH ANY VALUE
-  FOR index FROM 0 TO totalLoop - 1 INCREMENT BY 1
-    DISPLAY "Hello World"
-  END FOR
-
-*/
-
-// let totalLoop = 5;
-// for (let i = 0; i < totalLoop; i++) {
-//   console.log("Hello World");
-// }
-
-/*
-
-  STORE totalLoop AS NUMBER WITH ANY VALUE
-  STORE index as NUMBER WITH 0
-
-  WHILE index IS LESS THAN totalLoop
-    DISPLAY "Hello World"
-    INCREMENT index
-  END WHILE
-
-*/
-
-let totalLoop = 3;
-let index = 0;
-
-while (index < totalLoop) {
-  console.log("Hello World");
-  index++;
+// v1 - Reverse the word using increment loop
+for (let i = 0; i < word.length; i++) {
+  let char = word[i]; // h, e, l, l, o, (spasi), w, o, r, l, d, !
+  newWord = char + newWord;
 }
+console.log(newWord);
+
+newWord = ""; // Reset the newWord variable
+
+// v2 - Reverse the word using decrement loop
+for (let i = word.length - 1; i >= 0; i--) {
+  let reversedChar = word[i]; // !, d, l, r, o, w, (spasi), o, l, l, e, h
+  newWord += reversedChar;
+}
+console.log(newWord);
