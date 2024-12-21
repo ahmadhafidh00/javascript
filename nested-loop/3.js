@@ -1,53 +1,54 @@
+//? 1
 /*
-
-  Buatlah pattern kotak seperti ini, dengan lebar dan panjang yang bisa kita input.
-
-  input:
-  - row (lebar)
-  - col (panjang)
-
-  Output:
+  output:
+  *
+  **
+  ***
+  ****
   *****
-  *   *
-  *   *
-  *****
-
 */
-let row = 4;
-let col = 5;
-
-//* v2
+let row = 5;
 for (let i = 1; i <= row; i++) {
-  let line = '';
-  for (let j = 1; j <= col; j++) {
-    if (i === 1 || i === row || j === 1 || j === col) {
-      line += '*';
-    } else {
-      line += ' ';
-    }
+  let line = "";
+  for (let j = 1; j <= i; j++) {
+    line += "*";
   }
   console.log(line);
 }
 
-//* v1
-for (let i = 1; i <= row; i++) {
-  let line = '';
-
-  // cek baris jika atap dan lantai
-  if (i === 1 || i === row) {
-    for (let j = 1; j <= col; j++) {
-      line += '*';
-    }
-  } else {
-    for (let j = 1; j <= col; j++) {
-      // cek jika col kiri dan kanan
-      if (j === 1 || j === col) {
-        line += '*';
-      } else {
-        line += ' ';
-      }
-    }
+//? 2
+/*
+  output:
+  *****
+  ****
+  ***
+  **
+  *
+*/
+let row2 = 5;
+for (let i = row2; i >= 1; i--) {
+  let line = "";
+  for (let j = 1; j <= i; j++) {
+    // i = 5, j juga akan diulang sebanyak 5x
+    line += "*";
   }
-  
   console.log(line);
+}
+
+//? 3
+let strAngka = "263";
+/*
+  output:
+  **
+  ******
+  ***
+*/
+for (let i = 0; i < strAngka.length; i++) {
+  let perBaris = "";
+
+  let col = Number(strAngka[i]); // 2, 6, 3
+  for (let j = 0; j < col; j++) {
+    perBaris += "*";
+  }
+  console.log(perBaris);
 }
