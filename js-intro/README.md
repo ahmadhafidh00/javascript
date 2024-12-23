@@ -33,8 +33,7 @@ dalam JavaScript:
 Tipe data ini digunakan untuk menyimpan angka, baik bilangan bulat maupun
 desimal. Tipe data **Number** dalam JavaScript juga dapat berupa
 **bilangan positif** dan **bilangan negatif**. Selain itu, tipe data **Number**
-juga bisa merepresentasikan nilai **nol (0)**, serta **bilangan desimal**
-(floating point), seperti:
+juga bisa merepresentasikan nilai **nol (0)**, seperti:
 
 - **Bilangan Positif**: Angka yang lebih besar dari nol.
 - **Bilangan Negatif**: Angka yang lebih kecil dari nol.
@@ -102,8 +101,7 @@ Boolean sering digunakan untuk:
 **Contoh:**
 
 ```javascript
-let isRaining = true; // Kondisi benar
-let hasUmbrella = false; // Kondisi salah
+let isRaining = true;
 
 if (isRaining) {
   console.log("You should take an umbrella!");
@@ -736,8 +734,7 @@ console.log(product); // Output: 42
 
 #### 1.4 **Pembagian (/)**
 
-Operator `/` digunakan untuk membagi satu angka dengan angka lainnya. Hasilnya
-adalah angka bertipe **floating point** (bilangan desimal).
+Operator `/` digunakan untuk membagi satu angka dengan angka lainnya.
 
 **Contoh:**
 
@@ -963,10 +960,10 @@ console.log(-10 % -3); // Output: -1
 Penjelasan:
 
 - Pada kasus `-10 % 3`, kita memiliki pembagian `-10 ÷ 3`. Hasil pembagiannya
-  adalah -4 (karena -4 \* 3 = -12) dengan sisa `-10 - (-12) = -1`. Jadi,
+  adalah -3 (karena -3 \* 3 = -9) dengan sisa `-10 - (-9) = -1`. Jadi,
   `-10 % 3` adalah `-1`.
-- Pada kasus `10 % -3`, hasil pembagian adalah -3 dengan sisa `1`, jadi
-  `10 % -3` adalah `1`.
+- Pada kasus `10 % -3`, hasil pembagian adalah -3 (karena -3 \* -3 = 9) dengan
+  sisa `10 - 9 = 1`, jadi `10 % -3` adalah `1`.
 
 ### Penerapan Umum Operator Remainder
 
@@ -974,8 +971,9 @@ Operator `%` sering digunakan dalam berbagai situasi, seperti:
 
 1. **Menentukan apakah sebuah angka genap atau ganjil**:
 
-   - Angka genap jika hasil bagi angka tersebut dengan 2 adalah 0.
-   - Angka ganjil jika hasil sisa pembagiannya adalah 1.
+   - Angka genap jika sisa hasil bagi angka tersebut dengan 2 adalah 0 (angka
+     habis dibagi 2).
+   - Angka ganjil jika sisa hasil baginya selain 0.
 
    ```javascript
    let angka = 7;
@@ -1327,7 +1325,7 @@ perbandingan.
 let a = 10;
 let b = 20;
 
-console.log(a == b); // false, karena 10 tidak sama dengan 20
+console.log(a === b); // false, karena 10 tidak sama dengan 20
 console.log(a !== b); // true, karena 10 berbeda dengan 20
 console.log(a < b); // true, karena 10 lebih kecil dari 20
 console.log(a >= 10); // true, karena 10 lebih besar atau sama dengan 10
@@ -1915,6 +1913,8 @@ Penjelasan:
 - [JavaScript Comparison and Logical Operators](https://www.w3schools.com/js/js_comparisons.asp)
 - [JavaScript Logical Operators](https://www.geeksforgeeks.org/javascript-logical-operators/)
 - [Conditional Statements in JavaScript](https://www.geeksforgeeks.org/conditional-statements-in-javascript/)
+- [Short Circuit Assignment in JavaScript](https://dev.to/flexdinesh/short-circuit-assignment-in-javascript--4k80)
+- [Logical OR assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment)
 - [Truthy and Falsy Values](https://www.sitepoint.com/javascript-truthy-falsy/)
 
 **[⬆ back to top](#table-of-contents)**
