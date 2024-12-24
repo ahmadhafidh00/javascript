@@ -14,6 +14,7 @@ kompleks untuk pengendalian alur eksekusi kode.
 4. [Perbedaan `switch-case` dan `if...else`](#perbedaan-switch-case-dan-ifelse)
 5. [Nested Conditional](#nested-conditional)
 6. [Perbedaan `if...if` dan `if...else`](#perbedaan-ifif-dan-ifelse)
+7. [Resources](#resources)
 
 ## **Default Flow dan Control Flow (Conditional) dalam JavaScript**
 
@@ -103,8 +104,8 @@ Dewasa
 
 **Penjelasan:**
 
-- Jika `age` lebih besar atau sama dengan 18, maka blok pertama (`"Dewasa"`)
-  yang akan dieksekusi.
+- Jika `age` lebih besar atau sama dengan 18 (18 tahun ke atas), maka blok
+  pertama (`"Dewasa"`) yang akan dieksekusi.
 - Jika tidak, blok `else` yang akan dieksekusi.
 
 #### 2. **Pernyataan `else if`**
@@ -120,7 +121,7 @@ if (grade >= 90) {
 } else if (grade >= 80) {
   console.log("B");
 } else {
-  console.log("C");
+  console.log("C"); // Selain kondisi di atas (grade < 80, falsy value, dll)
 }
 ```
 
@@ -181,8 +182,16 @@ teknik untuk menulis kondisi lebih efektif:
    dengan format `kondisi ? nilai_true : nilai_false`.
 
    ```javascript
-   let isAdult = age >= 18 ? "Dewasa" : "Anak-anak";
-   console.log(isAdult);
+   let age = 17;
+
+   // Apakah usia 18 tahun ke atas ? Jika iya, set true : Jika tidak, set false.
+   let isAdult = age >= 18 ? true : false;
+
+   if (isAdult) {
+     console.log("Dewasa");
+   } else {
+     console.log("Anak-anak");
+   }
    ```
 
    **Output:**
@@ -197,7 +206,8 @@ teknik untuk menulis kondisi lebih efektif:
    - `||` (OR) mengembalikan `true` jika salah satu kondisi bernilai `true`.
 
    ```javascript
-   let age = 25;
+   let age = 19;
+   // Jika age di atas 18 tahun dan di bawah 60 tahun (19 - 59)
    if (age > 18 && age < 60) {
      console.log("Dewasa produktif");
    }
@@ -209,10 +219,15 @@ teknik untuk menulis kondisi lebih efektif:
    Dewasa produktif
    ```
 
-3. **Nullish Coalescing Operator (`??`)**: Memeriksa nilai `null` atau
+3. **Nullish Coalescing Operator (`??`)**: Memeriksa apakah nilai `null` atau
    `undefined` dan memberikan nilai default jika itu terjadi.
 
    ```javascript
+   const user = {
+     age: 34,
+   };
+
+   // Jika properti name tidak ada di object user (undefined atau null), maka gunakan default value.
    let name = user.name ?? "Guest";
    console.log(name);
    ```
@@ -353,8 +368,7 @@ sebuah output atau nilai.
    mereka mengandung nilai-nilai dalam bentuk properti.
 
    ```javascript
-   let person = { name: "John", age: 30 }; // { name: "John", age: 30 } adalah object
-   expression;
+   let person = { name: "John", age: 30 }; // { name: "John", age: 30 } adalah object expression;
    ```
 
 8. **Logical Expressions:** Ekspresi logika menghasilkan nilai boolean (`true`
@@ -393,46 +407,6 @@ dengan **statement**.
 
 **[⬆ back to top](#table-of-contents)**
 
-### Contoh-contoh penggunaan expression dalam kode
-
-1. **Menggunakan Expression dalam Fungsi:**
-   Fungsi `calculate` di bawah ini mengandung ekspresi aritmetika.
-
-   ```javascript
-   function calculate(a, b) {
-     return a + b; // a + b adalah expression yang menghasilkan nilai
-   }
-   console.log(calculate(2, 3)); // Output: 5
-   ```
-
-2. **Expression dalam Kondisi `if:`**
-   Di dalam sebuah pernyataan `if`, kita bisa menggunakan ekspresi untuk
-   mengevaluasi kondisi.
-
-   ```javascript
-   let x = 5;
-   if (x > 3) {
-     console.log("x lebih besar dari 3"); // x > 3 adalah expression
-   }
-   ```
-
-3. **Array dan Object sebagai Expression:**
-   Array dan objek adalah jenis ekspresi karena mereka menghasilkan struktur
-   data yang bisa digunakan dalam program.
-
-   ```javascript
-   let numbers = [1, 2, 3, 4]; // Array expression
-   let person = { name: "Alice", age: 25 }; // Object expression
-   ```
-
-4. **Ternary Operator sebagai Expression:**
-   Operator ternary adalah ekspresi yang mengembalikan hasil berdasarkan
-   kondisi.
-   ```javascript
-   let age = 16;
-   let status = age >= 18 ? "Dewasa" : "Anak-anak"; // expression
-   ```
-
 ### Expression dalam context ekspresi yang lebih kompleks
 
 Kadang-kadang ekspresi dapat berupa gabungan dari beberapa ekspresi, yang
@@ -444,7 +418,7 @@ let a = 10;
 let b = 20;
 let c = 30;
 let result = (a + b) * c - 5; // Ini adalah complex expression
-console.log(result); // Output: 595
+console.log(result); // Output: 895
 ```
 
 Dalam contoh ini, `(a + b) * c - 5` adalah ekspresi yang terdiri dari beberapa
@@ -550,12 +524,12 @@ switch (angka) {
     hasil = "Tidak ada pilihan";
 }
 
-console.log(hasil); // Output: Tiga
+console.log(hasil); // Output: Tidak ada pilihan
 ```
 
-Pada contoh di atas, karena tidak ada `break` di antara setiap `case`, nilai
+Pada contoh di atas, karena tidak ada `break` di pada setiap `case`, nilai
 `hasil` akan diubah oleh setiap `case` yang dilewati, dan akhirnya berisi
-`'Tiga'`.
+`'Tidak ada pilihan'`.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -648,32 +622,7 @@ Berikut adalah penjelasan tentang perbedaan utama antara keduanya:
 
 **[⬆ back to top](#table-of-contents)**
 
-### 5. Fall-through (Jika tidak ada `break`):
-
-- **`switch-case`:** Salah satu fitur khas `switch-case` adalah
-  _fall-through_. Jika tidak ada `break`, maka kode akan "terjatuh" ke dalam
-  `case` berikutnya, meskipun nilai `case` berikutnya tidak sesuai. Ini bisa
-  menjadi fitur yang berguna dalam beberapa situasi, tetapi jika tidak
-  hati-hati, bisa menyebabkan bug.
-
-  ```javascript
-  let angka = 2;
-  switch (angka) {
-    case 1:
-      console.log("Satu");
-    case 2:
-      console.log("Dua");
-    case 3:
-      console.log("Tiga");
-  }
-  // Output: Dua, Tiga (karena tidak ada break)
-  ```
-
-- **`if...else`:** Tidak ada konsep _fall-through_ dalam `if...else`. Setiap
-  kondisi hanya diuji sekali, dan setelah kondisi yang cocok ditemukan,
-  eksekusi berhenti.
-
-### 6. Kapan Menggunakan `switch-case` vs `if...else`:
+### 5. Kapan Menggunakan `switch-case` vs `if...else`:
 
 - Gunakan **`switch-case`:**
 
@@ -965,7 +914,7 @@ Pernyataan `if...if` digunakan untuk memeriksa beberapa kondisi secara
 terpisah. Jika suatu kondisi `if` terpenuhi, maka blok kode yang terkait
 dengan kondisi itu akan dieksekusi. Jika tidak, pemeriksaan akan diteruskan
 ke kondisi berikutnya (jika ada). Tidak ada hubungan saling mengikat antara
-kondisi-kondisi yang satu dengan yang lainnya.
+kondisi yang satu dengan yang lainnya.
 
 **Contoh `if...if`:**
 
@@ -1032,5 +981,15 @@ if (nilai >= 90) {
 Dengan demikian, `if...else` digunakan ketika Anda ingin memastikan hanya satu
 kondisi yang dieksekusi, sedangkan `if...if` lebih cocok untuk memeriksa
 beberapa kondisi yang tidak saling bergantung satu sama lain.
+
+**[⬆ back to top](#table-of-contents)**
+
+## Resources
+
+- [JavaScript – Conditional Statements](https://www.geeksforgeeks.org/conditional-statements-in-javascript/)
+- [Control flow and error handling](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
+- [Nullish coalescing operator (`??`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+- [Optional chaining (`?.`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+- [Expressions and operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators)
 
 **[⬆ back to top](#table-of-contents)**
