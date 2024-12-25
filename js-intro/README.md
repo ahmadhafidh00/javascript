@@ -7,45 +7,44 @@ seamlessly with
 [HTML](https://www.geeksforgeeks.org/html-tutorial/), [CSS](https://www.geeksforgeeks.org/css-tutorial/),
 and a rich standard library.
 
-## Table of contents
+## Table of Contents
 
-1. [Primitive data types dalam Javascript](#primitive-data-types-dalam-javascript)
+1. [Tipe Data Primitif dalam Javascript](#tipe-data-primitif-dalam-javascript)
 2. [Informatives](#informatives)
-3. [String length and indexing](#string-length-and-indexing)
+3. [String Length and Indexing](#string-length-and-indexing)
 4. [Variables](#variables)
-5. [Javascript arithmetic](#javascript-arithmetic)
-6. [Remainder operators](#remainder-operators)
-7. [String concatenation](#string-concatenation)
-8. [Comparison and logical operators](#comparison-and-logical-operators)
-9. [Conditional statements](#conditional-statements)
-10. [Truthy and falsy value](#truthy-and-falsy-value)
+5. [Javascript Arithmetic](#javascript-arithmetic)
+6. [Remainder Operators](#remainder-operators)
+7. [String Concatenation](#string-concatenation)
+8. [Comparison and Logical Operators](#comparison-and-logical-operators)
+9. [Conditional Statements](#conditional-statements)
+10. [Truthy and Falsy Value](#truthy-and-falsy-value)
 11. [Resources](#resources)
 
-## **Primitive data types dalam Javascript**
+## **Tipe Data Primitif dalam Javascript**
 
-Dalam JavaScript, **primitive data types** adalah tipe data yang tidak dapat
-diubah (immutable) dan disalin dengan cara yang lebih sederhana dibandingkan
-dengan tipe data lainnya (seperti objek). Ada 7 tipe data primitif yang ada
-dalam JavaScript:
+Tipe data primitif adalah tipe data yang **tidak dapat diubah** (immutable)
+setelah nilainya ditetapkan. Tipe data ini menyimpan **nilai itu sendiri** dan
+tidak mengacu pada objek lain. Ada 7 tipe data primitif di JavaScript:
 
 ### 1. Number
 
-Tipe data ini digunakan untuk menyimpan angka, baik bilangan bulat maupun
-desimal. Tipe data **Number** dalam JavaScript juga dapat berupa
-**bilangan positif** dan **bilangan negatif**. Selain itu, tipe data **Number**
-juga bisa merepresentasikan nilai **nol (0)**, serta **bilangan desimal**
-(floating point), seperti:
+Tipe data ini digunakan untuk menyimpan angka, baik **bilangan bulat**
+(integer) maupun yang **desimal** (floating point). **Number** juga dapat
+berupa **bilangan positif** dan **bilangan negatif**. Selain itu, **Number**
+juga bisa merepresentasikan nilai **nol (0)**.
 
 - **Bilangan Positif**: Angka yang lebih besar dari nol.
 - **Bilangan Negatif**: Angka yang lebih kecil dari nol.
-- **Nol (0)**: Tipe data number yang khusus.
+- **Nol (0)**: Angka nol itu sendiri.
 - **Desimal**: Bilangan dengan titik desimal (floating point).
-- **Infinity**: Sebuah nilai yang mewakili hasil dari operasi yang lebih besar
-  dari batas maksimal bilangan dalam JavaScript.
-- **-Infinity**: Sebuah nilai yang mewakili hasil dari operasi yang lebih kecil
-  dari batas minimal bilangan dalam JavaScript.
-- **NaN (Not-a-Number)**: Menunjukkan hasil dari operasi matematis yang tidak
-  menghasilkan angka yang valid.
+- **Infinity**: Nilai numerik yang lebih besar daripada bilangan lainnya dalam
+  JavaScript.
+- **-Infinity**: Nilai numerik yang lebih kecil daripada bilangan lainnya dalam
+  JavaScript.
+- **NaN (Not-a-Number)**: Properti dalam JavaScript yang menunjukkan bahwa
+  suatu nilai **bukan merupakan angka valid**. Meskipun namanya "Not a Number"
+  sebenarnya `NaN` adalah bagian dari tipe data **Number** di JavaScript.
 
 **Contoh:**
 
@@ -54,176 +53,170 @@ let positif = 42; // Bilangan positif
 let negatif = -25; // Bilangan negatif
 let nol = 0; // Bilangan nol
 let desimal = 3.14; // Bilangan desimal
-let besar = Infinity; // Bilangan tak terhingga
-let kecil = -Infinity; // Bilangan tak terhingga negatif
+let terbesar = Infinity; // Bilangan tak terhingga
+let terkecil = -Infinity; // Bilangan tak terhingga negatif
 let notANumber = NaN; // Hasil operasi yang tidak valid
 ```
 
 **Catatan:**
 
-- **Infinity** dan **-Infinity** adalah nilai khusus yang digunakan ketika
-  bilangan melebihi batas representasi angka yang dapat dilakukan oleh
-  JavaScript.
-- **NaN** adalah hasil dari operasi matematis yang tidak bisa menghasilkan
-  angka yang valid, misalnya: `0 / 0` atau `Math.sqrt(-1)`.
+- Dalam JavaScript, `Infinity` dan `-Infinity` adalah nilai numerik khusus yang
+  merepresentasikan bilangan tak terhingga positif dan negatif.
+- Dalam JavaScript, `NaN` adalah singkatan dari **"Not-a-Number"**. Ini adalah
+  nilai khusus yang menunjukkan bahwa suatu operasi atau ekspresi tidak
+  menghasilkan angka yang valid.
 
 **[⬆ back to top](#table-of-contents)**
 
 ### 2. String
 
-Tipe data ini digunakan untuk menyimpan urutan karakter (teks). Tipe data ini
-bisa berupa kombinasi huruf, angka, simbol, atau bahkan spasi yang dikelilingi
-oleh tanda kutip.
+Tipe data **string** dalam JavaScript digunakan untuk merepresentasikan data
+teks. String terdiri dari serangkaian karakter yang diapit oleh tanda kutip
+tunggal (`'`), tanda kutip ganda (`"`), atau tanda backtick (`` ` ``).
+
+String dapat dideklarasikan menggunakan:
+
+- **Tanda kutip tunggal**: `'Hello'`
+- **Tanda kutip ganda**: `"Hello"`
+- **Template literal** (backtick): `` `Hello` ``
 
 **Contoh:**
 
 ```javascript
-let name = "John"; // String dengan tanda kutip ganda
-let greeting = 'Hello'; // String dengan tanda kutip tunggal
-let message = `Hi!`; // String dengan template literal
+let singleQuote = 'Hello';
+let doubleQuote = "World";
+let templateLiteral = `Hello World`;
 ```
 
 **[⬆ back to top](#table-of-contents)**
 
 ### 3. Boolean
 
-Tipe data ini hanya memiliki dua nilai: `true` atau `false`.
+Tipe data **Boolean** dalam JavaScript digunakan untuk merepresentasikan dua
+nilai logis: **`true`** (benar) dan **`false`** (salah). Boolean biasanya
+digunakan untuk membuat keputusan logis dalam program, seperti dalam pernyataan
+kondisional atau perulangan.
 
-Boolean sering digunakan untuk:
+#### **Karakteristik tipe data boolean:**
 
-1. **Pernyataan Kondisional**: Untuk mengevaluasi apakah sebuah kondisi `true`
-   atau `false`.
-2. **Mengontrol Alur Program**: Dalam `if` dan `else`, yang memutuskan
-   jalannya program berdasarkan nilai `true` atau `false`.
-3. **Operasi Logika**: Dalam operasi logika seperti `AND` (&&), `OR` (||), dan
-   `NOT` (!).
-4. **Operasi Perbandingan**: `==`, `===`, `!=`, `!==`, `>`, `<`, `>=`, `<=`.
+1. **Nilai**:
+   - Boolean hanya memiliki dua nilai: `true` dan `false`.
+2. **Kegunaan**:
+   - Digunakan untuk mengevaluasi ekspresi logika.
+   - Membantu dalam pengambilan keputusan berdasarkan kondisi tertentu.
+3. **Tipe Primitive**:
+   - Boolean adalah salah satu dari tujuh tipe data primitif di JavaScript.
 
-**Contoh:**
+#### **Contoh penggunaan:**
 
-```javascript
-let isRaining = true; // Kondisi benar
-let hasUmbrella = false; // Kondisi salah
+1. **Dalam Kondisi**:
 
-if (isRaining) {
-  console.log("You should take an umbrella!");
-} else {
-  console.log("No umbrella needed.");
-}
-```
+   ```javascript
+   let isLoggedIn = true;
+
+   if (isLoggedIn) {
+     console.log("Welcome, user!");
+   } else {
+     console.log("Please log in first.");
+   }
+   ```
+
+2. **Dalam Perulangan**:
+
+   ```javascript
+   let count = 5;
+
+   while (count) {
+     // Selama count truthy (bukan 0), loop berjalan
+     console.log(count);
+     count--;
+   }
+   ```
+
+Dengan memahami tipe data boolean, Anda dapat membuat logika program yang lebih
+efektif dan efisien!
 
 **[⬆ back to top](#table-of-contents)**
 
 ### 4. Undefined
 
-Tipe data ini digunakan untuk menunjukkan bahwa suatu **variabel** telah
-dideklarasikan tetapi belum diberi nilai atau belum diinisialisasi.
+`undefined` adalah tipe data yang merepresentasikan nilai yang belum
+didefinisikan. Secara teknis, sebuah variabel atau properti memiliki nilai
+`undefined` ketika:
 
-#### **Contoh penggunaan `undefined`:**
+1. Variabel dideklarasikan tetapi tidak diinisialisasi.
+2. Sebuah fungsi tidak mengembalikan nilai secara eksplisit.
+3. Properti objek yang diakses tidak ada.
+4. Tidak ada argumen yang dikirimkan ke parameter fungsi tertentu.
 
-1. **Variabel yang Dideklarasikan tetapi Belum Diberi Nilai**:
-   Ketika kita mendeklarasikan variabel tanpa memberikan nilai, JavaScript
-   secara otomatis memberikan nilai `undefined`.
+#### **Contoh penggunaan**
+
+1. **Variabel tanpa inisialisasi:**
 
    ```javascript
    let x;
    console.log(x); // Output: undefined
    ```
 
-   Pada contoh di atas, variabel `x` sudah dideklarasikan, tetapi belum diberi
-   nilai, sehingga hasilnya adalah `undefined`.
-
-2. **Fungsi yang Tidak Mengembalikan Nilai**:
-   Jika sebuah fungsi tidak mengembalikan nilai (tidak ada `return`), maka
-   fungsi tersebut secara otomatis mengembalikan `undefined`.
+2. **Fungsi tanpa `return`:**
 
    ```javascript
-   function greet() {
-     console.log("Hello");
-   }
-
-   let result = greet(); // Output: Hello
-   console.log(result); // Output: undefined
+   function noReturn() {}
+   console.log(noReturn()); // Output: undefined
    ```
 
-   Dalam kasus ini, fungsi `greet()` tidak mengembalikan apa pun, sehingga
-   variabel `result` berisi `undefined`.
-
-#### **Perbedaan antara `undefined` dan `null`**
-
-Meskipun `undefined` dan `null` sering dianggap memiliki makna yang serupa
-(kedua-duanya menunjukkan "ketiadaan" atau "kosong"), keduanya memiliki
-perbedaan yang signifikan dalam JavaScript:
-
-1. **`undefined`**:
-   - **Default**: Merupakan nilai otomatis yang diberikan oleh JavaScript
-     ketika sebuah variabel dideklarasikan tetapi belum diberi nilai.
-   - **Tipe Data**: `undefined` adalah tipe data primitif yang berbeda dari
-     `null`.
-2. **`null`**:
-   - **Ditugaskan oleh Programmer**: Merupakan nilai yang secara eksplisit
-     ditetapkan oleh programmer untuk menunjukkan bahwa suatu variabel sengaja
-     tidak memiliki nilai atau objek.
-   - **Tipe Data**: Meskipun `null` sering dianggap sebagai objek, itu adalah
-     nilai primitif yang terpisah.
-
-#### **Nilai `undefined` dalam konteks lain**
-
-1. **Pemeriksaan terhadap `undefined`**:
-   Ketika kita ingin memeriksa apakah suatu variabel belum diberi nilai
-   (yaitu `undefined`), kita bisa melakukannya dengan cara berikut:
+3. **Properti yang tidak ada:**
 
    ```javascript
-   let x;
-   if (x === undefined) {
-     console.log("x is undefined"); // Output: x is undefined
-   }
+   const obj = { name: "Alice" };
+   console.log(obj.age); // Output: undefined
    ```
 
-   Sebagian besar developer lebih sering menggunakan **`typeof`** untuk
-   memeriksa apakah suatu variabel adalah `undefined`, karena ini lebih aman
-   (terhindar dari kesalahan jika variabel tersebut belum dideklarasikan sama
-   sekali):
-
-   ```javascript
-   let y;
-   if (typeof y === "undefined") {
-     console.log("y is undefined"); // Output: y is undefined
-   }
-   ```
-
-2. **Fungsi dengan Parameter Tidak Diberi Nilai**:
-   Ketika fungsi dipanggil tanpa argumen untuk parameter yang diharapkan,
-   parameter tersebut akan mendapatkan nilai `undefined` secara otomatis.
+4. **Parameter fungsi yang tidak diisi:**
 
    ```javascript
    function greet(name) {
      console.log(name);
    }
-
-   greet(); // Output: undefined (parameter 'name' tidak diberikan nilai)
+   greet(); // Output: undefined
    ```
 
-3. **Mengakses Properti yang Tidak Ada pada Objek**:
-   Jika kita mencoba mengakses properti yang tidak ada pada suatu objek,
-   hasilnya adalah `undefined`.
+#### **Perbedaan `undefined` dengan `null`**
+
+- `undefined` menunjukkan bahwa suatu nilai belum ditetapkan.
+- `null` adalah nilai yang secara eksplisit ditetapkan untuk merepresentasikan
+  "tidak ada" atau "kosong".
+
+**Contoh:**
+
+```javascript
+let a;
+let b = null;
+
+console.log(a); // Output: undefined
+console.log(b); // Output: null
+```
+
+#### **Cara menghindari kesalahan dengan `undefined`**
+
+1. **Gunakan nilai default untuk parameter fungsi:**
 
    ```javascript
-   let person = { name: "Alice" };
-   console.log(person.age); // Output: undefined (karena properti 'age' tidak ada)
+   function greet(name = "Guest") {
+     console.log(`Hello, ${name}!`);
+   }
+   greet(); // Output: Hello, Guest!
    ```
 
-4. **Menggunakan `undefined` Secara Eksplisit**:
-   Kita juga bisa memberikan nilai `undefined` secara eksplisit pada suatu
-   variabel untuk menunjukkan bahwa variabel tersebut tidak memiliki nilai.
-
+2. **Periksa keberadaan properti:**
    ```javascript
-   let x = undefined; // Variabel x diset ke 'undefined'
-   console.log(x); // Output: undefined
+   const obj = { name: "Alice" };
+   console.log(obj.age ?? "Not defined"); // Output: Not defined
    ```
 
-   Meskipun demikian, biasanya kita menggunakan `null` jika ingin menunjukkan
-   bahwa suatu variabel sengaja tidak memiliki nilai atau objek.
+`undefined` adalah tipe data penting di JavaScript untuk menangani nilai yang
+belum ditentukan. Memahami penggunaannya membantu mencegah bug yang mungkin
+terjadi dalam kode Anda.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -237,6 +230,7 @@ objek yang valid.
 #### **Deklarasi dan penggunaan `null`**
 
 1. **Menginisialisasi Variabel dengan `null`**:
+
    Biasanya, `null` digunakan untuk menginisialisasi variabel yang nanti akan
    diisi dengan objek atau nilai lainnya. Ini membantu menunjukkan bahwa
    variabel tersebut belum memiliki objek yang valid.
@@ -247,6 +241,7 @@ objek yang valid.
    ```
 
 2. **Menggunakan `null` dalam Objek**:
+
    `null` sering digunakan untuk menghapus nilai atau mengatur nilai objek
    menjadi **tidak ada**. Hal ini berguna ketika kita ingin menghapus referensi
    atau menandakan bahwa objek tidak lagi digunakan.
@@ -261,6 +256,7 @@ objek yang valid.
    ```
 
 3. **Pemeriksaan dengan `null`**:
+
    Kita dapat memeriksa apakah sebuah variabel atau objek berisi `null` untuk
    mengetahui apakah nilai atau objek tersebut sengaja dikosongkan.
 
@@ -271,35 +267,220 @@ objek yang valid.
    }
    ```
 
+4. **Operasi dengan `null`**:
+
+   Ketika `null` digunakan dalam operasi aritmatika atau perbandingan, nilainya
+   diubah menjadi angka:
+
+   ```javascript
+   console.log(null + 5); // Output: 5
+   console.log(null == undefined); // Output: true
+   console.log(null === undefined); // Output: false
+   ```
+
 **[⬆ back to top](#table-of-contents)**
 
 ### 6. Symbol
 
-Tipe data ini digunakan untuk membuat identitas unik dan sering digunakan
-dalam objek. `Symbol` bersifat unik, artinya dua symbol yang berbeda tidak
-akan pernah sama, meskipun deskripsinya sama.
+Tipe data `Symbol` dalam JavaScript adalah tipe data primitif yang
+diperkenalkan di ECMAScript 6 (ES6). Tipe data ini digunakan untuk menciptakan
+**identifier unik** yang terutama digunakan sebagai kunci properti objek.
+Berikut adalah penjelasan rinci mengenai `Symbol`:
 
-**Contoh:**
+#### 1. **Pembuatan Symbol**
+
+Symbol dibuat menggunakan fungsi `Symbol()`:
 
 ```javascript
-let sym1 = Symbol("id");
-let sym2 = Symbol("id");
-console.log(sym1 === sym2); // Output: false, karena symbol bersifat unik
+const mySymbol = Symbol();
+console.log(mySymbol); // Output: Symbol()
 ```
+
+#### 2. **Properti unik**
+
+Setiap kali `Symbol()` dipanggil, ia menghasilkan nilai yang unik. Bahkan jika
+Anda membuat dua simbol dengan deskripsi yang sama, keduanya tetap berbeda:
+
+```javascript
+const symbol1 = Symbol("desc");
+const symbol2 = Symbol("desc");
+
+console.log(symbol1 === symbol2); // Output: false
+```
+
+#### 3. **Deskripsi (Description)**
+
+Anda dapat memberikan deskripsi (sebagai string) untuk simbol saat membuatnya.
+Deskripsi ini hanya digunakan untuk debugging atau logging dan tidak
+memengaruhi keunikannya:
+
+```javascript
+const mySymbol = Symbol("identifier");
+console.log(mySymbol.description); // Output: "identifier"
+```
+
+#### 4. **Penggunaan sebagai kunci properti**
+
+Symbol sering digunakan sebagai kunci untuk properti objek agar properti
+tersebut tidak bertabrakan dengan properti lainnya (terutama pada objek besar
+atau yang digunakan oleh pihak ketiga):
+
+```javascript
+const mySymbol = Symbol("key");
+const myObject = {
+  [mySymbol]: "value",
+};
+
+console.log(myObject[mySymbol]); // Output: "value"
+```
+
+Properti dengan kunci simbol tidak akan muncul dalam iterasi `for...in` atau
+`Object.keys()`. Namun, dapat diakses menggunakan
+`Object.getOwnPropertySymbols()`.
+
+#### 5. **Symbol yang tersedia secara Global**
+
+JavaScript memiliki beberapa simbol bawaan yang tersedia secara global, dikenal
+sebagai **Well-known Symbols**. Contohnya:
+
+- `Symbol.iterator`: Digunakan untuk membuat iterator custom.
+- `Symbol.toStringTag`: Digunakan untuk mengubah hasil dari
+  `Object.prototype.toString`.
+
+Contoh penggunaan `Symbol.iterator`:
+
+```javascript
+const iterable = {
+  [Symbol.iterator]() {
+    let step = 0;
+    return {
+      next() {
+        step++;
+        return step <= 3
+          ? { value: step, done: false }
+          : { value: undefined, done: true };
+      },
+    };
+  },
+};
+
+for (const value of iterable) {
+  console.log(value); // Output: 1, 2, 3
+}
+```
+
+#### 6. **Keuntungan Symbol**
+
+- **Unik dan Aman**: Simbol memastikan properti tidak berbenturan.
+- **Penggunaan Khusus**: Sangat berguna untuk membuat properti tersembunyi
+  pada objek.
+- **Tidak Dapat Diubah**: Simbol adalah immutable dan selalu unik.
+
+#### 7. **Batasan Symbol**
+
+- Tidak dapat diakses langsung melalui metode konvensional seperti
+  `JSON.stringify()` karena properti berbasis simbol tidak akan dimasukkan ke
+  dalam string JSON.
+- Tidak dapat dibuat menggunakan keyword `new`. Anda hanya dapat membuatnya
+  dengan memanggil fungsi `Symbol()`.
+
+Symbol merupakan fitur yang kuat dalam JavaScript untuk menciptakan properti
+objek yang unik dan aman dari konflik, terutama dalam pengembangan aplikasi
+yang kompleks.
 
 **[⬆ back to top](#table-of-contents)**
 
 ### 7. BigInt
 
-Tipe data ini digunakan untuk menyimpan angka yang lebih besar dari batasan
-`Number` yang ada pada JavaScript (lebih dari 2^53 - 1).
+Tipe data **BigInt** dalam JavaScript adalah tipe data khusus yang digunakan
+untuk merepresentasikan bilangan bulat yang sangat besar, yang tidak dapat
+ditampung oleh tipe data **Number**. Tipe data **Number** memiliki batas
+maksimal dan minimal untuk bilangan bulat, yaitu:
 
-**Contoh:**
+- Batas maksimal: 2^53 - 1 atau **9,007,199,254,740,991**.
+- Batas minimal: -(2^53 - 1).
+
+Bilangan di luar rentang ini dapat mengalami kehilangan presisi jika
+menggunakan tipe data **Number**.
+
+Dengan **BigInt**, Anda dapat bekerja dengan bilangan bulat yang lebih besar
+dari batas tersebut tanpa kehilangan presisi.
+
+#### **Cara membuat BigInt**
+
+BigInt dapat dibuat dengan dua cara:
+
+1. Menambahkan sufiks **`n`** pada bilangan bulat.
+
+   ```javascript
+   const bigIntValue = 1234567890123456789012345678901234567890n;
+   ```
+
+2. Menggunakan fungsi **`BigInt()`**.
+
+   ```javascript
+   const bigIntValue = BigInt("1234567890123456789012345678901234567890");
+   ```
+
+#### **Karakteristik BigInt**
+
+1. **Operasi Aritmatika**
+   Anda dapat melakukan operasi aritmatika seperti penjumlahan, pengurangan,
+   perkalian, dan pembagian, tetapi hanya dengan sesama BigInt.
+
+   ```javascript
+   const a = 100n;
+   const b = 200n;
+   console.log(a + b); // 300n
+   console.log(a * b); // 20000n
+   ```
+
+2. **Tidak Bisa Dicampur dengan Number**
+   Anda tidak bisa mencampur tipe BigInt dengan Number secara langsung. Jika
+   perlu, Anda harus melakukan konversi terlebih dahulu.
+
+   ```javascript
+   const bigIntValue = 100n;
+   const numberValue = 50;
+   // console.log(bigIntValue + numberValue); // Error
+   console.log(bigIntValue + BigInt(numberValue)); // 150n
+   ```
+
+3. **Performa**
+   BigInt lebih lambat dibandingkan Number karena digunakan untuk bilangan yang
+   jauh lebih besar.
+
+4. **Penggunaan**
+   BigInt sangat berguna untuk aplikasi yang memerlukan presisi tinggi, seperti
+   kriptografi, perhitungan ilmiah, atau pemrosesan data finansial.
+
+#### **Keterbatasan BigInt**
+
+1. Tidak mendukung metode bawaan **Math**.
+
+   ```javascript
+   const bigIntValue = 10n;
+   console.log(Math.sqrt(bigIntValue)); // Error
+   ```
+
+2. Tidak kompatibel dengan JSON.
+   BigInt tidak bisa digunakan langsung dalam objek JSON.
+   ```javascript
+   const obj = { value: 100n };
+   console.log(JSON.stringify(obj)); // Error
+   ```
+
+#### **Contoh penggunaan BigInt**
 
 ```javascript
-let bigNumber = 1234567890123456789012345678901234567890n;
-console.log(bigNumber); // Output: 1234567890123456789012345678901234567890n
+// Perhitungan dengan bilangan besar
+const bigValue1 = 9007199254740991n; // Maksimal Number
+const bigValue2 = bigValue1 + 1n; // BigInt memungkinkan lebih besar
+console.log(bigValue2); // 9007199254740992n
 ```
+
+Dengan BigInt, JavaScript menjadi lebih fleksibel dalam menangani bilangan
+besar.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -307,9 +488,9 @@ console.log(bigNumber); // Output: 1234567890123456789012345678901234567890n
 
 ### Typeof operator
 
-Operator `typeof` dalam JavaScript digunakan untuk memeriksa tipe data dari
-sebuah nilai atau ekspresi. Dengan menggunakan `typeof`, kita dapat mengetahui
-tipe dasar dari suatu variabel atau objek.
+`typeof` adalah operator di JavaScript yang digunakan untuk menentukan tipe
+data dari sebuah nilai atau variabel. Operator ini mengembalikan sebuah string
+yang menunjukkan tipe dari operand yang diberikan.
 
 **Sintaks:**
 
@@ -322,60 +503,45 @@ typeof operand;
 **Contoh penggunaan:**
 
 ```javascript
-// Tipe data undefined
-let a;
-console.log(typeof a); // "undefined"
-
-// Tipe data boolean
-let isActive = true;
-console.log(typeof isActive); // "boolean"
-
-// Tipe data number
-let age = 25;
-console.log(typeof age); // "number"
-
-// Tipe data string
-let name = "Alice";
-console.log(typeof name); // "string"
-
-// Tipe data function
-function greet() {}
-console.log(typeof greet); // "function"
-
-// Tipe data object
-let person = { name: "Bob", age: 30 };
-console.log(typeof person); // "object"
-
-// Tipe data null (terlihat sebagai object, meskipun bug)
-let obj = null;
-console.log(typeof obj); // "object"
-
-// Tipe data symbol
-let sym = Symbol("id");
-console.log(typeof sym); // "symbol"
+console.log(typeof 42); // "number"
+console.log(typeof "Hello"); // "string"
+console.log(typeof true); // "boolean"
+console.log(typeof undefined); // "undefined"
+console.log(typeof { name: "John", age: 30 }); // "object"
+console.log(typeof [1, 2, 3]); // "object" (array dianggap sebagai objek)
+console.log(typeof null); // "object" (ini adalah kekeliruan yang sudah ada sejak awal JavaScript)
+console.log(typeof function () {}); // "function"
 ```
 
-**Catatan:**
+Meskipun baik array maupun objek keduanya memiliki tipe `"object"` dalam
+JavaScript, kamu dapat membedakannya dengan menggunakan metode
+`Array.isArray()`. Metode ini akan mengembalikan `true` jika nilai tersebut
+adalah array, dan `false` jika bukan.
 
-1. **Fungsi** adalah tipe yang unik di JavaScript karena `typeof` mengembalikan
-   `"function"` untuk fungsi, bukan `"object"`.
-2. **null** dianggap sebagai objek oleh `typeof`, yang bisa membingungkan.
-   Untuk memeriksa apakah nilai adalah `null`, kita harus menggunakan
-   perbandingan eksplisit: `value === null`.
-3. `typeof` tidak cocok untuk memeriksa tipe objek lebih lanjut
-   (seperti array atau instance dari class), karena akan selalu mengembalikan
-   `"object"` untuk objek, termasuk array dan `null`.
-
-#### **Memeriksa array:**
-
-Untuk memeriksa apakah sebuah variabel adalah array, kita biasanya menggunakan
-`Array.isArray()` karena `typeof` hanya akan mengembalikan `"object"`.
+Berikut contoh cara membedakan array dan objek:
 
 ```javascript
 let arr = [1, 2, 3];
+let obj = { name: "John", age: 30 };
+
 console.log(typeof arr); // "object"
+console.log(typeof obj); // "object"
+
 console.log(Array.isArray(arr)); // true
+console.log(Array.isArray(obj)); // false
 ```
+
+**Penjelasan:**
+
+- `Array.isArray()` adalah cara yang tepat untuk memeriksa apakah sebuah
+  variabel adalah array, karena `typeof` hanya akan memberikan `"object"`
+  untuk keduanya (array dan objek).
+- Untuk objek biasa, kamu hanya bisa menggunakan `typeof` atau memeriksa sifat
+  tertentu yang hanya dimiliki oleh objek, misalnya `obj.hasOwnProperty()`.
+
+Jadi, meskipun `typeof` menunjukkan bahwa keduanya adalah `"object"`,
+`Array.isArray()` memberikan cara yang jelas untuk membedakan array dari objek
+biasa.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -439,37 +605,37 @@ sum(1, 2, 3, 4); // 4
 Pada array, kita juga bisa memodifikasi panjang array dengan mengubah nilai
 dari properti `length`.
 
-**Contoh:** Menghapus elemen dari array
+1. **Menghapus elemen dari array**
 
-```javascript
-let arr = [10, 20, 30, 40, 50];
-arr.length = 3; // Memotong array sehingga hanya ada 3 elemen
-console.log(arr); // [10, 20, 30]
-```
+   ```javascript
+   let arr = [10, 20, 30, 40, 50];
+   arr.length = 3; // Memotong array sehingga hanya ada 3 elemen
+   console.log(arr); // [10, 20, 30]
+   ```
 
-> Ketika kita mengubah `arr.length = 3`, array akan dipotong sehingga hanya
-> menyisakan tiga elemen pertama.
+   Ketika kita mengubah `arr.length = 3`, array akan dipotong sehingga hanya
+   menyisakan tiga elemen pertama.
 
-**Contoh:** Menambahkan elemen ke array
+2. **Menambahkan elemen ke array**
 
-```javascript
-let arr = [1, 2, 3];
-arr.length = 5; // Menambahkan dua elemen "undefined" pada akhir array
-console.log(arr); // [1, 2, 3, <2 empty slots>]
-```
+   ```javascript
+   let arr = [1, 2, 3];
+   arr.length = 5; // Menambahkan dua elemen "undefined" pada akhir array
+   console.log(arr); // [1, 2, 3, <2 empty slots>]
+   ```
 
-> Mengubah `arr.length` menjadi lebih besar dari jumlah elemen saat ini akan
-> mengisi elemen-elemen yang baru dengan `undefined`.
+   Mengubah `arr.length` menjadi lebih besar dari jumlah elemen saat ini akan
+   mengisi elemen-elemen yang baru dengan `undefined`.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **String length and indexing**
+## **String Length and Indexing**
 
 Dalam JavaScript, **string length** dan **indexing** adalah konsep dasar yang
 digunakan untuk mengukur panjang string dan mengakses karakter-karakter di
 dalamnya.
 
-### 1. String Length
+### 1. String length
 
 String di JavaScript adalah urutan karakter, dan setiap karakter dalam string
 memiliki posisi tertentu yang dimulai dari **0** (indeks pertama). Untuk
@@ -493,7 +659,7 @@ Pada contoh di atas, string `"Hello, World!"` memiliki panjang 13 karakter
 
 **[⬆ back to top](#table-of-contents)**
 
-### 2. Indexing (Mengakses Karakter dalam String)
+### 2. Indexing (Mengakses karakter dalam string)
 
 Karakter dalam string di JavaScript diakses menggunakan indeks numerik, mulai
 dari **0** untuk karakter pertama hingga panjang string dikurangi 1 untuk
@@ -517,10 +683,10 @@ console.log(str[4]); // Output: "o"
 
 **[⬆ back to top](#table-of-contents)**
 
-### 3. Penggunaan Indexing untuk Mengakses Karakter Terakhir
+### 3. Penggunaan indexing untuk mengakses karakter terakhir (dinamis)
 
 Jika Anda ingin mengakses karakter terakhir dari string, Anda bisa menggunakan
-indeks `length - 1`.
+indeks `str.length - 1`.
 
 **Contoh Penggunaan:**
 
@@ -548,8 +714,8 @@ masing-masing memiliki sifat dan aturan berbeda.
 
 `var` adalah cara tradisional untuk mendeklarasikan variabel di JavaScript.
 Namun, `var` memiliki beberapa kelemahan, seperti ruang lingkup (scope) yang
-terbatas pada fungsi atau global, dan bisa dideklarasikan ulang tanpa
-memberikan peringatan.
+terbatas pada fungsi atau global, dan bisa dideklarasikan (re-declared) ulang
+tanpa memberikan peringatan.
 
 **Contoh Penggunaan:**
 
@@ -566,9 +732,9 @@ console.log(x); // Output: 20
 - **Hoisting:** Variabel yang dideklarasikan dengan `var` diangkat (hoisted)
   ke bagian atas fungsi atau konteks global, tetapi nilainya tidak
   diinisialisasi sampai baris deklarasi.
-- **Scope global atau fungsi:** Variabel `var` hanya terbatas pada fungsi atau
-  ruang lingkup global, tidak dapat dibatasi pada blok (seperti dalam loop
-  atau pernyataan kondisional).
+- **Scope global atau fungsi:** Variabel `var` hanya terbatas pada scope fungsi
+  atau scope global, tidak dapat dibatasi pada blok (seperti dalam loop atau
+  pernyataan kondisional).
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -577,8 +743,8 @@ console.log(x); // Output: 20
 `let` adalah cara yang lebih modern untuk mendeklarasikan variabel, dan
 diperkenalkan di ES6 (ECMAScript 2015). Berbeda dengan `var`, `let` memiliki
 **block scope** (ruang lingkup blok), yang berarti variabel hanya dapat
-diakses dalam blok kode tempatnya dideklarasikan
-(seperti di dalam `if` atau `for`).
+diakses dalam blok kode tempatnya dideklarasikan (seperti di dalam `if` atau
+`for`).
 
 **Contoh Penggunaan:**
 
@@ -596,9 +762,9 @@ console.log(y); // Output: 30 (variabel luar tetap tidak berubah)
 
 **Kelebihan `let`:**
 
-- **Block scope:** Variabel yang dideklarasikan dengan `let` hanya bisa
-  diakses dalam blok kode tempat variabel itu dideklarasikan.
-- **Tidak bisa dideklarasikan ulang dalam satu blok.**
+- **Block scope:** Variabel yang dideklarasikan dengan `let` hanya bisa diakses
+  dalam blok kode tempat variabel itu dideklarasikan.
+- **Tidak bisa dideklarasikan ulang dalam satu blok**.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -651,25 +817,31 @@ konsep **scope** (ruang lingkup) dan **hoisting**.
 
 - **Global Scope:** Variabel yang dideklarasikan di luar fungsi dapat diakses
   dari mana saja di seluruh program.
-- **Function Scope:** Variabel yang dideklarasikan dengan `var` di dalam
-  fungsi hanya dapat diakses di dalam fungsi tersebut.
+- **Function Scope:** Variabel yang dideklarasikan dengan `var`, `let`, dan
+  `const` di dalam fungsi hanya dapat diakses di dalam fungsi tersebut.
 - **Block Scope:** Variabel yang dideklarasikan dengan `let` dan `const` hanya
   dapat diakses di dalam blok tempat variabel tersebut dideklarasikan.
 
 #### **Hoisting:**
 
-- **Hoisting dengan `var`:** Variabel yang dideklarasikan dengan `var`
-  diangkat ke bagian atas fungsi atau konteks global, tetapi hanya
-  deklarasinya, bukan nilainya.
+- **Hoisting dengan `var`:**
+
+  Variabel yang dideklarasikan dengan `var` diangkat ke bagian atas fungsi atau
+  konteks global, **tetapi hanya deklarasinya**, bukan nilainya.
+
   ```javascript
   console.log(a); // Output: undefined
   var a = 5;
   console.log(a); // Output: 5
   ```
-- **Hoisting dengan `let` dan `const`:** Meskipun deklarasinya diangkat,
-  variabel yang dideklarasikan dengan `let` dan `const` berada dalam
-  **temporal dead zone** (TDZ) hingga mereka dideklarasikan, sehingga akan
-  menghasilkan error jika diakses sebelum dideklarasikan.
+
+- **Hoisting dengan `let` dan `const`:**
+
+  Meskipun deklarasinya diangkat, variabel yang dideklarasikan dengan `let` dan
+  `const` berada dalam **temporal dead zone** (TDZ) hingga mereka
+  dideklarasikan, sehingga akan menghasilkan error jika diakses sebelum
+  dideklarasikan.
+
   ```javascript
   console.log(b); // Error: Cannot access 'b' before initialization
   let b = 10;
@@ -677,7 +849,7 @@ konsep **scope** (ruang lingkup) dan **hoisting**.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Javascript arithmetic**
+## **Javascript Arithmetic**
 
 **Operasi matematika** di JavaScript merujuk pada penggunaan operator untuk
 melakukan perhitungan atau manipulasi angka (numerik) dalam program.
@@ -699,13 +871,13 @@ string (concatenation).
 ```javascript
 let a = 5;
 let b = 3;
-let sum = a + b; // 5 + 3 = 8
+let sum = a + b; // Menetapkan hasil penjumlahan a + b ke sum
 console.log(sum); // Output: 8
 
 let text1 = "Hello, ";
 let text2 = "World!";
-let result = text1 + text2; // Menggabungkan string
-console.log(result); // Output: "Hello, World!"
+let concat = text1 + text2; // Menggabungkan string (concatenation)
+console.log(concat); // Output: "Hello, World!"
 ```
 
 #### 1.2 **Pengurangan (-)**
@@ -715,10 +887,11 @@ Operator `-` digunakan untuk mengurangi satu angka dari angka lainnya.
 **Contoh:**
 
 ```javascript
-let a = 10;
-let b = 4;
-let difference = a - b; // 10 - 4 = 6
-console.log(difference); // Output: 6
+let currentYear = 2024;
+let birthYear = 2008;
+
+let age = currentYear - birthYear;
+console.log(age); // Output: 16
 ```
 
 #### 1.3 **Perkalian (\*)**
@@ -730,14 +903,13 @@ Operator `*` digunakan untuk mengalikan dua angka.
 ```javascript
 let a = 6;
 let b = 7;
-let product = a * b; // 6 * 7 = 42
-console.log(product); // Output: 42
+let multiply = a * b; // 6 * 7 = 42
+console.log(multiply); // Output: 42
 ```
 
 #### 1.4 **Pembagian (/)**
 
-Operator `/` digunakan untuk membagi satu angka dengan angka lainnya. Hasilnya
-adalah angka bertipe **floating point** (bilangan desimal).
+Operator `/` digunakan untuk membagi satu angka dengan angka lainnya.
 
 **Contoh:**
 
@@ -813,19 +985,19 @@ console.log(--b); // Output: 4 (pre-decrement, nilai dikurangi sebelum digunakan
 
 **[⬆ back to top](#table-of-contents)**
 
-### 3. Operator penugasan (Assignment operators)
+### 3. Operator penugasan (Assignment operator)
 
 Operator penugasan digunakan untuk memberikan nilai baru kepada variabel.
 Beberapa operator penugasan juga melakukan operasi matematika secara bersamaan.
 
 #### 3.1 **Penugasan Dasar (=)**
 
-Operator `=` digunakan untuk memberikan nilai kepada variabel.
+Operator `=` digunakan untuk memberikan nilai (assign value) ke variabel.
 
 **Contoh:**
 
 ```javascript
-let a = 5; // Memberikan nilai 5 kepada variabel a
+let a = 5; // Memberikan nilai 5 ke variabel a
 ```
 
 #### 3.2 **Penugasan dengan Operator Aritmatika (+=, -=, \*=, /=, %=)**
@@ -859,140 +1031,145 @@ console.log(e); // Output: 2
 
 **[⬆ back to top](#table-of-contents)**
 
-### 4. Prioritas operator (Operator precedence)
+### 4. Prioritas operator (Precedence operator)
 
-Sama seperti di bahasa pemrograman lainnya, **prioritas operator** di
-JavaScript menentukan urutan operasi matematika mana yang dilakukan terlebih
-dahulu. Secara umum, operasi perkalian (`*`), pembagian (`/`), dan
-modulus (`%`) memiliki prioritas lebih tinggi dibandingkan dengan
-penjumlahan (`+`) dan pengurangan (`-`).
+Prioritas atau **precedence operator** dalam JavaScript merujuk pada aturan
+yang menentukan urutan eksekusi operator dalam ekspresi. Ketika ada beberapa
+operator dalam suatu ekspresi, prioritas ini menentukan operator mana yang
+dieksekusi terlebih dahulu.
+
+Contoh yang sederhana adalah dalam ekspresi `3 + 4 * 2`. Berdasarkan
+**precedence**, operator perkalian (`*`) memiliki prioritas lebih tinggi
+dibandingkan operator penjumlahan (`+`). Jadi, ekspresi ini akan dihitung
+sebagai `3 + (4 * 2)`, bukan `(3 + 4) * 2`.
+
+Berikut adalah beberapa kategori operator dengan prioritas yang umum dalam
+JavaScript (dari yang tertinggi ke terendah):
+
+1. **Parentheses (`()`)** – Digunakan untuk mengelompokkan ekspresi dan
+   memastikan eksekusi dilakukan terlebih dahulu.
+
+   - Contoh: `(3 + 4) * 2`
+
+2. **Operator Aritmatika** – Seperti `*`, `/`, `%` (perkalian, pembagian, dan
+   sisa bagi) memiliki prioritas lebih tinggi dibandingkan dengan `+` dan `-`
+   (penjumlahan dan pengurangan).
+
+   - Contoh: `3 + 4 * 2` → Eksekusi pertama: `4 * 2`, kemudian `3 + 8`
+
+3. **Operator Pembanding** – Seperti `>`, `<`, `>=`, `<=`, `==`, `===`, `!=`,
+   `!==` untuk membandingkan nilai.
+
+   - Contoh: `5 > 3` → Evaluasi ke `true`
+
+4. **Operator Logika** – Operator seperti `!` (not), `&&` (and), dan `||` (or).
+
+   - Prioritas: `!` lebih tinggi daripada `&&`, dan `&&` lebih tinggi daripada
+     `||`.
+
+5. **Penugasan (Assignment)** – Operator penugasan seperti `=`, `+=`, `-=`,
+   `*=`, dan lainnya memiliki prioritas paling rendah.
+
+   - Contoh: `x = 5 + 3` → Eksekusi pertama: `5 + 3`, kemudian hasilnya dipasang ke `x`.
+
+Contoh kode dengan berbagai prioritas operator:
+
+```javascript
+let result = 5 + 3 * 2; // 5 + (3 * 2) => 5 + 6 = 11
+let condition = (true && false) || true;
+// Evaluasi 1: (true && false) || true
+// Evaluasi 2: false || true
+// Evaluasi 3: true
+```
+
+Untuk memaksa urutan eksekusi yang berbeda, Anda dapat menggunakan tanda kurung
+`()` untuk mengubah prioritas operator.
+
+**[⬆ back to top](#table-of-contents)**
+
+## **Remainder Operators**
+
+Remainder operator (operator sisa) adalah simbol `%` yang digunakan untuk
+menghitung sisa pembagian antara dua angka. Hasilnya adalah angka yang tersisa
+setelah pembagian.
+
+### 1. Sintaks
+
+```javascript
+let mod = a % b;
+```
+
+- `a` adalah angka yang dibagi (dividend).
+- `b` adalah angka pembagi (divisor).
+
+### 2. Pembagian dan hasil sisa (Remainder)
+
+Untuk dua angka, operator remainder (`%`) menghitung sisa setelah pembagian.
+Sisa ini adalah angka yang "tertinggal" setelah proses pembagian.
 
 **Contoh:**
 
 ```javascript
-let result = 5 + 2 * 3; // 2 * 3 = 6, kemudian 5 + 6 = 11
-console.log(result); // Output: 11
+let result = 10 % 3;
+console.log(result); // Output: 1
 ```
 
-Untuk memaksa urutan tertentu, Anda bisa menggunakan tanda kurung `()`.
+**Penjelasan:**
 
-```javascript
-let result = (5 + 2) * 3; // (5 + 2) = 7, kemudian 7 * 3 = 21
-console.log(result); // Output: 21
-```
+- 10 dibagi 3 menghasilkan 3, dengan sisa 1.
+- Karena 3 dikalikan berapa yang mendekati 10, jawabannya adalah `3 * 3 = 9`
+  dan `10 - 9 = 1`.
+- Jadi, `10 % 3` akan menghasilkan 1.
 
-**[⬆ back to top](#table-of-contents)**
+### 3. Perilaku dengan angka negatif
 
-### 5. Penyelesaian masalah dengan NaN (Not a Number)
-
-Kadang-kadang, operasi matematika bisa menghasilkan nilai yang tidak
-terdefinisi, yang disebut **NaN** (Not a Number). Misalnya, jika Anda mencoba
-membagi angka dengan `0` atau melakukan operasi yang tidak valid lainnya.
+Jika salah satu atau kedua angka yang digunakan adalah negatif, hasil remainder
+akan memiliki tanda yang sesuai dengan angka yang dibagi (dividend).
 
 **Contoh:**
 
 ```javascript
-let result = 0 / 0; // Pembagian dengan 0 menghasilkan NaN
-console.log(result); // Output: NaN
-
-let invalid = "hello" * 2; // Operasi perkalian yang tidak valid dengan string
-console.log(invalid); // Output: NaN
+let result = -20 % 5;
+console.log(result); // Output: -0
 ```
 
-Untuk memeriksa apakah suatu nilai adalah `NaN`, Anda bisa menggunakan fungsi
-`isNaN()`.
+**Penjelasan:**
 
-```javascript
-let result = 0 / 0;
-console.log(isNaN(result)); // Output: true
-```
+- -20 dibagi 5 menghasilkan -4, dengan sisa -0.
+- Karena 5 dikalikan berapa yang mendekati -20, jawabannya adalah
+  `5 * -4 = -20` dan `-20 - (-20) = -0`.
+- Jadi, `-20 % 5` akan menghasilkan -0.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Remainder operators**
-
-Operator **remainder** dalam JavaScript (yang sering dikenal dengan nama
-**modulus** atau **mod**), dilambangkan dengan tanda persen (`%`). Operator
-ini digunakan untuk menghasilkan sisa pembagian antara dua angka.
-
-### Sintaks
-
-```javascript
-let hasil = a % b;
-```
-
-- `a`: angka pertama (dividend).
-- `b`: angka kedua (divisor).
-- `hasil`: sisa pembagian antara `a` dan `b`.
-
-### Cara Kerja Operator `%`
-
-1. Operator `%` membagi `a` dengan `b`.
-2. Kemudian, operator ini **menghasilkan sisa** dari pembagian tersebut, yang
-   disebut dengan "remainder" atau "modulus".
-
-Sebagai contoh:
-
-```javascript
-let hasil = 10 % 3; // hasil adalah 1, karena 10 dibagi 3 sisanya 1
-console.log(hasil); // Output: 1
-```
-
-Penjelasan:
-
-- `10` dibagi dengan `3`, menghasilkan 3 sebagai hasil pembagian (karena
-  3 \* 3 = 9) dan sisa 1.
-- Jadi, `10 % 3` adalah `1`.
-
-**[⬆ back to top](#table-of-contents)**
-
-### Kasus Khusus dengan Negatif
-
-Jika salah satu dari angka yang digunakan adalah negatif, hasil dari operator
-`%` akan mempertahankan tanda dari **dividend** (angka pertama, `a`).
-
-**Contoh:**
-
-```javascript
-console.log(10 % 3); // Output: 1
-console.log(-10 % 3); // Output: -1
-console.log(10 % -3); // Output: 1
-console.log(-10 % -3); // Output: -1
-```
-
-Penjelasan:
-
-- Pada kasus `-10 % 3`, kita memiliki pembagian `-10 ÷ 3`. Hasil pembagiannya
-  adalah -4 (karena -4 \* 3 = -12) dengan sisa `-10 - (-12) = -1`. Jadi,
-  `-10 % 3` adalah `-1`.
-- Pada kasus `10 % -3`, hasil pembagian adalah -3 dengan sisa `1`, jadi
-  `10 % -3` adalah `1`.
-
-### Penerapan Umum Operator Remainder
+### 4. Penerapan umum remainder operator
 
 Operator `%` sering digunakan dalam berbagai situasi, seperti:
 
 1. **Menentukan apakah sebuah angka genap atau ganjil**:
 
-   - Angka genap jika hasil bagi angka tersebut dengan 2 adalah 0.
-   - Angka ganjil jika hasil sisa pembagiannya adalah 1.
+   - **Angka genap** jika hasilnya 0. Berarti angka tersebut habis dibagi
+     dengan 2 (kelipatan 2).
+   - **Angka ganjil** jika hasilnya selain 0. Berarti angka tersebut tidak
+     habis dibagi 2.
 
    ```javascript
-   let angka = 7;
-   if (angka % 2 === 0) {
-     console.log(angka + " adalah genap");
+   let num = 8;
+
+   if (num % 2 === 0) {
+     console.log(num + " adalah angka genap");
    } else {
-     console.log(angka + " adalah ganjil");
+     console.log(num + " adalah genap ganjil");
    }
    ```
 
 2. **Looping atau perulangan berdasarkan interval**:
 
-   - Anda dapat menggunakan operator `%` untuk melakukan sesuatu setiap `n`
-     iterasi. Misalnya, melakukan aksi setiap 5 langkah.
+   Anda dapat menggunakan operator `%` untuk melakukan sesuatu setiap `n`
+   iterasi. Misalnya, melakukan aksi setiap 5 langkah.
 
    ```javascript
-   for (let i = 0; i < 20; i++) {
+   for (let i = 5; i <= 20; i++) {
      if (i % 5 === 0) {
        console.log(i + " adalah kelipatan 5");
      }
@@ -1001,21 +1178,20 @@ Operator `%` sering digunakan dalam berbagai situasi, seperti:
 
 3. **Membatasi nilai dalam rentang tertentu**:
 
-   - Jika Anda ingin menjaga angka tetap berada dalam rentang tertentu
-     (misalnya, angka antara 0 dan 9), Anda dapat menggunakan operator
-     modulus.
+   Jika Anda ingin menjaga angka tetap berada dalam rentang tertentu (misalnya,
+   angka antara 0 dan 9), Anda dapat menggunakan operator modulus.
 
    ```javascript
-   let angka = 12;
-   let batas = 10;
-   let hasil = angka % batas; // Hasilnya adalah 2, karena 12 % 10 = 2
-   console.log(hasil); // Output: 2
+   let num = 10;
+   let limit = 9;
+   let result = num % limit; // jika num melebihi batas (limit), mulai dari 1
+   console.log(result); // Output: 1
    ```
 
 4. **Menentukan kelipatan tertentu**:
 
-   - Modulus juga digunakan untuk menentukan apakah angka adalah kelipatan
-     dari angka lainnya.
+   Modulus juga digunakan untuk menentukan apakah angka adalah kelipatan dari
+   angka lainnya.
 
    ```javascript
    let angka = 25;
@@ -1026,20 +1202,20 @@ Operator `%` sering digunakan dalam berbagai situasi, seperti:
 
 **[⬆ back to top](#table-of-contents)**
 
-## **String concatenation**
+## **String Concatenation**
 
 **String concatenation** (penggabungan string) dalam JavaScript adalah proses
 menggabungkan dua atau lebih string menjadi satu string tunggal. Proses ini
 sangat berguna saat Anda ingin membangun pesan, membuat URL, atau menyatukan
 data yang bersumber dari beberapa variabel atau nilai.
 
-### Cara Kerja String Concatenation
+### Cara kerja string concatenation
 
 JavaScript menyediakan beberapa cara untuk menggabungkan string, antara lain
 dengan menggunakan operator **plus (`+`)** dan **template literals**
 (menggunakan backtick, `` ` ``).
 
-### 1. Menggunakan Operator Plus (`+`)
+### 1. Menggunakan operator plus (`+`)
 
 Operator plus (`+`) adalah cara paling dasar dan umum untuk menggabungkan
 string dalam JavaScript.
@@ -1047,7 +1223,7 @@ string dalam JavaScript.
 **Sintaks:**
 
 ```javascript
-let hasil = string1 + string2;
+let result = string1 + string2;
 ```
 
 **Contoh:**
@@ -1066,13 +1242,13 @@ Pada contoh di atas:
 - Dengan menggunakan operator `+`, kedua string digabungkan menjadi satu
   string `"Hello World!"`.
 
-#### **Menambahkan Variabel dan Teks:**
+#### **Menambahkan variabel dan teks:**
 
 ```javascript
-let nama = "Alice";
-let usia = 25;
-let pesan = nama + " is " + usia + " years old.";
-console.log(pesan); // Output: "Alice is 25 years old."
+let name = "Alice";
+let age = 25;
+let message = name + " is " + age + " years old.";
+console.log(message); // Output: "Alice is 25 years old."
 ```
 
 Pada contoh ini, kita menggabungkan teks dengan nilai variabel, sehingga
@@ -1080,7 +1256,7 @@ menghasilkan kalimat yang lengkap.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 2. Menggunakan Template Literals (Template Strings)
+### 2. Menggunakan template literals (template strings)
 
 Template literals adalah fitur yang diperkenalkan di **ES6** yang memungkinkan
 penggabungan string dengan cara yang lebih fleksibel dan mudah dibaca.
@@ -1090,7 +1266,7 @@ penggunaan **interpolasi** variabel di dalamnya menggunakan `${}`.
 **Sintaks:**
 
 ```javascript
-let hasil = `${string1} ${string2}`;
+let result = `${string1} ${string2}`;
 ```
 
 **Contoh:**
@@ -1109,43 +1285,43 @@ Pada contoh di atas:
 - `gabungan` akan menghasilkan `"Hello World!"`, sama seperti contoh
   sebelumnya, tetapi lebih bersih dan mudah dibaca.
 
-#### **Menambahkan Variabel dan Teks dengan Template Literals:**
+#### **Menambahkan variabel dan teks dengan template literals:**
 
 ```javascript
-let nama = "Alice";
-let usia = 25;
-let pesan = `${nama} is ${usia} years old.`;
-console.log(pesan); // Output: "Alice is 25 years old."
+let name = "Alice";
+let age = 25;
+let message = `${name} is ${age} years old.`;
+console.log(message); // Output: "Alice is 25 years old."
 ```
 
 Keuntungan utama dari template literals adalah **kemampuan untuk menyisipkan
-ekspresi** langsung di dalam string tanpa memerlukan operator `+`.
+expression** langsung di dalam string tanpa memerlukan operator `+`.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 3. Penggabungan dengan Banyak Variabel atau Teks
+### 3. Penggabungan dengan banyak variabel atau teks
 
 Anda dapat menggabungkan banyak variabel dan teks dalam satu string dengan
 menggunakan kedua metode di atas. Berikut adalah contoh keduanya:
 
-#### **Menggunakan Operator `+`:**
+#### **Menggunakan operator `+`:**
 
 ```javascript
-let pertama = "My name is";
-let nama = "John";
-let usia = 30;
-let pesan = pertama + " " + nama + " and I am " + usia + " years old.";
-console.log(pesan); // Output: "My name is John and I am 30 years old."
+let intro = "My name is";
+let name = "John";
+let age = 30;
+let message = intro + " " + name + " and I am " + age + " years old.";
+console.log(message); // Output: "My name is John and I am 30 years old."
 ```
 
-#### **Menggunakan Template Literals:**
+#### **Menggunakan template literals:**
 
 ```javascript
-let pertama = "My name is";
-let nama = "John";
-let usia = 30;
-let pesan = `${pertama} ${nama} and I am ${usia} years old.`;
-console.log(pesan); // Output: "My name is John and I am 30 years old."
+let intro = "My name is";
+let name = "John";
+let age = 30;
+let message = `${intro} ${name} and I am ${age} years old.`;
+console.log(message); // Output: "My name is John and I am 30 years old."
 ```
 
 Pada kedua contoh di atas, kita menggabungkan lebih dari dua string, tetapi
@@ -1153,21 +1329,21 @@ dengan template literals, kode menjadi lebih mudah dibaca dan lebih elegan.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 4. Concatenation dengan Karakter Baru (Newline, Tab, dll.)
+### 4. Concatenation dengan karakter baru (Newline, Tab, dll.)
 
 Template literals juga mendukung penggabungan string dengan karakter baru
 seperti **newline** (`\n`) atau **tab** (`\t`) dengan cara yang lebih alami.
 Berikut adalah contoh menggunakan newline dan tab:
 
 ```javascript
-let nama = "Alice";
-let usia = 25;
-let alamat = "New York";
+let name = "Alice";
+let age = 25;
+let address = "New York";
 
-let pesan = `${nama} is ${usia} years old.
-She lives in ${alamat}.`;
+let message = `${name} is ${age} years old.
+She lives in ${address}.`;
 
-console.log(pesan);
+console.log(message);
 // Output:
 // Alice is 25 years old.
 // She lives in New York.
@@ -1182,284 +1358,133 @@ Pada contoh ini:
 
 **[⬆ back to top](#table-of-contents)**
 
-### 5. Penggunaan `String.prototype.concat()`
+## **Comparison and Logical Operators**
 
-Selain menggunakan operator `+` dan template literals, JavaScript juga
-menyediakan metode `concat()` yang dapat digunakan untuk menggabungkan dua
-string atau lebih.
+Dalam JavaScript, **comparison operators** dan **logical operators** digunakan
+untuk membandingkan nilai atau kondisi, serta untuk mengkombinasikan ekspresi
+logika. Berikut adalah penjelasan masing-masing:
 
-**Sintaks:**
+### 1. Comparison operators (Operator perbandingan)
 
-```javascript
-let hasil = string1.concat(string2, string3, ...);
-```
+Operator ini digunakan untuk membandingkan dua nilai dan menghasilkan nilai
+**boolean** (`true` atau `false`) berdasarkan hasil perbandingan tersebut.
 
-**Contoh:**
+- **`==` (Equality)**: Membandingkan dua nilai untuk kesamaan, tanpa
+  memperhatikan tipe data.
 
-```javascript
-let pertama = "Hello";
-let kedua = "World!";
-let gabungan = pertama.concat(" ", kedua);
-console.log(gabungan); // Output: "Hello World!"
-```
+  ```javascript
+  5 == "5"; // true, karena nilai yang dibandingkan sama meskipun tipe data berbeda
+  ```
 
-Namun, penggunaan metode `concat()` tidak sepopuler operator `+` atau template
-literals karena sintaksnya yang lebih panjang.
+- **`===` (Strict Equality)**: Membandingkan dua nilai dan tipe data, nilai dan
+  tipe data harus sama.
 
-**[⬆ back to top](#table-of-contents)**
+  ```javascript
+  5 === "5"; // false, karena tipe data berbeda (number vs string)
+  ```
 
-### Kapan Menggunakan Metode Mana?
+- **`!=` (Inequality)**: Membandingkan dua nilai untuk ketidaksamaan, tanpa
+  memperhatikan tipe data.
 
-1. **Operator `+`**: Sangat sederhana dan mudah digunakan untuk menggabungkan
-   beberapa string.
+  ```javascript
+  5 != "5"; // false, karena nilai yang dibandingkan sama meskipun tipe data berbeda
+  ```
 
-   - **Kelebihan**: Mudah dipahami, cocok untuk penggabungan string sederhana.
-   - **Kekurangan**: Menjadi lebih sulit dibaca jika banyak variabel yang
-     digabungkan, terutama jika menggabungkan teks statis dan variabel.
+- **`!==` (Strict Inequality)**: Membandingkan dua nilai dan tipe data, jika
+  salah satu berbeda, hasilnya `true`.
 
-2. **Template Literals**: Lebih modern dan bersih, memudahkan pembacaan dan
-   pemeliharaan kode.
+  ```javascript
+  5 !== "5"; // true, karena tipe data berbeda (number vs string)
+  ```
 
-   - **Kelebihan**: Menyediakan interpolasi variabel, lebih fleksibel,
-     mendukung ekspresi langsung, dan mendukung multi-line string.
-   - **Kekurangan**: Diperkenalkan di ES6, jadi jika Anda mendukung
-     lingkungan yang lebih lama, pastikan kompatibilitasnya.
+- **`>` (Greater Than)**: Memeriksa apakah nilai di sebelah kiri lebih besar
+  dari nilai di sebelah kanan.
 
-3. **Metode `concat()`**: Dapat digunakan untuk menggabungkan beberapa string,
-   tetapi lebih jarang digunakan dalam praktik.
-   - **Kelebihan**: Bisa menggabungkan banyak string dalam satu panggilan
-     fungsi.
-   - **Kekurangan**: Lebih verbose daripada menggunakan operator `+` atau
-     template literals.
+  ```javascript
+  5 > 3; // true
+  ```
 
-**[⬆ back to top](#table-of-contents)**
+- **`<` (Less Than)**: Memeriksa apakah nilai di sebelah kiri lebih kecil dari
+  nilai di sebelah kanan.
 
-## **Comparison and logical operators**
+  ```javascript
+  3 < 5; // true
+  ```
 
-Dalam JavaScript, **comparison operators** dan **logical operators** adalah
-dua jenis operator yang sering digunakan untuk membandingkan nilai dan
-menentukan kondisi dalam kontrol alur program seperti _if statements_,
-_loops_, dan ekspresi logika lainnya. Berikut adalah penjelasan lengkap
-mengenai kedua jenis operator ini.
+- **`>=` (Greater Than or Equal to)**: Memeriksa apakah nilai di sebelah kiri
+  lebih besar atau sama dengan nilai di sebelah kanan.
 
-### 1. Comparison Operators (Operator Perbandingan)
+  ```javascript
+  5 >= 5; // true
+  ```
 
-**Comparison operators** digunakan untuk membandingkan dua nilai. Operator ini
-menghasilkan nilai **boolean** (true atau false) tergantung pada hasil
-perbandingan.
-
-#### **Daftar Comparison Operators:**
-
-1. **`==` (Equal to)**  
-   Membandingkan dua nilai untuk kesetaraan **tanpa memeriksa tipe data**
-   (perbandingan non-strict).
-
-   ```javascript
-   5 == "5"; // true, karena hanya memeriksa nilai tanpa peduli tipe data
-   ```
-
-2. **`===` (Strict equal to)**  
-   Membandingkan dua nilai **dengan memeriksa tipe data** dan nilai yang
-   sesungguhnya.
-
-   ```javascript
-   5 === "5"; // false, karena tipe data berbeda (number vs string)
-   5 === 5; // true
-   ```
-
-3. **`!=` (Not equal to)**  
-   Membandingkan dua nilai untuk **ketidaksamaan** **tanpa memeriksa tipe
-   data**.
-
-   ```javascript
-   5 != "5"; // false, karena nilainya sama meskipun tipe datanya berbeda
-   ```
-
-4. **`!==` (Strict not equal to)**  
-   Membandingkan dua nilai untuk **ketidaksamaan**, dengan memeriksa **baik
-   nilai maupun tipe data**.
-
-   ```javascript
-   5 !== "5"; // true, karena tipe datanya berbeda
-   5 !== 5; // false, karena nilai dan tipe datanya sama
-   ```
-
-5. **`>` (Greater than)**  
-   Memeriksa apakah nilai di sebelah kiri lebih besar dari nilai di sebelah
-   kanan.
-
-   ```javascript
-   10 > 5; // true
-   3 > 8; // false
-   ```
-
-6. **`<` (Less than)**  
-   Memeriksa apakah nilai di sebelah kiri lebih kecil dari nilai di sebelah
-   kanan.
-
-   ```javascript
-   3 < 5; // true
-   10 < 5; // false
-   ```
-
-7. **`>=` (Greater than or equal to)**  
-   Memeriksa apakah nilai di sebelah kiri lebih besar atau sama dengan nilai
-   di sebelah kanan.
-
-   ```javascript
-   10 >= 5; // true
-   5 >= 5; // true
-   3 >= 5; // false
-   ```
-
-8. **`<=` (Less than or equal to)**  
-   Memeriksa apakah nilai di sebelah kiri lebih kecil atau sama dengan nilai
-   di sebelah kanan.
-   ```javascript
-   3 <= 5; // true
-   5 <= 5; // true
-   10 <= 5; // false
-   ```
-
-**Contoh Penggunaan:**
-
-```javascript
-let a = 10;
-let b = 20;
-
-console.log(a == b); // false, karena 10 tidak sama dengan 20
-console.log(a !== b); // true, karena 10 berbeda dengan 20
-console.log(a < b); // true, karena 10 lebih kecil dari 20
-console.log(a >= 10); // true, karena 10 lebih besar atau sama dengan 10
-```
+- **`<=` (Less Than or Equal to)**: Memeriksa apakah nilai di sebelah kiri
+  lebih kecil atau sama dengan nilai di sebelah kanan.
+  ```javascript
+  3 <= 5; // true
+  ```
 
 **[⬆ back to top](#table-of-contents)**
 
-### 2. Logical Operators (Operator Logika)
+### 2. Logical Operators (Operator logika)
 
-**Logical operators** digunakan untuk menggabungkan ekspresi boolean dan
-menghasilkan nilai boolean berdasarkan kondisi yang ada. Mereka sangat sering
-digunakan dalam _if statements_ dan perulangan untuk menentukan apakah suatu
-kondisi terpenuhi.
+Operator logika digunakan untuk mengkombinasikan beberapa ekspresi atau
+kondisi.
 
-#### **Daftar Logical Operators:**
+- **`&&` (Logical AND)**: Mengembalikan `true` hanya jika kedua ekspresi
+  bernilai `true`. Jika salah satu bernilai `false`, hasilnya `false`.
 
-1. **`&&` (Logical AND)**  
-   Operator `&&` mengembalikan **true** hanya jika kedua ekspresi yang
-   dibandingkan bernilai true. Jika salah satu ekspresi bernilai false, maka
-   hasilnya false.
+  ```javascript
+  true && true; // true
+  true && false; // false
+  ```
 
-   ```javascript
-   true && true; // true
-   true && false; // false
-   false && true; // false
-   false && false; // false
-   ```
+- **`||` (Logical OR)**: Mengembalikan `true` jika salah satu ekspresi bernilai
+  `true`. Jika kedua ekspresi bernilai `false`, hasilnya `false`.
 
-   - Jika kedua ekspresi bernilai true, maka hasilnya adalah true.
-   - Jika salah satu ekspresi bernilai false, maka hasilnya adalah false.
+  ```javascript
+  true || false; // true
+  false || false; // false
+  ```
 
-2. **`||` (Logical OR)**  
-   Operator `||` mengembalikan **true** jika salah satu ekspresi bernilai
-   true. Jika kedua ekspresi bernilai false, maka hasilnya adalah false.
-
-   ```javascript
-   true || true; // true
-   true || false; // true
-   false || true; // true
-   false || false; // false
-   ```
-
-   - Jika salah satu ekspresi bernilai true, maka hasilnya adalah true.
-   - Jika kedua ekspresi bernilai false, maka hasilnya adalah false.
-
-3. **`!` (Logical NOT)**  
-   Operator `!` digunakan untuk membalik nilai boolean. Jika ekspresi bernilai
-   true, maka hasilnya false, dan jika ekspresi bernilai false, hasilnya true.
-
-   ```javascript
-   !true; // false
-   !false; // true
-   ```
-
-   - Jika ekspresi bernilai true, maka `!` akan mengubahnya menjadi false.
-   - Jika ekspresi bernilai false, maka `!` akan mengubahnya menjadi true.
-
-#### **Penggunaan dalam Kombinasi:**
-
-Operator logika sering digunakan untuk menggabungkan beberapa kondisi dalam
-pernyataan bersyarat.
-
-```javascript
-let x = 10;
-let y = 20;
-let z = 30;
-
-if (x < y && y < z) {
-  console.log("x lebih kecil dari y dan y lebih kecil dari z");
-}
-// Output: x lebih kecil dari y dan y lebih kecil dari z
-
-if (x < y || y > z) {
-  console.log("x lebih kecil dari y atau y lebih besar dari z");
-}
-// Output: x lebih kecil dari y atau y lebih besar dari z
-
-if (!(x === 10)) {
-  console.log("x bukan 10");
-} else {
-  console.log("x adalah 10");
-}
-// Output: x adalah 10
-```
-
-Pada contoh di atas:
-
-- Pada kondisi pertama, `x < y && y < z`, kedua kondisi harus benar (true)
-  agar blok kode dieksekusi.
-- Pada kondisi kedua, `x < y || y > z`, cukup salah satu kondisi yang benar
-  agar blok kode dijalankan.
-- Pada kondisi ketiga, `!(x === 10)` membalikkan hasil dari `x === 10`, yang
-  berarti kondisi ini akan menghasilkan false jika `x === 10`.
+- **`!` (Logical NOT)**: Membalikkan nilai boolean dari ekspresi. Jika ekspresi
+  bernilai `true`, hasilnya `false`, dan sebaliknya.
+  ```javascript
+  !true; // false
+  !false; // true
+  ```
 
 **[⬆ back to top](#table-of-contents)**
 
-### Kombinasi Comparison dan Logical Operators
-
-Kadang-kadang Anda perlu menggabungkan operator perbandingan dan logika untuk
-membentuk ekspresi yang lebih kompleks. Berikut adalah contoh kombinasi
-keduanya:
+### Contoh penggunaan:
 
 ```javascript
-let umur = 25;
-let statusPernikahan = "single";
+let a = 5;
+let b = 10;
 
-// Memeriksa apakah umur lebih dari 18 dan status pernikahan adalah single
-if (umur > 18 && statusPernikahan === "single") {
-  console.log("Kamu dewasa dan belum menikah.");
-} else {
-  console.log("Kamu tidak memenuhi kriteria.");
-}
+// Menggunakan comparison operators
+console.log(a > b); // false
+console.log(a === 5); // true
+
+// Menggunakan logical operators
+console.log(a < b && a === 5); // true (keduanya true)
+console.log(a < b || a === 6); // true (salah satu true)
+console.log(!(a > b)); // true (karena a tidak lebih besar dari b)
 ```
 
-Di sini, dua ekspresi dibandingkan dengan menggunakan `&&`, sehingga kedua
-kondisi harus bernilai `true` agar pesan `"Kamu dewasa dan belum menikah."`
-ditampilkan.
+Dengan operator ini, Anda bisa membuat ekspresi kompleks untuk kontrol alur dalam program seperti kondisi `if` atau `while`.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Conditional statements**
+## **Conditional Statements**
 
 **Conditional statements** (pernyataan bersyarat) dalam JavaScript adalah
 struktur yang memungkinkan program untuk mengeksekusi bagian tertentu dari
-kode tergantung pada apakah suatu kondisi bernilai **true** atau **false**.
+kode tergantung pada apakah suatu kondisi bernilai `true` atau `false`.
 Conditional statements sangat penting dalam pengambilan keputusan dan
 pengendalian alur eksekusi program.
 
-Berikut adalah penjelasan dan contoh penggunaan dari **if**, **else if**,
-**else**, dan **switch** dalam JavaScript.
-
-### 1. `if` Statement
+### 1. `if` statement
 
 Pernyataan `if` digunakan untuk mengevaluasi suatu kondisi, dan jika kondisi
 tersebut bernilai `true`, maka kode di dalam blok `if` akan dijalankan.
@@ -1467,30 +1492,24 @@ tersebut bernilai `true`, maka kode di dalam blok `if` akan dijalankan.
 **Sintaks:**
 
 ```javascript
-if (kondisi) {
-  // kode yang akan dijalankan jika kondisi bernilai true
+if (condition) {
+  // kode akan dijalankan jika kondisi bernilai true
 }
 ```
 
 **Contoh:**
 
 ```javascript
-let angka = 10;
+let age = 20;
 
-if (angka > 5) {
-  console.log("Angka lebih besar dari 5");
+if (age >= 18) {
+  console.log("Access granted.");
 }
-// Output: "Angka lebih besar dari 5"
 ```
-
-Penjelasan:
-
-- Kondisi `angka > 5` bernilai `true`, sehingga kode di dalam blok `if`
-  dijalankan.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 2. `else` Statement
+### 2. `if-else` tatement
 
 Pernyataan `else` digunakan bersama dengan `if` untuk mengeksekusi blok kode
 jika kondisi pada `if` bernilai `false`.
@@ -1498,30 +1517,24 @@ jika kondisi pada `if` bernilai `false`.
 **Sintaks:**
 
 ```javascript
-if (kondisi) {
-  // kode yang dijalankan jika kondisi bernilai true
+if (condition) {
+  // Kode akan dijalankan jika kondisi bernilai true
 } else {
-  // kode yang dijalankan jika kondisi bernilai false
+  // Kode akan dijalankan jika kondisi bernilai false
 }
 ```
 
 **Contoh:**
 
 ```javascript
-let angka = 3;
+let hour = 22;
 
-if (angka > 5) {
-  console.log("Angka lebih besar dari 5");
+if (hour < 21) {
+  console.log("The store is open.");
 } else {
-  console.log("Angka kurang dari atau sama dengan 5");
+  console.log("The store is closed."); // hour >= 21
 }
-// Output: "Angka kurang dari atau sama dengan 5"
 ```
-
-Penjelasan:
-
-- Kondisi `angka > 5` bernilai `false`, sehingga blok kode di dalam `else`
-  yang dijalankan.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1534,379 +1547,190 @@ mengevaluasi kondisi berikutnya yang ada di `else if`.
 **Sintaks:**
 
 ```javascript
-if (kondisi1) {
-  // kode yang dijalankan jika kondisi1 bernilai true
-} else if (kondisi2) {
-  // kode yang dijalankan jika kondisi2 bernilai true
+if (condition1) {
+  // kode akan dijalankan jika condition1 bernilai true
+} else if (condition2) {
+  // kode akan dijalankan jika condition2 bernilai true
 } else {
-  // kode yang dijalankan jika semua kondisi di atas bernilai false
+  // kode akan dijalankan jika semua kondisi di atas bernilai false
 }
 ```
 
 **Contoh:**
 
 ```javascript
-let angka = 8;
+let score = 69;
 
-if (angka > 10) {
-  console.log("Angka lebih besar dari 10");
-} else if (angka === 8) {
-  console.log("Angka adalah 8");
+if (score >= 90) {
+  console.log("Grade: A"); // Jika score 90 ke atas, Grade A
+} else if (score >= 80) {
+  console.log("Grade: B"); // Jika score 80 ke atas, Grade B
+} else if (score >= 70) {
+  console.log("Grade: C"); // Jika score 70 ke atas, Grade C
 } else {
-  console.log("Angka tidak lebih besar dari 10 dan bukan 8");
+  console.log("Grade: F"); // Jika score selain kondisi di atas (score < 70), Grade F
 }
-// Output: "Angka adalah 8"
 ```
-
-Penjelasan:
-
-- Kondisi pertama `angka > 10` bernilai `false`, maka `else if` yang
-  mengevaluasi `angka === 8` dieksekusi, karena kondisi ini bernilai `true`.
 
 **[⬆ back to top](#table-of-contents)**
 
 ### 4. `switch` Statement
 
 Pernyataan `switch` digunakan untuk memeriksa sebuah nilai dan mencocokkannya
-dengan beberapa kemungkinan kasus. Switch statement lebih efisien daripada
+dengan beberapa kemungkinan case. Switch statement lebih efisien daripada
 menggunakan banyak `else if` dalam beberapa situasi.
 
 **Sintaks:**
 
 ```javascript
-switch (ekspresi) {
-  case nilai1:
-    // kode yang dijalankan jika ekspresi === nilai1
+switch (expression) {
+  case value1:
+    // Kode dijalankan jika expression === value1
     break;
-  case nilai2:
-    // kode yang dijalankan jika ekspresi === nilai2
+  case value2:
+    // Kode dijalankan jika expression === value2
     break;
   default:
-  // kode yang dijalankan jika ekspresi tidak cocok dengan nilai1 atau nilai2
+  // Kode dijalankan jika tidak ada case yang cocok
 }
 ```
 
 **Contoh:**
 
 ```javascript
-let hari = 3;
+let day = "Monday";
 
-switch (hari) {
-  case 1:
-    console.log("Senin");
+switch (day) {
+  case "Monday":
+    console.log("Start of the week!");
     break;
-  case 2:
-    console.log("Selasa");
+  case "Friday":
+    console.log("Weekend is near!");
     break;
-  case 3:
-    console.log("Rabu");
-    break;
-  case 4:
-    console.log("Kamis");
-    break;
-  case 5:
-    console.log("Jumat");
+  case "Sunday":
+    console.log("Time to relax.");
     break;
   default:
-    console.log("Weekend");
+    console.log("Just another day.");
 }
-// Output: "Rabu"
 ```
-
-Penjelasan:
-
-- Dalam contoh ini, `switch` mengevaluasi nilai `hari` dan mencocokkannya
-  dengan `case 3`, sehingga outputnya adalah "Rabu".
-- Setelah setiap `case`, kita menggunakan `break` untuk menghentikan eksekusi
-  setelah menemui kecocokan. Jika tidak ada `break`, eksekusi akan terus
-  berlanjut ke `case` berikutnya.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 5. `ternary` Operator (Conditional Operator)
+### 5. Ternary Operator
 
-Ternary operator adalah bentuk singkat dari `if-else`. Ini memungkinkan Anda
-untuk membuat keputusan dalam satu baris kode. Operator ini memiliki bentuk
-seperti berikut:
+Merupakan shorthand untuk `if-else`.
 
 **Sintaks:**
 
 ```javascript
-kondisi ? ekspresiTrue : ekspresiFalse;
+condition ? expressionIfTrue : expressionIfFalse;
 ```
 
 **Contoh:**
 
 ```javascript
-let angka = 5;
-let hasil =
-  angka > 10 ? "Lebih besar dari 10" : "Kurang dari atau sama dengan 10";
-console.log(hasil); // Output: "Kurang dari atau sama dengan 10"
+let isMember = true;
+let discount = isMember ? 20 : 5; // Apakah isMember true ? Jika iya, discount 20 : Jika tidak, discount 5.
+console.log(`You get ${discount}% discount.`);
+// Output: You get 20% discount.
 ```
-
-Penjelasan:
-
-- Jika kondisi `angka > 10` bernilai `true`, maka `hasil` akan berisi "Lebih
-  besar dari 10".
-- Jika kondisi `angka > 10` bernilai `false`, maka `hasil` akan berisi "Kurang
-  dari atau sama dengan 10".
-
-Ternary operator sangat berguna untuk ekspresi yang sederhana, di mana Anda
-ingin memeriksa suatu kondisi dan langsung mengambil keputusan berdasarkan
-hasilnya.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 6. Penggunaan Kondisional Bersarang (Nested Conditional Statements)
+## **Truthy and Falsy Value**
 
-Kadang-kadang Anda perlu menempatkan `if` di dalam `if` (bersarang) untuk
-membuat keputusan yang lebih kompleks.
+Dalam JavaScript, **truthy** dan **falsy** adalah istilah yang merujuk pada
+bagaimana nilai dievaluasi dalam konteks boolean, seperti dalam pernyataan
+`if`.
 
-**Contoh:**
+1. **Falsy Values**: Nilai-nilai yang dianggap `false` ketika dievaluasi dalam
+   konteks boolean. Nilai-nilai falsy meliputi:
 
-```javascript
-let umur = 20;
-let status = "single";
+   - `false` (boolean false)
+   - `0` (angka nol)
+   - `-0` (angka negatif nol)
+   - `''`, `""`, `` ` `` (string kosong)
+   - `null`
+   - `undefined`
+   - `NaN` (Not-a-Number)
 
-if (umur > 18) {
-  if (status === "single") {
-    console.log("Kamu sudah dewasa dan masih single");
-  } else {
-    console.log("Kamu sudah dewasa dan sudah menikah");
-  }
-} else {
-  console.log("Kamu masih di bawah umur");
-}
-// Output: "Kamu sudah dewasa dan masih single"
-```
+2. **Truthy Values**: Semua nilai selain falsy dianggap `true`. Contoh truthy
+   values:
 
-Penjelasan:
+   - `true` (boolean true)
+   - Angka selain `0` (baik positif maupun negatif, seperti `1`, `-1`)
+   - String yang tidak kosong (string dengan `length > 0`, misalnya `"H"`)
+   - Array kosong (`[]`)
+   - Object kosong (`{}`)
+   - Function (`function(){}`)
 
-- Pada contoh ini, kondisi pertama memeriksa apakah `umur > 18`. Jika ya, maka
-  lanjut memeriksa apakah `status === "single"`.
-- Jika `umur <= 18`, maka program langsung mencetak "Kamu masih di bawah umur".
+### Contoh penerapan dalam aplikasi dunia nyata
 
-**[⬆ back to top](#table-of-contents)**
+#### 1. **Validasi input pengguna**
 
-## **Truthy and falsy value**
-
-Dalam JavaScript, **truthy** dan **falsy** merujuk pada nilai-nilai yang
-dievaluasi sebagai **`true`** atau **`false`** ketika digunakan dalam konteks
-boolean, seperti dalam _conditional statements_ (`if`, `while`, dll).
-Meskipun JavaScript hanya memiliki dua nilai boolean, yaitu `true` dan
-`false`, ada banyak nilai yang **secara implisit** dianggap `true` (truthy)
-atau `false` (falsy) dalam perbandingan dan logika.
-
-### Falsy Values
-
-Nilai-nilai yang **falsy** adalah nilai yang dianggap `false` ketika
-dievaluasi dalam konteks boolean. JavaScript memiliki **7 nilai falsy** yang
-spesifik.
-
-#### **7 Nilai Falsy dalam JavaScript:**
-
-1. **`false`** — Nilai boolean `false` itu sendiri.
-2. **`0`** — Angka nol.
-3. **`-0`** — Angka nol negatif.
-4. **`""` (String kosong)** — String kosong.
-5. **`null`** — Nilai khusus yang menunjukkan tidak adanya nilai atau objek.
-6. **`undefined`** — Variabel yang belum diinisialisasi atau tidak ada nilai.
-7. **`NaN`** — Not a Number, hasil dari operasi matematika yang tidak valid,
-   seperti `0 / 0`.
-
-#### **Contoh Nilai Falsy:**
+Misalnya, untuk memeriksa apakah input dari pengguna valid (tidak kosong atau
+undefined).
 
 ```javascript
-if (false) {
-  console.log("Ini akan dieksekusi");
+const userInput = "";
+
+if (userInput) {
+  console.log(`Halo, ${userInput}!`);
 } else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini tidak akan dieksekusi"
-
-if (0) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini tidak akan dieksekusi"
-
-if ("") {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini tidak akan dieksekusi"
-
-if (null) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini tidak akan dieksekusi"
-
-if (undefined) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini tidak akan dieksekusi"
-
-if (NaN) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini tidak akan dieksekusi"
-```
-
-Penjelasan:
-
-- Semua nilai di atas akan dianggap `false` dalam pernyataan bersyarat atau
-  ekspresi boolean.
-- Sebagai contoh, jika sebuah variabel berisi `null`, maka `if (null)` akan
-  dieksekusi di bagian `else`, karena `null` adalah falsy.
-
-**[⬆ back to top](#table-of-contents)**
-
-### Truthy Values
-
-Sementara itu, **truthy values** adalah nilai-nilai yang dianggap `true` dalam
-konteks boolean, meskipun secara eksplisit bukan nilai boolean `true`. Semua
-nilai lain yang **bukan falsy** dianggap truthy.
-
-#### **Beberapa Contoh Nilai Truthy:**
-
-1. **`true`** — Nilai boolean `true` itu sendiri.
-2. **Non-empty string** — String yang tidak kosong, misalnya `"Hello"`.
-3. **Non-zero numbers** — Angka selain `0`, seperti `1`, `-1`, `100`, dan
-   seterusnya.
-4. **Objects** — Objek apapun, seperti `{}`, `[]` (array kosong).
-5. **Functions** — Fungsi apapun, misalnya `function() {}`.
-6. **`Infinity` dan `-Infinity`** — Kedua nilai ini juga dianggap truthy.
-
-#### **Contoh Nilai Truthy:**
-
-```javascript
-if (true) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-
-if ("Hello") {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-
-if (1) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-
-if ({}) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-
-if ([]) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-
-if (function () {}) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-
-if (Infinity) {
-  console.log("Ini akan dieksekusi");
-} else {
-  console.log("Ini tidak akan dieksekusi");
-}
-// Output: "Ini akan dieksekusi"
-```
-
-Penjelasan:
-
-- Nilai selain **7 falsy** di atas dianggap truthy. Sebagai contoh, string
-  `"Hello"`, objek `{}`, array `[]`, angka selain `0` seperti `1` atau `-1`,
-  dan fungsi adalah nilai-nilai truthy.
-
-**[⬆ back to top](#table-of-contents)**
-
-### Contoh Penggunaan dalam Conditional Statements
-
-Penggunaan **truthy** dan **falsy** sangat berguna dalam pernyataan bersyarat
-(`if`, `while`, dll.). Dalam JavaScript, Anda sering tidak perlu melakukan
-perbandingan eksplisit dengan `true` atau `false`. Cukup dengan menuliskan
-nilai yang ingin dievaluasi dalam kondisi.
-
-**Contoh:**
-
-```javascript
-let x = "Hello";
-
-if (x) {
-  console.log("x adalah truthy"); // Karena x berisi string non-kosong, maka ini adalah truthy
-} else {
-  console.log("x adalah falsy");
-}
-
-let y = 0;
-
-if (y) {
-  console.log("y adalah truthy");
-} else {
-  console.log("y adalah falsy"); // 0 adalah falsy
+  console.log("Nama tidak boleh kosong.");
 }
 ```
 
-Penjelasan:
+**Penjelasan**:
 
-- Pada kode di atas, `x` adalah string non-kosong, yang merupakan nilai
-  truthy, sehingga blok `if` dijalankan.
-- `y` adalah `0`, yang merupakan nilai falsy, sehingga blok `else` yang
-  dijalankan.
+- Jika `userInput` ada, maka akan dianggap `truthy` dan menampilkan salam.
+- Jika `userInput` adalah string kosong atau `null`, maka akan dianggap `falsy`
+  dan menampilkan pesan error.
 
-**[⬆ back to top](#table-of-contents)**
+#### 2. **Default value dengan OR (`||`)**
 
-### Menggunakan Default Values dengan Falsy
-
-Salah satu penggunaan praktis dari **falsy** dan **truthy** adalah memberikan
-**nilai default** jika sebuah variabel tidak memiliki nilai yang valid
-(misalnya `null`, `undefined`, atau string kosong).
-
-**Contoh:**
+Menggunakan nilai default ketika nilai sebenarnya adalah `undefined` atau
+`null`.
 
 ```javascript
-let nama = "";
-let pesan = nama || "Nama tidak tersedia";
-console.log(pesan); // Output: "Nama tidak tersedia"
+const userSettings = {};
+
+const theme = userSettings.theme || "light";
+console.log(`Tema yang digunakan: ${theme}`);
 ```
 
-Penjelasan:
+**Penjelasan**:
 
-- Karena `nama` adalah string kosong (nilai falsy), maka operator `||` (OR)
-  akan memilih nilai kedua, yaitu `"Nama tidak tersedia"`.
-- Ini adalah cara umum dalam JavaScript untuk menetapkan nilai default dengan
-  menggunakan **logical OR**.
+- Jika `userSettings.theme` tidak ada atau `falsy`, maka akan digunakan
+  `"light"` sebagai nilai default.
+
+#### 3. **Penanganan kondisi logis dalam API**
+
+Saat memeriksa keberadaan data dalam API.
+
+```javascript
+const response = {
+  data: null,
+};
+
+if (response.data) {
+  console.log("Data berhasil diterima:", response.data);
+} else {
+  console.log("Tidak ada data yang diterima.");
+}
+```
+
+**Penjelasan**:
+
+- Jika `response.data` ada atau `truthy`, maka blok `if` akan dijalankan.
+- Jika `response.data` tidak ada atau `falsy`, maka blok `else` akan dijalankan.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## Resources
 
+- [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 - [`var`, `let`, and `const`](https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/)
 - [JavaScript Arithmetic](https://www.w3schools.com/js/js_arithmetic.asp)
 - [Remainder (**%**)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder)
