@@ -1,6 +1,6 @@
 # Advanced Conditional
 
-**Advanced Conditional dalam JavaScript** merujuk pada teknik dan pendekatan
+**Advanced Conditional** dalam JavaScript merujuk pada teknik dan pendekatan
 yang lebih canggih dalam menangani pengkondisian di dalam kode JavaScript.
 Selain menggunakan struktur kondisional dasar seperti `if`, `else if`, dan
 `else`, JavaScript juga mendukung penggunaan operator dan konsep yang lebih
@@ -14,6 +14,7 @@ kompleks untuk pengendalian alur eksekusi kode.
 4. [Perbedaan `switch-case` dan `if...else`](#perbedaan-switch-case-dan-ifelse)
 5. [Nested Conditional](#nested-conditional)
 6. [Perbedaan `if...if` dan `if...else`](#perbedaan-ifif-dan-ifelse)
+7. [Resources](#resources)
 
 ## **Default Flow dan Control Flow (Conditional) dalam JavaScript**
 
@@ -22,1015 +23,875 @@ eksekusi kode berlangsung dalam program, yang sangat penting untuk memahami
 bagaimana kode dijalankan dan bagaimana kita bisa mengatur alur eksekusinya.
 Berikut adalah penjelasan mendetail tentang keduanya.
 
-### Default flow dalam JavaScript
+### 1. Default flow dalam JavaScript
 
-**Default flow** merujuk pada urutan eksekusi kode secara linier. JavaScript
-secara default akan menjalankan kode dari atas ke bawah, satu per satu, tanpa
-ada kondisi atau perubahan arah.
+Default flow adalah urutan eksekusi kode dalam program tanpa adanya perubahan
+atau interupsi dari pernyataan khusus seperti kondisi (`if-else`) atau loop.
+JavaScript akan membaca dan menjalankan kode secara berurutan dari atas ke
+bawah.
 
-#### **Penjelasan:**
-
-- **Urutan Eksekusi**: JavaScript akan mengeksekusi kode dari baris pertama
-  hingga baris terakhir.
-- **Fungsi**: Ketika mendeklarasikan fungsi, JavaScript tidak akan menjalankan
-  kode di dalamnya kecuali fungsi tersebut dipanggil.
-- **Pernyataan Return**: Jika sebuah fungsi memiliki pernyataan `return`,
-  eksekusi fungsi akan berhenti dan nilai yang dikembalikan akan diberikan.
-
-#### **Contoh default flow:**
+**Contoh Default Flow:**
 
 ```javascript
-console.log("Ini baris pertama");
-console.log("Ini baris kedua");
-
-function sayHello() {
-  console.log("Hello, World!");
-}
-
-sayHello(); // Fungsi dipanggil di sini
-
-console.log("Ini baris ketiga");
+console.log("Mulai");
+console.log("Sedang proses...");
+console.log("Selesai");
 ```
 
 **Output:**
 
 ```
-Ini baris pertama
-Ini baris kedua
-Hello, World!
-Ini baris ketiga
+Mulai
+Sedang proses...
+Selesai
 ```
 
 **Penjelasan:**
 
-- Kode pertama dan kedua dieksekusi berurutan.
-- Fungsi `sayHello()` dipanggil, lalu kode di dalamnya dijalankan.
-- Kode setelah pemanggilan fungsi `sayHello()` dilanjutkan setelah eksekusi
-  fungsi selesai.
+Ketiga pernyataan `console.log` akan dijalankan dari atas ke bawah tanpa
+pengecekan kondisi atau interupsi.
 
 **[⬆ back to top](#table-of-contents)**
 
-### Control flow (conditional) dalam JavaScript
+### 2. Control flow (conditional) dalam JavaScript
 
-**Control flow** mengacu pada alur eksekusi kode yang dapat berubah berdasarkan
-kondisi tertentu, seperti dengan menggunakan pengkondisian (`if`, `else`,
-`switch`) atau perulangan (`for`, `while`). **Conditional control flow**
-berfokus pada pengkondisian, di mana eksekusi kode akan bergantung pada apakah
-kondisi tertentu terpenuhi atau tidak.
+Control flow mengacu pada alur eksekusi kode yang dapat berubah berdasarkan
+kondisi tertentu, seperti dengan menggunakan _conditional statements_ (`if`,
+`else if`, dan `else`) atau _looping_ (`for` dan `while`). Conditional control
+flow berfokus pada conditional statements, di mana eksekusi kode akan
+bergantung pada apakah kondisi tertentu terpenuhi atau tidak.
 
-#### 1. **Pernyataan `if` dan `else`**
-
-`if` dan `else` memungkinkan kita untuk mengarahkan eksekusi kode berdasarkan
-kondisi tertentu. Jika kondisi yang dievaluasi `true`, blok kode yang
-bersangkutan akan dieksekusi. Jika tidak, kita bisa menggunakan `else` untuk
-menjalankan kode lain.
+**Contoh Control Flow dengan Kondisi:**
 
 ```javascript
-let age = 20;
+const jam = 9;
 
-if (age >= 18) {
-  console.log("Dewasa");
+if (jam < 12) {
+  console.log("Selamat pagi!");
+} else if (jam >= 12 && jam < 18) {
+  console.log("Selamat siang!");
 } else {
-  console.log("Anak-anak");
+  console.log("Selamat malam!");
 }
 ```
 
 **Output:**
 
 ```
-Dewasa
+Selamat pagi!
 ```
 
 **Penjelasan:**
 
-- Jika `age` lebih besar atau sama dengan 18, maka blok pertama (`"Dewasa"`)
-  yang akan dieksekusi.
-- Jika tidak, blok `else` yang akan dieksekusi.
-
-#### 2. **Pernyataan `else if`**
-
-Digunakan ketika kita ingin memeriksa lebih dari satu kondisi. Setelah kondisi
-pertama gagal, JavaScript akan memeriksa kondisi berikutnya di dalam `else if`.
-
-```javascript
-let grade = 85;
-
-if (grade >= 90) {
-  console.log("A");
-} else if (grade >= 80) {
-  console.log("B");
-} else {
-  console.log("C");
-}
-```
-
-**Output:**
-
-```
-B
-```
-
-**Penjelasan:**
-
-- JavaScript pertama akan memeriksa apakah nilai `grade` lebih besar atau sama
-  dengan 90.
-- Jika tidak, ia akan memeriksa kondisi `else if (grade >= 80)`, dan
-  menampilkan `"B"` karena kondisi ini benar.
-
-#### 3. **Switch-Case**
-
-`switch` digunakan untuk membandingkan sebuah nilai dengan beberapa kemungkinan
-nilai lainnya. Ini lebih efisien daripada banyak pernyataan `if-else` jika kita
-memeriksa banyak kondisi.
-
-```javascript
-let day = "Monday";
-
-switch (day) {
-  case "Monday":
-    console.log("Start of the week");
-    break;
-  case "Friday":
-    console.log("End of the week");
-    break;
-  default:
-    console.log("Midweek");
-}
-```
-
-**Output:**
-
-```
-Start of the week
-```
-
-**Penjelasan:**
-
-- JavaScript memeriksa nilai `day`, dan jika cocok dengan salah satu `case`,
-  kode yang bersangkutan akan dijalankan.
-- Jika tidak ada yang cocok, blok `default` yang akan dijalankan.
+- Jika jam kurang dari 12 (di bawah jam 12), maka blok `if` akan dijalankan dan
+  menampilkan pesan `"Selamat pagi!"`.
+- Jika jam ada di rentang 12 - 17, maka blok `else if` akan dijalankan dan
+  menampilkan pesan `"Selamat siang!"`.
+- Jika jam 18 ke atas, maka blok `else` akan dijalankan dan menampilkan pesan
+  `"Selamat malam!"`.
 
 **[⬆ back to top](#table-of-contents)**
 
 ### Logika pengkondisian lanjutan
 
-Selain `if`, `else`, dan `switch`, JavaScript menyediakan beberapa operator dan
-teknik untuk menulis kondisi lebih efektif:
+Selain `if`, `else if`, dan `else`, JavaScript menyediakan beberapa operator
+dan teknik untuk menulis kondisi lebih efektif:
 
 1. **Ternary Operator (`? :`)**: Sebuah cara singkat untuk menulis `if-else`
-   dengan format `kondisi ? nilai_true : nilai_false`.
+   dengan format `condition ? ifTrue : ifFalse`.
 
    ```javascript
-   let isAdult = age >= 18 ? "Dewasa" : "Anak-anak";
+   let age = 18;
+   // Menentukan isAdult berdasarkan usia (age) yang diinputkan.
+   // isAdult diset ke true jika usia 18 tahun keatas.
+   // isAdult diset ke false jika usia dibawah 18 tahun.
+   let isAdult = age >= 18 ? true : false;
    console.log(isAdult);
    ```
 
    **Output:**
 
    ```
-   Dewasa
+   true
    ```
 
-2. **Logical Operators (`&&`, `||`)**:
+2. **Logical Operators**:
 
-   - `&&` (AND) hanya mengembalikan `true` jika kedua kondisi bernilai `true`.
-   - `||` (OR) mengembalikan `true` jika salah satu kondisi bernilai `true`.
+   - `&&` (AND): Mengembalikan `true` jika semua kondisi bernilai `true`.
+   - `||` (OR): Mengembalikan `true` jika salah satu kondisi bernilai `true`.
+   - `!` (NOT): Membalikkan nilai logika dari sebuah kondisi.
 
    ```javascript
    let age = 25;
-   if (age > 18 && age < 60) {
-     console.log("Dewasa produktif");
+   if (age >= 18 && age <= 30) {
+     console.log("You are in the target age range.");
+   }
+
+   if (age < 18 || age > 30) {
+     console.log("You are not in the target age range.");
+   }
+
+   if (!isNaN(age)) {
+     console.log("Age is a valid number.");
    }
    ```
 
    **Output:**
 
    ```
-   Dewasa produktif
+   You are in the target age range.
+   Age is a valid number.
    ```
 
-3. **Nullish Coalescing Operator (`??`)**: Memeriksa nilai `null` atau
-   `undefined` dan memberikan nilai default jika itu terjadi.
+3. **Nullish Coalescing Operator (`??`)**: adalah operator di JavaScript yang
+   digunakan untuk memberikan nilai default ketika operand di sebelah kiri
+   bernilai `null` atau `undefined`. Operator ini diperkenalkan di **ECMAScript
+   2020 (ES11)**.
+
+   **Sintaks:**
 
    ```javascript
-   let name = user.name ?? "Guest";
-   console.log(name);
+   let result = operand1 ?? operand2;
    ```
 
-   **Output:**
+   - Jika `operand1` adalah **null** atau **undefined**, maka hasilnya adalah
+     `operand2`.
+   - Jika `operand1` bukan **null** atau **undefined** (misalnya, `0`, `false`,
+     `NaN`, atau string kosong `""`), maka hasilnya adalah `operand1`.
 
-   ```
-   Guest
-   ```
-
-4. **Optional Chaining (`?.`)**: Memungkinkan kita mengakses properti atau
-   metode dari objek yang mungkin `null` atau `undefined` tanpa menyebabkan
-   error.
+   **Contoh Penggunaan:**
 
    ```javascript
-   let user = { profile: { name: "John" } };
-   console.log(user?.profile?.name); // John
-   console.log(user?.address?.city); // undefined
+   let name = null;
+   let defaultName = name ?? "Guest";
+   console.log(defaultName); // Output: "Guest"
    ```
 
-### Ringkasan:
+4. **Optional chaining** adalah fitur di JavaScript yang diperkenalkan dalam
+   ECMAScript 2020 (ES11). Fitur ini memungkinkan kita untuk mengakses properti
+   atau memanggil metode pada objek yang mungkin tidak ada, tanpa harus
+   terlebih dahulu memeriksa apakah objek atau properti tersebut `undefined`
+   atau `null`.
 
-- **Default Flow** adalah alur eksekusi kode secara berurutan dari atas ke
-  bawah, kecuali ada perubahan alur menggunakan pernyataan seperti `return`,
-  fungsi, atau exception handling.
-- **Control Flow (Conditional)** adalah pengkondisian yang mengubah alur
-  eksekusi berdasarkan kondisi yang diberikan. Dalam JavaScript, ini biasanya
-  menggunakan `if`, `else if`, `else`, `switch`, dan operator logika (`&&`,
-  `||`, `? :`, dll.).
+   Sintaks untuk optional chaining menggunakan operator `?.`.
 
-Dengan memahami **default flow** dan **control flow**, Anda bisa menulis kode
-yang lebih dinamis dan fleksibel dalam menangani berbagai skenario eksekusi di
-dalam program.
+   **Contoh Penggunaan:**
+
+   1. **Mengakses properti**
+
+      Memeriksa keberadaan properti sebelum mengaksesnya:
+
+      ```javascript
+      const user = {
+        profile: {
+          name: "Alice",
+        },
+      };
+
+      console.log(user.profile?.name); // "Alice"
+      console.log(user.profile?.age); // undefined (tanpa error)
+      ```
+
+   2. **Memanggil metode**
+
+      Memastikan metode ada sebelum memanggilnya:
+
+      ```javascript
+      const user = {
+        greet: () => "Hello!",
+      };
+
+      console.log(user.greet?.()); // "Hello!"
+      console.log(user.sayBye?.()); // undefined (tanpa error)
+      ```
+
+   3. **Mengakses elemen array**
+
+      Digunakan pada array yang mungkin undefined:
+
+      ```javascript
+      const users = [{ name: "Bob" }, undefined];
+
+      console.log(users[0]?.name); // "Bob"
+      console.log(users[1]?.name); // undefined (tanpa error)
+      ```
+
+   **Keuntungan**
+
+   - Menghindari error `TypeError: Cannot read properties of undefined/null`.
+   - Membuat kode lebih ringkas dan mudah dibaca dibandingkan dengan
+     menggunakan `if` atau `try-catch`.
+
+   **Contoh Perbandingan**
+
+   Tanpa optional chaining:
+
+   ```javascript
+   const user = null;
+   if (user && user.profile && user.profile.name) {
+     console.log(user.profile.name);
+   } else {
+     console.log("Name not found");
+   }
+   ```
+
+   Dengan optional chaining:
+
+   ```javascript
+   const user = null;
+   console.log(user?.profile?.name || "Name not found");
+   ```
+
+   **Catatan**
+
+   - Optional chaining hanya berhenti pada `undefined` atau `null`. Jika
+     properti bernilai `false`, `0`, atau `''`, itu tetap dianggap valid.
+   - Gunakan secara bijak, karena bisa menyembunyikan bug apabila terlalu
+     sering digunakan tanpa memahami struktur data dengan baik.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## **Expression**
 
-**Expression** dalam JavaScript adalah kombinasi dari variabel, nilai,
-operator, dan fungsi yang dievaluasi untuk menghasilkan sebuah nilai.
-Expression dapat terdiri dari berbagai elemen seperti angka, string, objek,
-dan bahkan fungsi, yang semuanya diolah oleh JavaScript untuk menghasilkan
-sebuah output atau nilai.
+Expression dalam JavaScript adalah potongan kode yang dievaluasi untuk
+menghasilkan suatu nilai. Setiap nilai di JavaScript berasal dari sebuah
+expression. Expression bisa sederhana atau kompleks, dan bisa digunakan di
+berbagai tempat dalam kode, seperti di dalam pernyataan (statements), fungsi,
+atau objek.
 
-### Jenis-jenis expression dalam JavaScript
+### Jenis-jenis expression
 
-1. **Literal Expressions:** Merupakan nilai tetap yang dituliskan secara
-   langsung dalam kode.
+1. **Literal Expression**
 
-   - **Angka (Number Literals):**
-     ```javascript
-     42;
-     ```
-   - **String Literals:**
-     ```javascript
-     "Hello, World!";
-     ```
-   - **Boolean Literals:**
-     ```javascript
-     true;
-     ```
-   - **Object Literals:**
-     ```javascript
-     { name: "John", age: 30 }
-     ```
-   - **Array Literals:**
-     ```javascript
-     [1, 2, 3, 4, 5];
-     ```
-
-   Literal-literal ini adalah contoh dari **expression** karena mereka
-   menghasilkan nilai yang dapat digunakan lebih lanjut dalam program.
-
-2. **Variable Expressions:** Variabel dalam JavaScript dapat dianggap sebagai
-   **expression** karena mereka menyimpan nilai dan menghasilkan nilai saat
-   dievaluasi.
+   Contoh:
 
    ```javascript
-   let x = 10;
-   let y = 5;
-   let sum = x + y; // x + y adalah expression
+   10; // Nilai literal angka
+   ("Hello"); // Nilai literal string
+   true; // Nilai literal boolean
    ```
 
-   Di sini, `x + y` adalah **expression** yang dievaluasi menjadi `15`.
+   - **Penjelasan**: Ini adalah nilai langsung yang tidak memerlukan
+     perhitungan.
 
-3. **Operator Expressions:** Ketika kita menggunakan operator (seperti `+`,
-   `-`, `*`, `&&`, dll.), itu adalah **expression** karena operator
-   mengoperasikan nilai-nilai untuk menghasilkan hasil.
+2. **Variable Expression**
 
-   - **Aritmetika:**
-     ```javascript
-     let result = 5 + 3; // 5 + 3 adalah expression, hasilnya 8
-     ```
-   - **Logika:**
-     ```javascript
-     let isTrue = true && false; // true && false adalah expression, hasilnya false
-     ```
-   - **Penugasan:**
-     ```javascript
-     let a = 3; // a = 3 adalah expression, hasilnya 3
-     ```
-
-4. **Function Expressions:** Fungsi dalam JavaScript juga dapat dianggap
-   sebagai expression, terutama ketika didefinisikan dalam bentuk
-   **function expression** (berbeda dengan deklarasi fungsi biasa).
-
-   ```javascript
-   let greet = function (name) {
-     return "Hello, " + name;
-   };
-   console.log(greet("Alice")); // Output: Hello, Alice
-   ```
-
-   Di sini, `function(name) {...}` adalah **function expression** yang
-   menghasilkan sebuah fungsi yang bisa dipanggil.
-
-5. **Conditional Expressions (Ternary Operator):** Salah satu contoh expression
-   kondisional adalah **ternary operator**, yang memungkinkan eksekusi kode
-   berdasarkan kondisi.
-
-   ```javascript
-   let age = 20;
-   let status = age >= 18 ? "Dewasa" : "Anak-anak"; // expression
-   console.log(status); // Output: Dewasa
-   ```
-
-   Ternary operator adalah **expression** yang mengembalikan nilai berdasarkan
-   kondisi yang diberikan.
-
-6. **Array Expressions:** Array juga merupakan **expression** karena mereka
-   berisi nilai-nilai dan bisa dievaluasi.
-
-   ```javascript
-   let numbers = [1, 2, 3, 4]; // [1, 2, 3, 4] adalah array expression
-   ```
-
-7. **Object Expressions:** Objek juga merupakan bentuk **expression**, karena
-   mereka mengandung nilai-nilai dalam bentuk properti.
-
-   ```javascript
-   let person = { name: "John", age: 30 }; // { name: "John", age: 30 } adalah object
-   expression;
-   ```
-
-8. **Logical Expressions:** Ekspresi logika menghasilkan nilai boolean (`true`
-   atau `false`) setelah evaluasi.
-
-   ```javascript
-   let isAdult = age >= 18; // age >= 18 adalah expression, hasilnya true atau false
-   ```
-
-**[⬆ back to top](#table-of-contents)**
-
-### Perbedaan antara **expression** dan **statement**
-
-Untuk lebih memahami konsep **expression**, kita perlu mengetahui perbedaannya
-dengan **statement**.
-
-- **Expression** selalu menghasilkan nilai (value). Apapun yang dapat dihitung
-  atau dievaluasi dan menghasilkan suatu nilai adalah **expression**.
-
-  Contoh:
-
-  ```javascript
-  5 + 3; // Ini adalah expression yang menghasilkan nilai 8
-  ```
-
-- **Statement** adalah unit kode yang melakukan sesuatu tetapi
-  **tidak menghasilkan nilai** secara langsung. Statement adalah instruksi
-  untuk melakukan tindakan, seperti mendeklarasikan variabel atau mengontrol
-  alur eksekusi (dengan `if`, `for`, dll).
-
-  Contoh:
-
-  ```javascript
-  let a = 5; // Ini adalah statement, bukan expression
-  ```
-
-**[⬆ back to top](#table-of-contents)**
-
-### Contoh-contoh penggunaan expression dalam kode
-
-1. **Menggunakan Expression dalam Fungsi:**
-   Fungsi `calculate` di bawah ini mengandung ekspresi aritmetika.
-
-   ```javascript
-   function calculate(a, b) {
-     return a + b; // a + b adalah expression yang menghasilkan nilai
-   }
-   console.log(calculate(2, 3)); // Output: 5
-   ```
-
-2. **Expression dalam Kondisi `if:`**
-   Di dalam sebuah pernyataan `if`, kita bisa menggunakan ekspresi untuk
-   mengevaluasi kondisi.
+   Contoh:
 
    ```javascript
    let x = 5;
-   if (x > 3) {
-     console.log("x lebih besar dari 3"); // x > 3 adalah expression
-   }
+   x; // Mengacu ke nilai variabel x, yaitu 5
    ```
 
-3. **Array dan Object sebagai Expression:**
-   Array dan objek adalah jenis ekspresi karena mereka menghasilkan struktur
-   data yang bisa digunakan dalam program.
+3. **Arithmetic Expression**
+
+   Contoh:
 
    ```javascript
-   let numbers = [1, 2, 3, 4]; // Array expression
-   let person = { name: "Alice", age: 25 }; // Object expression
+   5 + 3; // Hasil: 8
+   10 * 2; // Hasil: 20
    ```
 
-4. **Ternary Operator sebagai Expression:**
-   Operator ternary adalah ekspresi yang mengembalikan hasil berdasarkan
-   kondisi.
+   - **Penjelasan**: Melibatkan operator aritmatika seperti `+`, `-`, `*`,
+     `/`, atau `%`.
+
+4. **Logical Expression**
+
+   Contoh:
+
    ```javascript
-   let age = 16;
-   let status = age >= 18 ? "Dewasa" : "Anak-anak"; // expression
+   true && false; // Hasil: false
+   true || false; // Hasil: true
    ```
 
-### Expression dalam context ekspresi yang lebih kompleks
+   - **Penjelasan**: Menggunakan operator logika seperti `&&` (AND), `||` (OR),
+     dan `!` (NOT).
 
-Kadang-kadang ekspresi dapat berupa gabungan dari beberapa ekspresi, yang
-disebut sebagai **complex expressions**. Misalnya, kita bisa menggabungkan
-beberapa operator untuk membuat ekspresi yang lebih kompleks:
+5. **String Expression**
+
+   Contoh:
+
+   ```javascript
+   "Hello" + " World"; // Hasil: "Hello World"
+   ```
+
+6. **Function Expression**
+
+   Contoh:
+
+   ```javascript
+   const add = function (a, b) {
+     return a + b;
+   };
+   add(2, 3); // Hasil: 5
+   ```
+
+   - **Penjelasan**: Mendefinisikan fungsi sebagai nilai.
+
+7. **Object Property Access Expression**
+
+   Contoh:
+
+   ```javascript
+   const person = { name: "John", age: 30 };
+   person.name; // Hasil: "John"
+   person["age"]; // Hasil: 30
+   ```
+
+8. **Conditional (Ternary) Expression**
+
+   Contoh:
+
+   ```javascript
+   let age = 20;
+   let isAdult = age > 18 ? "Yes" : "No"; // Hasil: "Yes"
+   ```
+
+   - **Penjelasan**: Menggunakan operator ternary `? :` untuk evaluasi kondisi.
+
+**[⬆ back to top](#table-of-contents)**
+
+### Perbedaan antara expression dan statement
+
+Dalam JavaScript (dan sebagian besar bahasa pemrograman), **expression** dan
+**statement** memiliki peran yang berbeda dalam cara kode ditulis dan
+dieksekusi. Berikut penjelasannya:
+
+#### 1. **Expression (Ekspresi)**
+
+- **Pengertian**: Sebuah expression adalah potongan kode yang menghasilkan
+  sebuah nilai.
+- **Tujuan**: Digunakan untuk menghitung atau mengembalikan suatu nilai.
+
+**Contoh:**
 
 ```javascript
-let a = 10;
-let b = 20;
-let c = 30;
-let result = (a + b) * c - 5; // Ini adalah complex expression
-console.log(result); // Output: 595
+5 + 10; // Expression yang menghasilkan nilai 15
+x * y; // Expression yang menghasilkan hasil perkalian x dan y
+"Hello" + " World"; // Expression yang menghasilkan "Hello World" dari penggabungan string
 ```
 
-Dalam contoh ini, `(a + b) * c - 5` adalah ekspresi yang terdiri dari beberapa
-operator dan menghasilkan nilai yang dihitung.
+**Ciri-ciri:**
+
+- Dapat digunakan di mana saja nilai diharapkan, seperti dalam variabel,
+  argumen fungsi, atau kondisi.
+- Tidak diakhiri dengan tanda titik koma `;` kecuali bagian dari statement.
+
+**Contoh Penggunaan dalam Kode:**
+
+```javascript
+let result = 5 + 10; // '5 + 10' adalah expression
+console.log(result); // 'result' adalah expression
+```
+
+#### 2. **Statement (Pernyataan)**
+
+- **Pengertian**: Sebuah statement adalah instruksi lengkap yang memberitahu
+  JavaScript untuk melakukan suatu tindakan.
+- **Tujuan**: Mengatur alur program, melakukan tugas tertentu, atau
+  mendefinisikan sesuatu.
+
+**Contoh:**
+
+```javascript
+let x = 10; // Statement untuk mendeklarasikan variabel dan memberi nilai
+if (x > 5) {
+  // Statement untuk kontrol alur
+  console.log("x is greater than 5"); // Statement di dalam blok if
+}
+```
+
+**Ciri-ciri:**
+
+- Biasanya diakhiri dengan tanda titik koma `;`.
+- Tidak selalu menghasilkan nilai (meskipun mungkin mengandung expression di
+  dalamnya).
+
+**Contoh Penggunaan dalam Kode:**
+
+```javascript
+let y = 20; // Statement
+if (y > 10) {
+  console.log("y is greater than 10"); // Statement
+}
+```
+
+#### **Perbedaan Utama**
+
+| **Aspek**              | **Expression**                         | **Statement**                         |
+| ---------------------- | -------------------------------------- | ------------------------------------- |
+| **Menghasilkan Nilai** | Selalu menghasilkan nilai              | Tidak selalu menghasilkan nilai       |
+| **Fungsi Utama**       | Digunakan untuk perhitungan atau nilai | Mengontrol alur atau menjalankan aksi |
+| **Contoh**             | `5 + 5`, `"Hello" + " World"`          | `if`, `for`, `let`, `return`          |
+| **Penggunaan**         | Sebagai bagian dari statement          | Sebagai elemen struktural program     |
+
+#### **Kesimpulan**
+
+- **Expression**: Fokus pada "apa nilainya?"
+- **Statement**: Fokus pada "apa aksinya?"
+
+Keduanya sering digunakan bersama untuk membangun logika program yang lebih
+kompleks. Misalnya:
+
+```javascript
+let sum = 5 + 10; // '5 + 10' adalah expression, sementara keseluruhan baris adalah statement
+if (sum > 10) {
+  // 'sum > 10' adalah expression, sementara 'if' adalah statement
+  console.log(sum); // Statement
+}
+```
 
 **[⬆ back to top](#table-of-contents)**
 
 ## **Switch Statement**
 
-`switch` adalah salah satu statement percabangan dalam JavaScript yang
-digunakan untuk memilih salah satu dari beberapa blok kode yang akan
-dieksekusi, berdasarkan kondisi tertentu. `switch` sering digunakan ketika kita
-memiliki banyak pilihan untuk diuji, sehingga lebih efisien daripada
-menggunakan banyak `if-else`.
+### Apa itu `switch statements`?
 
-### Struktur dasar `switch`:
+Switch statement adalah salah satu kontrol alur dalam JavaScript yang digunakan
+untuk menjalankan blok kode tertentu berdasarkan nilai dari ekspresi. Ini
+adalah alternatif yang lebih terstruktur dan mudah dibaca dibandingkan dengan
+banyak pernyataan `if...else if`.
+
+**Sintaks Dasar:**
 
 ```javascript
-switch (ekspresi) {
-  case nilai1:
-    // Blok kode jika ekspresi == nilai1
+switch (expression) {
+  case value1:
+    // Kode yang akan dijalankan jika expression === value1
     break;
-  case nilai2:
-    // Blok kode jika ekspresi == nilai2
-    break;
-  case nilai3:
-    // Blok kode jika ekspresi == nilai3
+  case value2:
+    // Kode yang akan dijalankan jika expression === value2
     break;
   default:
-  // Blok kode jika tidak ada nilai yang cocok
+  // Kode yang akan dijalankan jika tidak ada kasus yang cocok
 }
 ```
 
-### Penjelasan:
+**Penjelasan:**
 
-1. **`ekspresi`:** Ekspresi yang ingin diuji (biasanya variabel atau nilai).
-2. **`case`:** Merupakan nilai-nilai yang akan dibandingkan dengan ekspresi.
-   Jika ekspresi cocok dengan nilai dari salah satu `case`, maka blok kode di
-   bawah `case` tersebut akan dieksekusi.
-3. **`break`:** Setelah blok kode dalam `case` dijalankan, pernyataan `break`
-   digunakan untuk keluar dari `switch`. Tanpa `break`, eksekusi akan
-   "melompat" ke `case` berikutnya (ini disebut _fall-through_).
-4. **`default`:** Bagian ini opsional dan akan dijalankan jika tidak ada `case`
-   yang cocok dengan ekspresi. Biasanya digunakan sebagai kondisi fallback.
+1. **`expression`**: Nilai yang akan dievaluasi dalam `switch`.
+2. **`case`**: Berisi nilai-nilai yang dibandingkan dengan `expression`. Jika
+   cocok, blok kode dalam case tersebut akan dieksekusi.
+3. **`break`**: Digunakan untuk menghentikan eksekusi dan keluar dari `switch`.
+   Jika tidak digunakan, eksekusi akan berlanjut ke case berikutnya (behavior
+   ini disebut **fall-through**).
+4. **`default`**: Opsional. Digunakan untuk menangani kasus ketika tidak ada
+   nilai yang cocok (mirip `else`).
 
 **[⬆ back to top](#table-of-contents)**
 
-### Contoh penggunaan:
+### Contoh penggunaan
+
+#### **Contoh 1: Menentukan hari berdasarkan nomor**
 
 ```javascript
-let hari = 3;
-let namaHari;
+const day = 3;
 
-switch (hari) {
+switch (day) {
   case 1:
-    namaHari = "Senin";
+    console.log("Senin");
     break;
   case 2:
-    namaHari = "Selasa";
+    console.log("Selasa");
     break;
   case 3:
-    namaHari = "Rabu";
+    console.log("Rabu");
     break;
   case 4:
-    namaHari = "Kamis";
+    console.log("Kamis");
     break;
   case 5:
-    namaHari = "Jumat";
+    console.log("Jumat");
     break;
   default:
-    namaHari = "Hari tidak valid";
+    console.log("Hari tidak valid");
 }
-
-console.log(namaHari); // Output: Rabu
 ```
 
-Pada contoh di atas:
+**Output**: `Rabu`
 
-- `hari` di-set ke 3, sehingga blok kode yang sesuai dengan `case 3` (yang
-  berisi `namaHari = 'Rabu'`) akan dieksekusi.
-- Setelah eksekusi blok kode di dalam `case 3`, pernyataan `break` menghentikan
-  eksekusi lebih lanjut dan keluar dari `switch`.
+#### **Contoh 2: Tanpa `break` (Fall-through)**
+
+```javascript
+const fruit = "apple";
+
+switch (fruit) {
+  case "apple":
+  case "banana":
+    console.log("Buah yang tersedia");
+    break;
+  case "orange":
+    console.log("Buah jeruk tersedia");
+    break;
+  default:
+    console.log("Buah tidak tersedia");
+}
+```
+
+**Output**: `Buah yang tersedia`
+
+#### **Contoh 3: Menggunakan ekspresi**
+
+```javascript
+const age = 18;
+
+switch (true) {
+  case age < 13:
+    console.log("Anak-anak");
+    break;
+  case age >= 13 && age <= 19:
+    console.log("Remaja");
+    break;
+  case age > 19:
+    console.log("Dewasa");
+    break;
+  default:
+    console.log("Data tidak valid");
+}
+```
+
+**Output**: `Remaja`
 
 **[⬆ back to top](#table-of-contents)**
 
-### Tanpa `break` (Fall-through):
+### Switch statement tanpa break
 
-Jika tidak ada `break`, maka eksekusi akan berlanjut ke `case` berikutnya,
-bahkan jika kondisinya tidak sesuai.
+Jika **`switch` statements** di JavaScript tidak menggunakan `break`, maka
+**fall-through** akan terjadi. Artinya, setelah eksekusi suatu case selesai,
+program akan terus mengeksekusi case berikutnya hingga menemukan `break`,
+mencapai akhir dari switch, atau menemukan `return`, `throw`, atau `continue`
+di dalam loop.
+
+Berikut adalah penyebabnya:
+
+1. **Desain Default**:
+
+   Fall-through adalah perilaku bawaan dalam JavaScript, di mana jika tidak ada
+   `break`, eksekusi akan berlanjut ke case berikutnya tanpa memeriksa apakah
+   kondisi case tersebut benar atau tidak.
+
+2. **Tujuan Fall-Through**:
+
+   Dalam beberapa kasus, fall-through disengaja untuk membuat satu blok kode
+   dieksekusi oleh beberapa kondisi case.
+
+#### **Contoh Masalah Tanpa `break`**
 
 ```javascript
-let angka = 2;
-let hasil;
+const grade = "B";
 
-switch (angka) {
-  case 1:
-    hasil = "Satu";
-  case 2:
-    hasil = "Dua";
-  case 3:
-    hasil = "Tiga";
+switch (grade) {
+  case "A":
+    console.log("Excellent!");
+  case "B":
+    console.log("Good job!");
+  case "C":
+    console.log("Well done!");
   default:
-    hasil = "Tidak ada pilihan";
+    console.log("Keep trying!");
 }
-
-console.log(hasil); // Output: Tiga
 ```
 
-Pada contoh di atas, karena tidak ada `break` di antara setiap `case`, nilai
-`hasil` akan diubah oleh setiap `case` yang dilewati, dan akhirnya berisi
-`'Tiga'`.
+**Output:**
+
+```
+Good job!
+Well done!
+Keep trying!
+```
+
+**Penjelasan:**
+
+- Setelah case `"B"` cocok, kode terus berjalan ke case `"C"` dan `default`,
+  karena tidak ada `break`.
+
+#### **Kapan fall-through berguna?**
+
+Jika fall-through diperlukan, biasanya diberi komentar untuk menunjukkan bahwa
+itu disengaja:
+
+```javascript
+switch (grade) {
+  case "A": // sama seperti logika OR => (grade === "A" || grade === "B)
+  case "B":
+    console.log("Great job!"); // Fall-through intentional
+    break;
+  case "C":
+    console.log("Good effort!");
+    break;
+  default:
+    console.log("Keep working hard!");
+}
+```
+
+Di sini, case `"A"` dan `"B"` berbagi logika yang sama.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## **Perbedaan `switch-case` dan `if...else`**
 
-Dalam JavaScript, baik `switch-case` maupun `if...else` adalah struktur kontrol
-percabangan yang digunakan untuk memeriksa kondisi dan mengeksekusi blok kode
-tertentu. Meskipun keduanya berfungsi untuk tujuan yang sama, ada beberapa
-perbedaan penting dalam cara mereka bekerja dan kapan sebaiknya digunakan.
-Berikut adalah penjelasan tentang perbedaan utama antara keduanya:
+Dalam JavaScript, baik `switch` statement maupun `if...else if` digunakan untuk
+mengontrol alur program berdasarkan kondisi tertentu, namun ada beberapa
+perbedaan dalam penggunaannya:
 
-### 1. Penggunaan yang Sesuai:
+### 1. Switch statement
 
-- **`switch-case`:** Digunakan ketika ada banyak kondisi yang harus diuji
-  terhadap nilai yang sama, misalnya untuk memeriksa nilai dari sebuah variabel
-  yang dapat memiliki banyak kemungkinan. Biasanya digunakan jika kita perlu
-  memeriksa beberapa nilai konstan atau enumerasi (seperti hari, bulan, pilihan
-  menu, dll.).
-- **`if...else`:** Digunakan untuk menguji kondisi yang lebih kompleks,
-  misalnya ekspresi logika yang melibatkan lebih dari satu kondisi (misalnya
-  kombinasi `AND` atau `OR`), kondisi yang tidak hanya membandingkan nilai
-  tunggal, atau untuk kasus di mana lebih dari satu kondisi perlu diuji dalam
-  urutan tertentu.
+**Tujuan:** `switch` digunakan untuk memeriksa satu nilai terhadap beberapa
+kondisi berbeda.
 
-### 2. Sintaks dan Struktur:
+**Sintaks:**
 
-- **`switch-case`** memiliki sintaks yang lebih terstruktur, dengan `case` yang
-  memeriksa nilai dari ekspresi yang diberikan, dan `default` untuk menangani
-  kasus yang tidak cocok.
+```javascript
+switch (expression) {
+  case value1:
+    // code block
+    break;
+  case value2:
+    // code block
+    break;
+  default:
+  // code block
+}
+```
 
-  ```javascript
-  switch (ekspresi) {
-    case nilai1:
-      // Blok kode
-      break;
-    case nilai2:
-      // Blok kode
-      break;
-    default:
-    // Blok kode jika tidak ada yang cocok
-  }
-  ```
+**Cara Kerja:**
 
-- **`if...else`** memiliki struktur yang lebih fleksibel, dapat digunakan untuk
-  mengevaluasi ekspresi kompleks dan kondisi boolean.
+- Mengevaluasi _expression_ dan mencocokkannya dengan setiap `case`.
+- Jika cocok, maka kode dalam blok `case` tersebut akan dijalankan.
+- `break` digunakan untuk menghentikan eksekusi setelah ditemukan kecocokan.
+- Jika tidak ada kecocokan, blok `default` akan dieksekusi (jika ada).
 
-  ```javascript
-  if (kondisi1) {
-    // Blok kode jika kondisi1 true
-  } else if (kondisi2) {
-    // Blok kode jika kondisi2 true
-  } else {
-    // Blok kode jika tidak ada kondisi yang benar
-  }
-  ```
+**Keuntungan:** Cocok untuk memilih satu dari banyak nilai yang berbeda
+(misalnya, saat memilih dari beberapa nilai konstanta).
 
 **[⬆ back to top](#table-of-contents)**
 
-### 3. Kemampuan Menguji Kondisi:
+### 2. If...else if statement
 
-- **`switch-case`** hanya cocok untuk membandingkan nilai ekspresi terhadap
-  beberapa nilai tetap (konstan). Biasanya, `switch` bekerja dengan tipe data
-  primitif (seperti `number`, `string`, `boolean`), dan pembandingannya adalah
-  pemeriksaan ketat (`===`).
-- **`if...else`** lebih fleksibel karena bisa menguji kondisi yang lebih
-  kompleks, termasuk ekspresi logika seperti:
+**Tujuan:** `if...else if` digunakan untuk mengevaluasi serangkaian kondisi
+yang berbeda secara berurutan.
 
-  - Kombinasi kondisi menggunakan `&&` (AND) atau `||` (OR).
-  - Membandingkan lebih dari satu variabel atau jenis data yang berbeda.
+**Sintaks:**
 
-  Contoh penggunaan dengan ekspresi logika:
+```javascript
+if (condition1) {
+  // code block
+} else if (condition2) {
+  // code block
+} else {
+  // code block
+}
+```
 
-  ```javascript
-  if (x > 10 && y < 5) {
-    // Eksekusi jika kedua kondisi benar
-  }
-  ```
+**Cara Kerja:**
 
-### 4. Performance (Kinerja):
+- Mengevaluasi `condition1`, jika benar maka menjalankan blok kode di dalamnya.
+- Jika tidak, melanjutkan untuk mengevaluasi kondisi berikutnya (yaitu
+  `condition2`, `condition3`, dll).
+- Jika tidak ada kondisi yang benar, bagian `else` yang terakhir (jika ada)
+  akan dieksekusi.
 
-- **`switch-case`:** Untuk jumlah kondisi yang sangat besar, `switch` mungkin
-  lebih efisien karena JavaScript bisa mengoptimalkan struktur `switch` untuk
-  melakukan pencarian yang lebih cepat (terutama untuk nilai yang kontinu atau
-  dalam bentuk enumerasi). Namun, ini hanya terasa signifikan pada kasus dengan
-  banyak kondisi.
-- **`if...else`:** Dalam kasus percabangan dengan banyak kondisi, `if...else`
-  mungkin sedikit kurang efisien karena kondisi akan dievaluasi satu per satu
-  dari atas ke bawah hingga ditemukan yang benar. Namun, perbedaan kinerjanya
-  tidak signifikan untuk kebanyakan aplikasi kecil.
+**Keuntungan:** Lebih fleksibel karena kondisi yang dibandingkan bisa lebih
+kompleks, seperti perbandingan lebih dari satu variabel atau operasi logika
+yang lebih rumit.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 5. Fall-through (Jika tidak ada `break`):
+### Perbedaan utama
 
-- **`switch-case`:** Salah satu fitur khas `switch-case` adalah
-  _fall-through_. Jika tidak ada `break`, maka kode akan "terjatuh" ke dalam
-  `case` berikutnya, meskipun nilai `case` berikutnya tidak sesuai. Ini bisa
-  menjadi fitur yang berguna dalam beberapa situasi, tetapi jika tidak
-  hati-hati, bisa menyebabkan bug.
+1. **Struktur:**
 
-  ```javascript
-  let angka = 2;
-  switch (angka) {
-    case 1:
-      console.log("Satu");
-    case 2:
-      console.log("Dua");
-    case 3:
-      console.log("Tiga");
-  }
-  // Output: Dua, Tiga (karena tidak ada break)
-  ```
+   - `switch` memeriksa satu ekspresi terhadap beberapa nilai yang ditentukan.
+   - `if...else if` membandingkan beberapa kondisi atau ekspresi yang berbeda,
+     masing-masing bisa lebih kompleks.
 
-- **`if...else`:** Tidak ada konsep _fall-through_ dalam `if...else`. Setiap
-  kondisi hanya diuji sekali, dan setelah kondisi yang cocok ditemukan,
-  eksekusi berhenti.
+2. **Kinerja:**
 
-### 6. Kapan Menggunakan `switch-case` vs `if...else`:
+   - `switch` cenderung lebih efisien jika dibandingkan dengan banyaknya
+     kondisi dalam `if...else if`, terutama jika ada banyak pilihan yang harus
+     diperiksa.
 
-- Gunakan **`switch-case`:**
+3. **Fleksibilitas:**
 
-  - Ketika Anda memiliki banyak kondisi yang perlu diuji terhadap nilai yang
-    sama (misalnya, membandingkan nilai `bulan`, `hari`, atau `status`).
-  - Ketika nilai-nilai yang diuji bersifat tetap dan konstan (misalnya angka
-    atau string).
-  - Ketika lebih mudah untuk membaca dan mengelola banyak kondisi dibandingkan
-    dengan banyak `if-else`.
-
-- Gunakan **`if...else`:**
-  - Ketika kondisi lebih kompleks atau melibatkan kombinasi ekspresi logika
-    (misalnya `x > 10 && y < 5`).
-  - Ketika Anda perlu melakukan perbandingan atau evaluasi terhadap berbagai
-    jenis data atau kondisi.
-  - Ketika logika percabangan lebih dinamis, seperti memeriksa rentang nilai
-    atau kondisi yang lebih kompleks.
+   - `if...else if` lebih fleksibel karena memungkinkan evaluasi kondisi yang
+     lebih rumit (misalnya perbandingan lebih dari satu variabel atau
+     penggunaan operator logika).
+   - `switch` lebih terbatas pada pencocokan nilai tunggal.
 
 **[⬆ back to top](#table-of-contents)**
 
-### Contoh Perbandingan:
+### Contoh:
 
-1. **`switch-case` untuk Pilihan Menu:**
+#### **Menggunakan `switch`:**
 
-   ```javascript
-   let menu = 2;
-   switch (menu) {
-     case 1:
-       console.log("Pilihan 1");
-       break;
-     case 2:
-       console.log("Pilihan 2");
-       break;
-     case 3:
-       console.log("Pilihan 3");
-       break;
-     default:
-       console.log("Pilihan tidak valid");
-   }
-   ```
+```javascript
+let fruit = "apple";
 
-2. **`if...else` untuk Logika yang Lebih Kompleks:**
+switch (fruit) {
+  case "apple":
+    console.log("This is an apple.");
+    break;
+  case "banana":
+    console.log("This is a banana.");
+    break;
+  default:
+    console.log("Unknown fruit.");
+}
+```
 
-   ```javascript
-   let usia = 25;
-   let status = "pelajar";
+#### **Menggunakan `if...else if`:**
 
-   if (usia >= 18 && status === "pelajar") {
-     console.log("Dewasa pelajar");
-   } else if (usia < 18) {
-     console.log("Anak-anak");
-   } else {
-     console.log("Dewasa");
-   }
-   ```
+```javascript
+let fruit = "apple";
 
-### Ringkasan Perbedaan:
-
-| **Fitur**        | **`switch-case`**                                     | **`if...else`**                          |
-| ---------------- | ----------------------------------------------------- | ---------------------------------------- |
-| **Penggunaan**   | Banyak kondisi dengan nilai tetap                     | Kondisi lebih kompleks dan dinamis       |
-| **Sintaks**      | Lebih terstruktur                                     | Lebih fleksibel                          |
-| **Kondisi**      | Membandingkan satu ekspresi dengan banyak nilai tetap | Dapat menangani ekspresi logika kompleks |
-| **Efisiensi**    | Lebih efisien untuk banyak kondisi tetap              | Bisa lebih lambat pada banyak kondisi    |
-| **Fall-through** | Ada jika tidak ada `break`                            | Tidak ada                                |
-
-Secara keseluruhan, `switch-case` lebih cocok untuk kasus yang lebih sederhana
-dengan banyak nilai tetap, sementara `if...else` lebih fleksibel dan cocok
-untuk kondisi yang lebih kompleks atau melibatkan ekspresi logika.
+if (fruit === "apple") {
+  console.log("This is an apple.");
+} else if (fruit === "banana") {
+  console.log("This is a banana.");
+} else {
+  console.log("Unknown fruit.");
+}
+```
 
 **[⬆ back to top](#table-of-contents)**
 
 ## **Nested Conditional**
 
-**Nested Conditional** dalam JavaScript merujuk pada penggunaan **percabangan**
-di dalam percabangan lainnya, baik itu menggunakan `if...else` ataupun
-`switch-case`. Dalam hal ini, sebuah `if` (atau `else`) dapat berisi pernyataan
-`if` lainnya, dan kondisi ini akan dievaluasi secara bertahap. Dengan
-menggunakan _nested_ (bersarang), kita bisa membuat keputusan lebih spesifik
-berdasarkan beberapa kondisi yang lebih kompleks.
+**Nested Conditional** dalam JavaScript mengacu pada penggunaan conditional
+statement di dalam conditional statement lainnya. Ini digunakan ketika kita
+perlu membuat keputusan lebih lanjut setelah mengevaluasi kondisi pertama.
+Conditional statement dapat berupa `if`, `else if`, atau `else`, yang ditulis
+di dalam satu sama lain.
 
-### Struktur nested conditional:
-
-1. **Nested `if...else`:**
+### Sintaks nested conditional:
 
 ```javascript
-if (kondisi1) {
-  if (kondisi2) {
-    // Blok kode jika kondisi1 dan kondisi2 terpenuhi
+if (condition1) {
+  // aksi jika condition1 true
+  if (condition2) {
+    // aksi jika condition2 true
   } else {
-    // Blok kode jika kondisi1 terpenuhi dan kondisi2 tidak
+    // aksi jika condition2 false
   }
 } else {
-  // Blok kode jika kondisi1 tidak terpenuhi
+  // aksi jika condition1 false
 }
 ```
 
-2. **Nested `switch-case`:**
+**[⬆ back to top](#table-of-contents)**
+
+### Contoh implementasi nested conditional dalam dunia nyata:
+
+Misalkan, kita ingin menentukan apakah seorang siswa dapat mengikuti ujian
+berdasarkan dua kriteria:
+
+1. Jika usia siswa lebih dari 18 tahun.
+2. Jika siswa telah menyelesaikan kursus tertentu.
+
+Kita bisa menggunakan nested conditional untuk memeriksa kedua kondisi
+tersebut.
+
+**Implementasi:**
 
 ```javascript
-switch (nilai1) {
-  case "A":
-    switch (nilai2) {
-      case "X":
-        // Blok kode jika nilai1 == 'A' dan nilai2 == 'X'
-        break;
-      case "Y":
-        // Blok kode jika nilai1 == 'A' dan nilai2 == 'Y'
-        break;
-      default:
-      // Blok kode jika nilai1 == 'A' dan nilai2 tidak sesuai
-    }
-    break;
-  case "B":
-    // Blok kode untuk nilai1 == 'B'
-    break;
-  default:
-  // Blok kode untuk nilai1 yang tidak cocok
+let age = 20;
+let isCoursefinished = true;
+
+if (age > 18) {
+  // Jika age lebih dari 18 tahun
+  if (isCoursefinished) {
+    console.log("Siswa dapat mengikuti ujian.");
+  } else {
+    console.log(
+      "Siswa belum menyelesaikan kursus, tidak dapat mengikuti ujian."
+    );
+  }
+} else {
+  console.log("Siswa belum cukup umur untuk mengikuti ujian.");
 }
 ```
 
 **Penjelasan:**
 
-- **Nested `if...else`**: Dalam struktur ini, kita menulis sebuah `if` atau
-  `else` di dalam blok lainnya. Hal ini digunakan untuk kondisi yang lebih
-  kompleks di mana keputusan harus didasarkan pada beberapa faktor sekaligus.
-- **Nested `switch-case`**: Dalam struktur ini, kita menulis sebuah `switch`
-  di dalam `switch` lainnya untuk memeriksa kondisi yang lebih mendetail. Ini
-  berguna jika kita perlu membuat keputusan berdasarkan beberapa tingkat nilai
-  yang berbeda.
-
-**[⬆ back to top](#table-of-contents)**
-
-### Contoh penggunaan nested conditional:
-
-#### 1. **Nested `if...else`**: Mengecek usia dan status pekerjaan
-
-Misalkan kita ingin memeriksa dua kondisi: usia seseorang dan status pekerjaan
-mereka (apakah mahasiswa atau pekerja).
-
-```javascript
-let usia = 25;
-let statusPekerjaan = "mahasiswa";
-
-if (usia >= 18) {
-  if (statusPekerjaan === "mahasiswa") {
-    console.log("Dewasa, mahasiswa");
-  } else {
-    console.log("Dewasa, pekerja");
-  }
-} else {
-  console.log("Anak-anak");
-}
-```
-
-Pada contoh ini:
-
-- Pertama, kita memeriksa apakah usia lebih besar atau sama dengan 18.
-- Jika kondisi pertama benar, kita kemudian memeriksa status pekerjaan.
-- Jika status pekerjaan adalah "mahasiswa", maka akan muncul pesan "Dewasa,
-  mahasiswa".
-- Jika tidak, berarti status pekerjaan adalah "pekerja", dan akan muncul pesan
-  "Dewasa, pekerja".
-- Jika usia kurang dari 18, maka akan muncul pesan "Anak-anak".
-
-**[⬆ back to top](#table-of-contents)**
-
-#### 2. **Nested `switch-case`**: Memeriksa pilihan menu dan tipe pengguna
-
-Misalkan kita memiliki menu dengan beberapa pilihan, dan kita ingin memberikan
-akses berbeda berdasarkan jenis pengguna.
-
-```javascript
-let pilihan = 2;
-let tipePengguna = "premium";
-
-switch (pilihan) {
-  case 1:
-    console.log("Pilihan menu 1");
-    break;
-  case 2:
-    switch (tipePengguna) {
-      case "premium":
-        console.log("Pilihan menu 2 untuk pengguna premium");
-        break;
-      case "reguler":
-        console.log("Pilihan menu 2 untuk pengguna reguler");
-        break;
-      default:
-        console.log("Tipe pengguna tidak dikenal");
-    }
-    break;
-  case 3:
-    console.log("Pilihan menu 3");
-    break;
-  default:
-    console.log("Pilihan tidak valid");
-}
-```
-
-Pada contoh ini:
-
-- Pertama, kita memeriksa nilai dari `pilihan`. Jika `pilihan` adalah 2, maka
-  program akan melanjutkan untuk memeriksa `tipePengguna`.
-- Jika `tipePengguna` adalah `'premium'`, maka akan menampilkan pesan untuk
-  pengguna premium. Jika `tipePengguna` adalah `'reguler'`, maka menampilkan
-  pesan untuk pengguna reguler.
-- Jika `tipePengguna` tidak dikenali, maka akan muncul pesan "Tipe pengguna
-  tidak dikenal".
-
-**[⬆ back to top](#table-of-contents)**
-
-#### 3. **Nested Ternary Operator** (Operator Kondisional)
-
-Selain menggunakan `if...else` atau `switch-case`, JavaScript juga mendukung
-operator kondisional (ternary operator) yang dapat digunakan secara _nested_
-untuk membuat percabangan lebih singkat. Formatnya adalah:
-
-```
-kondisi ? nilaiJikaTrue : nilaiJikaFalse;
-```
-
-Berikut adalah contoh penggunaan _nested ternary operator_ untuk memeriksa usia
-dan status pekerjaan:
-
-```javascript
-let usia = 25;
-let status = "mahasiswa";
-
-let hasil =
-  usia >= 18
-    ? status === "mahasiswa"
-      ? "Dewasa, mahasiswa"
-      : "Dewasa, pekerja"
-    : "Anak-anak";
-
-console.log(hasil); // Output: Dewasa, mahasiswa
-```
-
-Penjelasan:
-
-- Jika `usia >= 18` maka kita memeriksa kondisi `status`.
-- Jika `status === 'mahasiswa'`, maka hasilnya adalah `'Dewasa, mahasiswa'`.
-  Jika tidak, maka hasilnya adalah `'Dewasa, pekerja'`.
-- Jika `usia < 18`, maka hasilnya adalah `'Anak-anak'`.
-
-**[⬆ back to top](#table-of-contents)**
-
-### Kapan menggunakan nested conditional?
-
-- **Menggunakan Nested `if...else`:**
-  - Jika kondisi yang perlu diuji sangat kompleks dan melibatkan banyak langkah
-    logika.
-  - Jika Anda perlu memeriksa beberapa kondisi bertingkat, misalnya usia dan
-    status pekerjaan dalam satu keputusan.
-- **Menggunakan Nested `switch-case`:**
-
-  - Jika Anda memiliki beberapa pilihan dan dalam setiap pilihan ada pilihan
-    lebih lanjut berdasarkan nilai lain.
-  - Berguna saat memeriksa banyak nilai yang berbeda pada beberapa variabel.
-
-- **Menggunakan Nested Ternary Operator**:
-  - Ketika Anda ingin membuat kode lebih ringkas dan lebih elegan dalam kasus
-    dengan kondisi yang sederhana.
-  - Biasanya untuk keputusan biner atau keputusan sederhana yang membutuhkan
-    _ternary operator_ untuk menyederhanakan kode.
-
-### Kelemahan nested conditional:
-
-- **Keterbacaan**: Penggunaan nested conditional dapat membuat kode lebih sulit
-  dibaca dan di-debug, terutama jika kondisi bertingkatnya banyak.
-- **Kebutuhan untuk pemeliharaan**: Jika logika semakin kompleks, nested
-  conditional bisa membuat perubahan kode menjadi lebih rumit.
-
-Nested conditional memungkinkan Anda menangani logika yang lebih rumit, tetapi perlu
-digunakan dengan hati-hati agar kode tetap mudah dibaca dan dipelihara.
+1. **Kondisi pertama** (`age > 18`) memeriksa apakah usia siswa lebih dari 18
+   tahun.
+2. **Kondisi kedua** (`isCoursefinished`) memeriksa apakah siswa telah
+   menyelesaikan kursus setelah memastikan usia siswa lebih dari 18 tahun.
+3. Jika salah satu kondisi tidak terpenuhi, maka pesan yang relevan akan
+   ditampilkan.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## **Perbedaan `if...if` dan `if...else`**
 
-Dalam JavaScript, pernyataan `if...if` dan `if...else` digunakan untuk
-pengkondisian, namun keduanya memiliki perbedaan dalam cara mereka mengatur
-jalannya program berdasarkan kondisi yang diberikan.
+Dalam JavaScript, `if-if` dan `if-else` adalah dua struktur pengkondisian yang
+digunakan untuk mengontrol alur eksekusi program berdasarkan kondisi tertentu,
+tetapi ada perbedaan cara penggunaannya.
 
-### 1. `if...if`
+### 1. `if-if`
 
-Pernyataan `if...if` digunakan untuk memeriksa beberapa kondisi secara
-terpisah. Jika suatu kondisi `if` terpenuhi, maka blok kode yang terkait
-dengan kondisi itu akan dieksekusi. Jika tidak, pemeriksaan akan diteruskan
-ke kondisi berikutnya (jika ada). Tidak ada hubungan saling mengikat antara
-kondisi-kondisi yang satu dengan yang lainnya.
+`if-if` adalah penggunaan beberapa pernyataan `if` secara terpisah tanpa
+adanya pasangan `else`. Setiap `if` akan dievaluasi secara independen satu
+sama lain.
 
-**Contoh `if...if`:**
+**Contoh:**
 
 ```javascript
-let nilai = 80;
-
-if (nilai >= 90) {
-  console.log("A");
+let x = 10;
+if (x > 5) {
+  console.log("x lebih besar dari 5");
 }
-if (nilai >= 80 && nilai < 90) {
-  console.log("B");
-}
-if (nilai < 80) {
-  console.log("C");
+if (x < 20) {
+  console.log("x lebih kecil dari 20");
 }
 ```
 
-**Penjelasan:**
-
-- Pada contoh di atas, ada tiga kondisi yang diperiksa satu per satu.
-- Jika nilai adalah 85, maka hanya kondisi kedua yang terpenuhi dan
-  menampilkan "B".
-- Setiap kondisi diperiksa secara terpisah, tanpa mempengaruhi kondisi lainnya.
+Pada contoh ini, kedua kondisi (`x > 5` dan `x < 20`) akan dievaluasi, dan
+jika kondisi tersebut benar, kedua pesan akan dicetak. Setiap `if` dievaluasi
+terpisah tanpa saling bergantung.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 2. `if...else`
+### 2. `if-else`
 
-Pernyataan `if...else` digunakan untuk memeriksa kondisi yang saling
-bertentangan (mutually exclusive). Jika kondisi pertama tidak terpenuhi, maka
-blok kode dalam bagian `else` akan dieksekusi. Hanya satu blok yang akan
-dijalankan, tergantung pada apakah kondisi `if` pertama benar atau tidak.
+`if-else` adalah pasangan struktur kondisi di mana satu kondisi (`if`)
+dievaluasi terlebih dahulu. Jika kondisi tersebut benar (`true`), blok kode
+dalam `if` dieksekusi. Namun, jika kondisi tersebut salah (`false`), blok kode
+dalam `else` dieksekusi.
 
-**Contoh `if...else`:**
+**Contoh:**
 
 ```javascript
-let nilai = 80;
-
-if (nilai >= 90) {
-  console.log("A");
-} else if (nilai >= 80) {
-  console.log("B");
+let x = 10;
+if (x > 5) {
+  console.log("x lebih besar dari 5");
 } else {
-  console.log("C");
+  console.log("x tidak lebih besar dari 5");
 }
 ```
 
-**Penjelasan:**
-
-- Pada contoh ini, hanya satu kondisi yang dieksekusi.
-- Jika nilai 80, maka kondisi `else if (nilai >= 80)` akan terpenuhi dan
-  menampilkan "B".
-- Setelah kondisi pertama atau kedua terpenuhi, pemeriksaan lainnya tidak
-  dilakukan.
+Pada contoh ini, jika kondisi `x > 5` true, maka hanya blok `if` yang
+dieksekusi. Jika kondisi tersebut false, blok `else` yang akan dieksekusi.
 
 ### Perbedaan utama:
 
-- **`if...if`**: Semua kondisi diperiksa secara terpisah, dan lebih dari satu
-  kondisi bisa dieksekusi.
-- **`if...else`**: Memeriksa kondisi pertama, dan jika tidak terpenuhi, kondisi
-  berikutnya dalam `else if` atau `else` akan diperiksa. Hanya satu blok kode
-  yang dieksekusi.
+- `if-if`: Kondisi dievaluasi secara terpisah, dan lebih dari satu kondisi bisa
+  dieksekusi jika true.
+- `if-else`: Hanya satu dari dua blok (if atau else) yang dieksekusi
+  berdasarkan apakah kondisi `if` true atau false.
 
-Dengan demikian, `if...else` digunakan ketika Anda ingin memastikan hanya satu
-kondisi yang dieksekusi, sedangkan `if...if` lebih cocok untuk memeriksa
-beberapa kondisi yang tidak saling bergantung satu sama lain.
+Dengan kata lain, `if-if` memungkinkan untuk mengevaluasi beberapa kondisi
+secara independen, sementara `if-else` memberikan pilihan eksklusif antara dua
+kemungkinan blok kode.
+
+**[⬆ back to top](#table-of-contents)**
+
+## Resources
+
+- [Ternary operator (`? :`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator)
+- [Logical OR assignment (`||=`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment)
+- [Nullish coalescing operator (`??`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+- [Optional chaining (`?.`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+- [Expressions and operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_operators)
 
 **[⬆ back to top](#table-of-contents)**
