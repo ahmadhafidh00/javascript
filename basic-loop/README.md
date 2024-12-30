@@ -1,443 +1,535 @@
 # Basic Loop
 
+Dalam pemrograman, loop atau perulangan adalah sebuah mekanisme yang
+memungkinkan kita untuk mengeksekusi sebuah blok kode secara berulang-ulang,
+selama suatu kondisi tertentu terpenuhi. Dengan kata lain, kita tidak perlu
+menulis baris kode yang sama jika kita ingin melakukan tugas yang sama berulang
+kali.
+
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Perbedaan Antara `while` dan `do...while`](#perbedaan-antara-while-dan-dowhile)
-3. [Flag Variables](#flag-variables)
-4. **Practice**
+1. [`for` Loop](#for-loop)
+2. [`while` Loop](#while-loop)
+3. [Perbedaan Antara `while loop` dan `do...while loop`](#perbedaan-antara-while-loop-dan-dowhile-loop)
+4. [Flag Variable](#flag-variable)
+5. **Practice**
    - [filtered-word](1.js)
    - [reversed-word](2.js)
    - [replaced-character](3.js)
-5. [Resources](#resources)
+6. [Resources](#resources)
 
-## Introduction
+## **`for` Loop**
 
-Di dalam JavaScript, terdapat tiga jenis loop yang sering digunakan untuk
-mengulang suatu kode atau blok perintah berulang kali. Ketiga loop tersebut
-adalah `for...loop`, `while...loop`, dan `do...while loop`. Masing-masing
-memiliki cara penggunaan yang berbeda, dan cocok digunakan dalam situasi
-tertentu.
+### Apa itu `for loop`?
 
-### 1. `for...loop`
+`for loop` adalah struktur perulangan (looping) dalam JavaScript yang
+digunakan untuk menjalankan serangkaian perintah (statements) berulang kali
+hingga kondisi tertentu terpenuhi. `for loop` sering digunakan ketika jumlah
+iterasi (perulangan) sudah diketahui sebelumnya.
 
-Loop ini digunakan ketika jumlah iterasi (pengulangan) sudah diketahui
-sebelumnya. Ini adalah jenis loop yang paling sering digunakan ketika kita
-ingin mengulang sebuah aksi berdasarkan kondisi tertentu yang bisa dihitung.
+Struktur dasar `for loop` terdiri dari tiga bagian yang dipisahkan oleh titik
+koma (`;`) di dalam tanda kurung `()`:
 
-**Sintaks:**
+1. **Inisialisasi (Initialization):** Bagian ini digunakan untuk
+   mendeklarasikan dan menginisialisasi variabel _counter_ yang akan mengontrol
+   perulangan. Bagian ini dieksekusi hanya sekali sebelum perulangan dimulai.
+2. **Kondisi (Condition):** Bagian ini berisi ekspresi boolean yang dievaluasi
+   sebelum setiap iterasi. Jika kondisi bernilai `true`, blok kode di dalam
+   `for loop` akan dieksekusi. Jika kondisi bernilai `false`, perulangan akan
+   berhenti.
+3. **Increment/Decrement (Update):** Bagian ini digunakan untuk memperbarui
+   nilai variabel _counter_ setelah setiap iterasi. Biasanya, nilai variabel
+   _counter_ dinaikkan (increment) atau diturunkan (decrement).
 
-```javascript
-for (initialization; condition; increment / decrement) {
-  // kode yang akan dijalankan setiap kali loop berjalan
-}
-```
-
-**Penjelasan:**
-
-- **Initialization**: Inisialisasi variabel yang digunakan untuk mengontrol
-  loop.
-- **Condition**: Kondisi yang harus dipenuhi agar loop terus berjalan. Jika
-  kondisi ini `false`, loop akan berhenti.
-- **Increment/Decrement**: Operasi yang dilakukan setelah setiap iterasi untuk
-  memperbarui variabel loop.
-
-**Contoh:**
+**Sintaks `for loop`:**
 
 ```javascript
-for (let i = 0; i < 5; i++) {
-  console.log(i); // Akan mencetak angka 0 sampai 4
+for (inisialisasi; kondisi; increment / decrement) {
+  // Blok kode yang akan dieksekusi berulang kali
 }
 ```
-
-**Penjelasan:**
-
-- Variabel `i` dimulai dari 0.
-- Loop akan terus berjalan selama `i < 5`.
-- Setelah setiap iterasi, nilai `i` akan bertambah 1.
 
 **[⬆ back to top](#table-of-contents)**
 
-### 2. `while...loop`
+### Contoh penggunaan dalam kasus dunia nyata
 
-Loop ini digunakan ketika kita tidak tahu sebelumnya berapa banyak iterasi
-yang diperlukan, tetapi kita memiliki kondisi yang harus dipenuhi agar loop
-berlanjut. Loop ini akan terus berjalan selama kondisi yang diberikan bernilai
-`true`.
+#### 1. **Menampilkan daftar item:**
 
-**Sintaks:**
+Misalkan Anda memiliki daftar nama buah dalam sebuah array, dan Anda ingin
+menampilkan setiap nama buah tersebut di konsol. Anda dapat menggunakan
+`for loop` untuk melakukan iterasi melalui array dan menampilkan setiap
+elemennya.
 
 ```javascript
-while (condition) {
-  // kode yang akan dijalankan selama kondisi bernilai true
+const fruits = ["Apel", "Jeruk", "Mangga", "Pisang"];
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log("Nama buah: " + fruits[i]);
 }
+
+// Output:
+// Nama buah: Apel
+// Nama buah: Jeruk
+// Nama buah: Mangga
+// Nama buah: Pisang
+```
+
+Dalam contoh ini:
+
+- `let i = 0;` menginisialisasi variabel _counter_ `i` dengan nilai 0.
+- `i < fruits.length;` adalah kondisi yang memastikan perulangan terus berjalan
+  selama `i` kurang dari panjang array `fruits`.
+- `i++;` menaikkan nilai `i` setelah setiap iterasi.
+
+#### 2. **Menghitung total harga:**
+
+Misalkan Anda memiliki daftar harga barang dalam sebuah array, dan Anda ingin
+menghitung total harga semua barang. Anda dapat menggunakan `for loop` untuk
+menjumlahkan setiap harga.
+
+```javascript
+const prices = [10000, 5000, 20000, 15000];
+let totalPrice = 0;
+
+for (let i = 0; i < prices.length; i++) {
+  totalPrice += prices[i];
+}
+
+console.log("Total harga: " + totalPrice); // Output: Total harga: 50000
+```
+
+Dalam contoh ini, `totalPrice` diinisialisasi dengan 0, dan kemudian setiap
+harga dalam array `prices` ditambahkan ke `totalPrice` dalam setiap iterasi.
+
+**[⬆ back to top](#table-of-contents)**
+
+## **`while` Loop**
+
+### Apa itu `while loop`?
+
+`while loop` adalah salah satu jenis perulangan dalam JavaScript yang digunakan
+untuk mengeksekusi blok kode secara berulang-ulang selama kondisi yang
+diberikan bernilai `true`. Perulangan ini akan terus berjalan sampai kondisi
+tersebut bernilai `false`.
+
+Berikut adalah sintaks dasar dari `while loop`:
+
+```javascript
+while (kondisi) {
+  // kode yang akan dieksekusi selama kondisi bernilai true
+}
+```
+
+**Cara kerja `while loop`:**
+
+1.  **Pemeriksaan Kondisi:** Sebelum setiap iterasi, JavaScript memeriksa
+    apakah `kondisi` bernilai `true` atau `false`.
+2.  **Eksekusi Kode:** Jika `kondisi` bernilai `true`, blok kode di dalam
+    kurung kurawal `{}` akan dieksekusi.
+3.  **Pengulangan:** Setelah blok kode dieksekusi, JavaScript kembali ke
+    langkah 1 untuk memeriksa `kondisi` lagi. Proses ini berulang sampai
+    `kondisi` bernilai `false`.
+4.  **Berhenti:** Ketika `kondisi` bernilai `false`, perulangan berhenti dan
+    program melanjutkan ke baris kode setelah blok `while`.
+
+**[⬆ back to top](#table-of-contents)**
+
+### Contoh penggunaan
+
+#### 1. **Menampilkan angka dari 1 hingga 5**
+
+```javascript
+let i = 1;
+
+while (i <= 5) {
+  console.log(i);
+  i++; // penting untuk menghentikan loop, jika tidak akan terjadi infinite loop
+}
+
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
 ```
 
 **Penjelasan:**
 
-- **Condition**: Kondisi yang dicek sebelum setiap iterasi. Jika kondisi ini
-  `true`, kode dalam loop akan dijalankan. Jika `false`, loop akan berhenti.
+1.  Kita inisialisasi variabel `i` dengan nilai 1.
+2.  `while (i <= 5)`: Loop akan terus berjalan selama `i` kurang dari atau
+    sama dengan 5.
+3.  `console.log(i)`: Menampilkan nilai `i` ke konsol.
+4.  `i++`: Menaikkan nilai `i` setiap kali loop dijalankan. Ini sangat penting
+    untuk mencegah _infinite loop_ (loop tak terbatas). Jika kita lupa
+    menambahkan `i++`, kondisi `i <= 5` akan selalu benar, dan loop tidak akan
+    pernah berhenti.
 
-**Contoh:**
+#### 2. **Menjumlahkan angka dari 1 hingga 10**
 
 ```javascript
-let i = 0;
-while (i < 5) {
-  console.log(i); // Akan mencetak angka 0 sampai 4
-  i++;
+let angka = 1;
+let total = 0;
+
+while (angka <= 10) {
+  total += angka; // total = total + angka;
+  angka++;
 }
+
+console.log("Total penjumlahan dari 1 hingga 10 adalah: " + total);
+
+// Output:
+// Total penjumlahan dari 1 hingga 10 adalah: 55
 ```
 
 **Penjelasan:**
 
-- Loop ini akan mencetak angka dari 0 sampai 4.
-- Variabel `i` dimulai dari 0 dan akan bertambah 1 di setiap iterasi hingga
-  kondisi `i < 5` menjadi `false`.
+1.  Kita inisialisasi `angka` dengan 1 dan `total` dengan 0.
+2.  Di dalam loop, kita menambahkan nilai `angka` ke `total` setiap kali loop
+    dijalankan.
+3.  `angka++` menaikkan nilai `angka` untuk iterasi selanjutnya.
 
-**[⬆ back to top](#table-of-contents)**
-
-### 3. `do...while loop`
-
-`do...while` mirip dengan `while...loop`, tetapi perbedaannya adalah bahwa
-kondisi untuk menghentikan loop dicek setelah kode di dalam loop dijalankan.
-Ini berarti kode di dalam loop akan selalu dijalankan setidaknya sekali,
-meskipun kondisi awalnya `false`.
-
-**Sintaks:**
+#### 3. **Menggunakan `break` untuk menghentikan loop lebih awal**
 
 ```javascript
-do {
-  // kode yang akan dijalankan setidaknya satu kali
-} while (condition);
+let j = 0;
+
+while (j < 10) {
+  if (j === 5) {
+    break; // menghentikan loop jika j sama dengan 5
+  }
+  console.log(j);
+  j++;
+}
+
+// Output:
+// 0
+// 1
+// 2
+// 3
+// 4
 ```
 
 **Penjelasan:**
 
-- **Kode di dalam blok `do`** selalu dijalankan sekali terlebih dahulu.
-- **Condition**: Kondisi yang dicek setelah setiap iterasi. Jika kondisi ini
-  `true`, loop akan terus berjalan. Jika `false`, loop akan berhenti.
+- Kata kunci `break` digunakan untuk keluar dari loop secara paksa, meskipun
+  kondisi loop masih `true`. Dalam contoh ini, loop akan berhenti ketika `j`
+  mencapai 5.
 
-**Contoh:**
+**Peringatan Penting: Infinite Loop**
 
-```javascript
-let i = 0;
-do {
-  console.log(i); // Akan mencetak angka 0 sampai 4
-  i++;
-} while (i < 5);
-```
-
-**Penjelasan:**
-
-- Variabel `i` dimulai dari 0.
-- Kode di dalam `do` dijalankan setidaknya sekali, meskipun kondisi `i < 5`
-  baru dicek setelah itu.
-
-### Perbandingan dan penggunaan:
-
-- **`for...loop`** lebih cocok digunakan ketika kita sudah tahu jumlah iterasi
-  atau kita ingin iterasi berdasarkan sebuah variabel yang dihitung.
-- **`while...loop`** lebih cocok digunakan jika kita tidak tahu berapa kali
-  loop perlu dijalankan dan ingin melanjutkan loop selama kondisi tertentu
-  masih terpenuhi.
-- **`do...while`** digunakan jika kita ingin memastikan kode di dalam loop
-  dieksekusi minimal sekali, terlepas dari apakah kondisi awalnya benar atau
-  tidak.
-
-Dengan memahami perbedaan ini, kita dapat memilih loop yang paling sesuai untuk
-situasi tertentu dalam pemrograman.
+Pastikan Anda selalu memiliki cara untuk menghentikan loop Anda. Jika kondisi
+loop selalu `true`, Anda akan terjebak dalam _infinite loop_, yang dapat
+menyebabkan browser atau program Anda membeku. Pastikan ada perubahan pada
+variabel yang digunakan dalam kondisi loop di dalam blok kode loop.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **Perbedaan Antara `while` dan `do...while`**
+## **Perbedaan Antara `while loop` dan `do...while loop`**
 
-Perbedaan utama antara **`while...loop`** dan **`do...while` loop** terletak
-pada **waktu pengecekan kondisi** dan **jumlah iterasi yang dijamin**.
+`while loop` dan `do...while loop` adalah dua jenis perulangan yang memiliki
+perbedaan dalam cara mereka mengevaluasi kondisi dan menjalankan blok kode.
+Berikut adalah penjelasan perbedaannya:
 
-### 1. `while...loop`
+### 1. `while loop`
 
-- **Pengecekan Kondisi Sebelum Eksekusi Kode**: Pada `while...loop`,
-  **kondisi diperiksa terlebih dahulu** sebelum kode di dalam loop dieksekusi.
-  Jika kondisi awalnya **sudah `false`**, maka kode di dalam loop
-  **tidak akan dijalankan sama sekali**.
-
-**Sintaks:**
-
-```javascript
-while (condition) {
-  // kode yang akan dijalankan selama kondisi true
-}
-```
-
-**Contoh:**
-
-```javascript
-let i = 5;
-while (i < 5) {
-  console.log(i); // Tidak ada output karena kondisi i < 5 sudah false
-  i++;
-}
-```
-
-- **Kapan Loop Berhenti?**: Loop berhenti ketika kondisi yang dievaluasi
-  menjadi `false`. Jika kondisi awalnya sudah `false`, maka loop
-  **tidak akan dijalankan sama sekali**.
-
-**[⬆ back to top](#table-of-contents)**
-
-### 2. `do...while` loop
-
-- **Pengecekan Kondisi Setelah Eksekusi Kode**: Pada `do...while loop`,
-  **kode di dalam blok `do` dijalankan terlebih dahulu** sebelum mengecek
-  kondisi. Artinya, **kode akan selalu dijalankan minimal sekali**, bahkan jika
-  kondisi awalnya `false`.
-
-**Sintaks:**
-
-```javascript
-do {
-  // kode yang akan dijalankan setidaknya sekali
-} while (condition);
-```
-
-**Contoh:**
-
-```javascript
-let i = 5;
-do {
-  console.log(i); // Akan mencetak 5 sekali
-  i++;
-} while (i < 5);
-```
-
-- **Kapan Loop Berhenti?**: Loop ini akan terus berjalan selama kondisi yang
-  dievaluasi setelah setiap iterasi masih `true`. Jika kondisi menjadi
-  `false`, loop akan berhenti. Namun, yang membedakan adalah bahwa kode dalam
-  `do` akan tetap **dijalankan setidaknya sekali**, meskipun kondisi awalnya
-  sudah `false`.
-
-### Perbandingan utama
-
-| Fitur                  | `while...loop`                                                                              | `do...while` loop                                                                       |
-| ---------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **Pengecekan Kondisi** | Sebelum eksekusi kode                                                                       | Setelah eksekusi kode                                                                   |
-| **Minimal Eksekusi**   | Bisa tidak dijalankan sama sekali jika kondisi awal sudah `false`                           | Selalu dijalankan minimal sekali, meskipun kondisi awalnya `false`                      |
-| **Penggunaan**         | Digunakan jika kita tidak tahu jumlah iterasi dan ingin mengulang selama kondisi terpenuhi. | Digunakan jika kita ingin memastikan blok kode dijalankan minimal sekali.               |
-| **Contoh Kasus**       | Mengulangi proses hingga kondisi tertentu tercapai.                                         | Menampilkan menu atau meminta input pengguna minimal sekali sebelum validasi dilakukan. |
-
-**[⬆ back to top](#table-of-contents)**
-
-### Contoh kasus:
-
-- **`while...loop`**: Misalkan kita ingin meminta input pengguna hingga mereka
-  memasukkan angka yang valid.
+- **Cara Kerja:** `while loop` memeriksa kondisi _terlebih dahulu_ sebelum
+  menjalankan blok kode di dalamnya. Jika kondisi bernilai `true`, maka blok
+  kode akan dieksekusi. Proses ini berulang selama kondisi masih `true`. Jika
+  kondisi awalnya sudah `false`, maka blok kode tidak akan dieksekusi sama
+  sekali.
+- **Sintaks:**
 
   ```javascript
-  let number;
-  while (isNaN(number)) {
-    number = prompt("Masukkan angka: ");
+  while (kondisi) {
+    // Blok kode yang akan dieksekusi
   }
-  alert("Angka yang valid: " + number);
   ```
 
-  Jika pengguna langsung memasukkan angka yang valid, loop tidak dijalankan.
+- **Contoh:**
 
-- **`do...while` loop**: Misalkan kita ingin menampilkan menu ke pengguna
-  setidaknya satu kali dan meminta konfirmasi untuk mengulang atau tidak.
   ```javascript
-  let repeat;
+  let i = 0;
+
+  while (i < 5) {
+    console.log(i);
+    i++;
+  }
+  // Output:
+  // 0
+  // 1
+  // 2
+  // 3
+  // 4
+  ```
+
+Dalam contoh ini, perulangan akan terus berjalan selama `i` kurang dari 5.
+Setelah `i` mencapai 5, kondisi `i < 5` menjadi `false`, dan perulangan berhenti.
+
+**[⬆ back to top](#table-of-contents)**
+
+### 2. `do...while loop`
+
+- **Cara Kerja:** `do while loop` menjalankan blok kode _sekali terlebih
+  dahulu_, kemudian baru memeriksa kondisi. Jika kondisi bernilai `true`, maka
+  blok kode akan dieksekusi lagi. Proses ini berulang selama kondisi masih
+  `true`. Perbedaan utamanya adalah blok kode di dalam `do while loop` pasti
+  akan dieksekusi minimal satu kali, bahkan jika kondisi awalnya `false`.
+- **Sintaks:**
+
+  ```javascript
   do {
-    repeat = confirm("Apakah Anda ingin melanjutkan?");
-  } while (repeat);
+    // Blok kode yang akan dieksekusi
+  } while (kondisi);
   ```
-  Loop ini selalu menampilkan menu konfirmasi minimal sekali, meskipun pengguna
-  langsung memilih untuk tidak melanjutkan.
 
-### Kesimpulan:
+- **Contoh:**
 
-- Gunakan **`while...loop`** jika kondisi untuk melanjutkan loop perlu dicek
-  **sebelum** eksekusi.
-- Gunakan **`do...while` loop** jika Anda perlu memastikan bahwa kode dalam
-  loop dieksekusi **setidaknya satu kali**, terlepas dari kondisi awal.
+  ```javascript
+  let i = 5;
 
-**[⬆ back to top](#table-of-contents)**
+  do {
+    console.log("Nilai i: " + i);
+    i++;
+  } while (i < 5);
+  // Output:
+  // Nilai i: 5
+  ```
 
-## **Flag Variables**
-
-**Flag variables** adalah variabel yang digunakan untuk
-**menandai atau mengontrol status tertentu** dalam program, biasanya berupa
-nilai boolean (`true` atau `false`). Flag ini sering digunakan dalam
-pemrograman untuk **mengontrol alur program** atau untuk
-**menyatakan status tertentu** dalam program, seperti apakah suatu kondisi
-telah tercapai atau apakah suatu proses telah selesai.
-
-Di JavaScript, flag variables biasanya digunakan untuk mengendalikan
-perulangan, kondisi, atau bahkan untuk menandakan apakah suatu operasi berhasil
-atau tidak.
-
-### Penggunaan flag variables
-
-#### 1. **Mengontrol alur program**
-
-Flag variable sering digunakan untuk mengontrol apakah suatu blok kode akan
-dijalankan atau tidak, tergantung pada status flag tersebut. Misalnya, dalam
-sebuah program yang memiliki proses dengan beberapa tahapan, flag dapat
-digunakan untuk memeriksa apakah tahap sebelumnya telah berhasil atau tidak
-sebelum melanjutkan ke tahap berikutnya.
-
-**Contoh: Menggunakan Flag untuk Mengecek Status**
-
-```javascript
-let isUserAuthenticated = false;
-
-function authenticateUser() {
-  // Proses autentikasi (misalnya, cek password, token, dll.)
-  // Jika berhasil, set flag menjadi true
-  isUserAuthenticated = true;
-}
-
-function accessDashboard() {
-  if (isUserAuthenticated) {
-    console.log("Welcome to the Dashboard!");
-  } else {
-    console.log("Please authenticate first.");
-  }
-}
-
-// Simulasi
-authenticateUser();
-accessDashboard(); // Output: Welcome to the Dashboard!
-```
-
-Dalam contoh ini, flag `isUserAuthenticated` digunakan untuk memastikan bahwa
-pengguna hanya bisa mengakses dashboard jika mereka sudah berhasil
-diautentikasi.
-
-#### 2. **Kontrol dalam Perulangan (Looping)**
-
-Flag dapat digunakan untuk mengontrol perulangan agar berhenti pada kondisi
-tertentu. Misalnya, jika kita ingin menghentikan perulangan di tengah jalan
-ketika kondisi tertentu tercapai, kita bisa menggunakan flag.
-
-**Contoh: Menggunakan Flag untuk Menghentikan Perulangan**
-
-```javascript
-let found = false;
-let numbers = [1, 2, 3, 4, 5, 6];
-
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] === 4) {
-    found = true;
-    break; // Hentikan loop ketika angka 4 ditemukan
-  }
-}
-
-if (found) {
-  console.log("Number 4 found!");
-} else {
-  console.log("Number 4 not found.");
-}
-```
-
-Pada contoh ini, flag `found` digunakan untuk menandakan apakah angka 4
-ditemukan dalam array. Setelah angka 4 ditemukan, flag di-set menjadi `true`
-dan perulangan dihentikan menggunakan `break`.
+Dalam contoh ini, meskipun kondisi `i < 5` awalnya `false` karena `i` sudah
+bernilai 5, blok kode di dalam `do while loop` tetap dieksekusi sekali,
+mencetak "Nilai i: 5". Kemudian, kondisi diperiksa, dan karena `false`,
+perulangan berhenti.
 
 **[⬆ back to top](#table-of-contents)**
 
-#### 3. **Menangani Keberhasilan atau Kegagalan Operasi**
+### Perbedaan utama
 
-Flag sering digunakan untuk menandakan apakah suatu operasi berhasil atau
-gagal. Misalnya, dalam operasi asynchronous seperti AJAX atau operasi dengan
-API, flag digunakan untuk menandakan status keberhasilan atau kegagalan.
+Perbedaan mendasar antara `while loop` dan `do while loop` adalah pada saat
+pengecekan kondisi:
 
-**Contoh: Menggunakan Flag untuk Menandakan Keberhasilan atau Kegagalan**
+- **While Loop:** Kondisi dicek _sebelum_ blok kode di dalam loop dieksekusi.
+  Jika kondisi awal bernilai `false`, blok kode tidak akan dieksekusi sama
+  sekali.
+- **Do While Loop:** Blok kode di dalam loop dieksekusi _setidaknya sekali_,
+  kemudian kondisi dicek. Jadi, meskipun kondisi awal bernilai `false`, blok
+  kode tetap akan dieksekusi satu kali.
+
+Berikut contoh kode Javascript yang membedakan keduanya:
+
+#### 1. **Kondisi awal `false`**
 
 ```javascript
-let isSuccess = false;
+// while loop
+let i = 5;
+while (i < 5) {
+  console.log("while: i = " + i);
+  i++;
+}
 
-function fetchDataFromAPI() {
-  // Simulasi request data
-  let dataReceived = true; // Misalnya, data diterima dengan sukses
+// do while loop
+let j = 5;
+do {
+  console.log("do while: j = " + j);
+  j++;
+} while (j < 5);
+```
 
-  if (dataReceived) {
-    isSuccess = true;
-    console.log("Data fetched successfully.");
+**Output:**
+
+```
+// Tidak ada output dari while loop karena kondisi i < 5 sudah false sejak awal.
+do while: j = 5
+```
+
+Pada contoh di atas, karena nilai awal `i` dan `j` adalah 5, dan kondisi yang
+diperiksa adalah apakah `i` atau `j` kurang dari 5, maka:
+
+- `while loop` tidak menjalankan kode di dalamnya sama sekali, karena kondisi
+  `i < 5` sudah `false` sejak awal.
+- `do while loop` tetap menjalankan kode di dalamnya satu kali, mencetak
+  "do while: j = 5", _kemudian_ memeriksa kondisi `j < 5`. Karena kondisi ini
+  `false`, loop berhenti.
+
+#### 2. **Kondisi awal `true`**
+
+```javascript
+// while loop
+let i = 0;
+while (i < 5) {
+  console.log("while: i = " + i);
+  i++;
+}
+
+// do while loop
+let j = 0;
+do {
+  console.log("do while: j = " + j);
+  j++;
+} while (j < 5);
+```
+
+**Output:**
+
+```
+while: i = 0
+while: i = 1
+while: i = 2
+while: i = 3
+while: i = 4
+do while: j = 0
+do while: j = 1
+do while: j = 2
+do while: j = 3
+do while: j = 4
+```
+
+Pada contoh ini, karena nilai awal `i` dan `j` adalah 0, dan kondisi yang
+diperiksa adalah apakah `i` atau `j` kurang dari 5, maka baik `while loop`
+maupun `do while loop` akan menghasilkan output yang serupa karena kondisi
+terpenuhi di awal dan selama iterasi.
+
+**Kapan menggunakan `while` dan `do while`?**
+
+- Gunakan `while` jika Anda ingin memastikan bahwa blok kode _hanya_ dieksekusi
+  jika kondisi terpenuhi sejak awal. Ini lebih umum digunakan.
+- Gunakan `do while` jika Anda ingin blok kode _selalu_ dieksekusi setidaknya
+  satu kali, terlepas dari kondisi awalnya. Ini berguna dalam situasi di mana
+  Anda perlu menjalankan sesuatu setidaknya sekali dan kemudian memeriksa
+  apakah perlu diulangi. Contohnya, dalam validasi input pengguna.
+
+**[⬆ back to top](#table-of-contents)**
+
+## **Flag Variable**
+
+### Apa itu _Flag Variable_?
+
+_Flag variable_, atau variabel bendera dalam bahasa Indonesia, adalah variabel
+yang digunakan untuk menandai atau memberi sinyal suatu kondisi atau status
+dalam program. Biasanya, _flag variable_ menyimpan nilai boolean (`true` atau
+`false`) atau nilai numerik yang merepresentasikan dua status berbeda
+(misalnya, 0 dan 1).
+
+Tujuan utama penggunaan _flag variable_ adalah untuk mengontrol alur program
+berdasarkan kondisi tertentu. Mereka sangat berguna dalam situasi di mana Anda
+perlu mengingat apakah suatu peristiwa telah terjadi atau suatu kondisi telah
+terpenuhi.
+
+**[⬆ back to top](#table-of-contents)**
+
+### Penggunaan _Flag Variable_ dalam JavaScript
+
+Berikut beberapa contoh penggunaan _flag variable_ dalam JavaScript:
+
+#### 1. **Pengontrol looping:**
+
+_Flag variable_ dapat digunakan untuk menghentikan atau melanjutkan loop
+berdasarkan kondisi tertentu.
+
+```javascript
+function searchElement(array, targetValue) {
+  let found = false; // Flag variable
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === targetValue) {
+      found = true;
+      break; // Keluar dari loop jika nilai ditemukan
+    }
+  }
+
+  if (found) {
+    console.log("Nilai ditemukan dalam array.");
   } else {
-    isSuccess = false;
-    console.log("Failed to fetch data.");
+    console.log("Nilai tidak ditemukan dalam array.");
   }
 }
 
-// Simulasi pemanggilan API
-fetchDataFromAPI();
-
-if (isSuccess) {
-  console.log("Proceed with processing the data.");
-} else {
-  console.log("Try again later.");
-}
+searchElement([10, 20, 30, 40, 50], 15);
 ```
 
-Flag `isSuccess` digunakan untuk menentukan apakah data dari API berhasil
-diambil atau tidak. Berdasarkan status flag ini, program dapat melanjutkan ke
-proses berikutnya atau memberikan pesan kesalahan.
+Dalam contoh ini, `found` adalah _flag variable_. Jika `targetValue` ditemukan
+dalam array, `found` diatur menjadi `true`, dan loop dihentikan.
 
-#### 4. **Mengecek Kondisi Pengulangan yang Kompleks**
+#### 2. **Penanda status:**
 
-Dalam beberapa kasus, kita mungkin ingin menggunakan flag untuk melacak
-kondisi yang lebih kompleks selama pengulangan, misalnya apakah kita sudah
-menemukan elemen yang memenuhi syarat dalam sebuah array.
-
-**Contoh: Flag untuk Mengecek Kondisi Tertentu di dalam Loop**
+_Flag variable_ dapat menandai status suatu operasi atau proses.
 
 ```javascript
-let isEvenFound = false;
-let numbers = [1, 3, 5, 7, 8, 9, 11];
+let isValid = true; // Flag variable
 
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] % 2 === 0) {
-    isEvenFound = true;
-    break; // Hentikan loop jika angka genap ditemukan
+function validateInput(input) {
+  if (input === "") {
+    isValid = false;
+    console.error("Input tidak boleh kosong.");
   }
+  // Validasi lainnya...
+  return isValid;
 }
 
-if (isEvenFound) {
-  console.log("Found an even number.");
+validateInput("");
+
+if (isValid) {
+  console.log("Input valid");
 } else {
-  console.log("No even numbers found.");
+  console.log("Input tidak valid");
 }
 ```
 
-Flag `isEvenFound` digunakan untuk memeriksa apakah ada angka genap di dalam
-array. Jika ditemukan, flag akan diubah menjadi `true` dan loop berhenti.
-Setelah loop selesai, kita dapat mengambil tindakan berdasarkan status flag.
+Di sini, `isValid` menandai apakah input pengguna valid atau tidak.
 
-### Ciri-ciri umum penggunaan flag:
+#### 3. **Pengontrol Kondisi:**
 
-1. **Tipe Data Boolean**: Flag biasanya berupa variabel boolean
-   (`true`/`false`).
-2. **Mengontrol Alur Program**: Flag digunakan untuk mempengaruhi jalannya
-   eksekusi program, seperti mengaktifkan atau menonaktifkan blok kode
-   tertentu.
-3. **Menangani Keberhasilan atau Kegagalan**: Flag digunakan untuk menandakan
-   apakah suatu operasi berhasil atau gagal.
-4. **Menghentikan atau Melanjutkan Proses**: Flag dapat digunakan untuk
-   menghentikan perulangan atau proses lain berdasarkan kondisi tertentu.
+_Flag variable_ dapat digunakan untuk mengontrol blok kode yang akan
+dieksekusi berdasarkan kondisi tertentu.
 
-### Kesimpulan:
+```javascript
+let isProcessing = false; // Flag variable
 
-Flag variables sangat berguna untuk mengontrol logika program, terutama dalam
-hal pengulangan dan kondisi. Dengan menggunakan flag, kita bisa dengan mudah
-menandakan status atau kondisi tertentu dan membuat keputusan berdasarkan
-nilai flag tersebut, misalnya untuk menghentikan loop, menangani keberhasilan
-operasi, atau mengontrol alur program.
+function processData() {
+  if (!isProcessing) {
+    isProcessing = true; // Set flag menjadi true saat pemrosesan dimulai
+    console.log("Memulai pemrosesan data...");
+    // Lakukan pemrosesan data...
+    console.log("Pemrosesan data selesai.");
+    isProcessing = false; // Set flag kembali menjadi false setelah pemrosesan selesai
+  } else {
+    console.log("Data sedang diproses, mohon tunggu.");
+  }
+}
+
+processData();
+// Output: Memulai pemrosesan data...
+// Pemrosesan data selesai.
+```
+
+Dalam contoh ini, `isProcessing` mencegah pemrosesan data dimulai dua kali
+secara bersamaan.
+
+### Keuntungan menggunakan _Flag Variable_
+
+- **Meningkatkan Keterbacaan Kode:** _Flag variable_ membuat kode lebih mudah
+  dibaca dan dipahami dengan memberikan nama yang deskriptif untuk kondisi atau
+  status tertentu.
+- **Memudahkan Pengendalian Alur Program:** Mereka mempermudah pengendalian
+  alur program berdasarkan kondisi yang kompleks.
+- **Mempermudah Debugging:** Dengan _flag variable_, Anda dapat dengan mudah
+  melacak status program dan mengidentifikasi bug.
+
+**Kesimpulan**
+
+_Flag variable_ adalah alat yang berguna dalam pemrograman JavaScript untuk
+menandai kondisi dan mengendalikan alur program. Dengan menggunakan nama yang
+deskriptif, mereka dapat meningkatkan keterbacaan kode dan mempermudah
+pemeliharaan.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## Resources
 
 - [Loops and Iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
+- [`for` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
+- [`while` loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)
+- [While Loop vs Do While Loop](https://www.geeksforgeeks.org/difference-between-while-loop-and-do-while-loop-in-programming/)
 - [What is a flag variable?](https://stackoverflow.com/questions/17402125/what-is-a-flag-variable)
 
 **[⬆ back to top](#table-of-contents)**
