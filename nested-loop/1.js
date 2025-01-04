@@ -1,35 +1,35 @@
 /*
 
-  Buatlah pattern kotak seperti ini, dengan lebar dan panjang yang bisa kita input.
+  Buatlah pattern kotak seperti ini, dengan baris dan kolom yang bisa kita 
+  input.
 
-  input:
-  - row (lebar)
-  - col (panjang)
+  INPUT:
+  - rows (baris)
+  - cols (kolom)
 
-  Jika lebarnya 4 dan panjangnya 3, maka outputnya menjadi:
+  Jika barisnya 4 dan kolomnya 3, maka outputnya menjadi:
 
-  output:
   ***
   ***
   ***
   ***
   
-  Jika lebarnya 3 dan panjangnya 5, maka outputnya menjadi:
+  Jika barisnya 3 dan kolomnya 5, maka outputnya menjadi:
 
-  output:
   *****
   *****
   *****
 
 */
-let row = 4;
-let col = 3;
+let rows = 3;
+let cols = 5;
 
-for (let i = 1; i <= row; i++) {
-  let perBaris = "";
-  for (let j = 1; j <= col; j++) {
-    perBaris += "*";
+// Iterasi untuk mengontrol jumlah baris
+for (let i = 1; i <= rows; i++) {
+  let pattern = "";
+  // Iterasi untuk mengontrol jumlah kolom
+  for (let j = 1; j <= cols; j++) {
+    pattern += "*";
   }
-
-  console.log(perBaris);
+  console.log(pattern);
 }

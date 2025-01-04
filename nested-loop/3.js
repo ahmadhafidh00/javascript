@@ -1,54 +1,40 @@
-//? 1
-/*
-  output:
-  *
-  **
-  ***
-  ****
-  *****
-*/
-let row = 5;
-for (let i = 1; i <= row; i++) {
-  let line = "";
+// Output 1:
+let rows = 5;
+console.group("Output 1");
+for (let i = 1; i <= rows; i++) {
+  let pattern = "";
+  // Iterasi untuk mengontrol jumlah bintang sesuai dengan jumlah baris
   for (let j = 1; j <= i; j++) {
-    line += "*";
+    pattern += "*";
   }
-  console.log(line);
+  console.log(pattern);
 }
+console.groupEnd();
 
-//? 2
-/*
-  output:
-  *****
-  ****
-  ***
-  **
-  *
-*/
-let row2 = 5;
-for (let i = row2; i >= 1; i--) {
-  let line = "";
+// Output 2:
+let rows2 = 5;
+console.group("Output 2");
+for (let i = rows2; i >= 1; i--) {
+  let pattern = "";
+  // Iterasi untuk mengontrol jumlah bintang sesuai dengan jumlah baris
   for (let j = 1; j <= i; j++) {
-    // i = 5, j juga akan diulang sebanyak 5x
-    line += "*";
+    pattern += "*";
   }
-  console.log(line);
+  console.log(pattern);
 }
+console.groupEnd();
 
-//? 3
-let strAngka = "263";
-/*
-  output:
-  **
-  ******
-  ***
-*/
+// Output 3:
+let strAngka = "51172";
+console.group("Output 3");
 for (let i = 0; i < strAngka.length; i++) {
   let perBaris = "";
 
-  let col = Number(strAngka[i]); // 2, 6, 3
-  for (let j = 0; j < col; j++) {
+  let kolom = Number(strAngka[i]);
+  // Iterasi untuk mengontrol jumlah bintang sejumlah angka pada string
+  for (let j = 0; j < kolom; j++) {
     perBaris += "*";
   }
   console.log(perBaris);
 }
+console.groupEnd();

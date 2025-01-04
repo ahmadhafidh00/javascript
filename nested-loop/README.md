@@ -3,7 +3,7 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [`break` statement dan `continue` statement](#break-statement-dan-continue-statement)
+2. [`break` Statement dan `continue` Statement](#break-statement-dan-continue-statement)
 3. **Practice**
    - [pattern-kotak-1](1.js)
    - [pattern-kotak-2](2.js)
@@ -13,79 +13,108 @@
 
 ## Introduction
 
-**Nested loop** (loop bertingkat) adalah konsep dalam pemrograman yang
-melibatkan penggunaan satu loop di dalam loop lainnya. Dalam konteks
-JavaScript, nested loop berarti kita memiliki satu loop yang berada di dalam
-blok eksekusi loop lainnya. Dengan kata lain, satu loop (misalnya, `for`,
-`while`, atau `do...while`) digunakan di dalam tubuh dari loop lain.
+### Apa itu nested loop?
 
-### Sintaks nested loop di JavaScript
+Nested loop dalam bahasa pemrograman JavaScript adalah sebuah **struktur
+perulangan di dalam perulangan lainnya**. Dalam nested loop, sebuah loop
+(biasanya disebut "outer loop") berisi loop lain di dalamnya (disebut "inner
+loop"). Loop dalam ini akan dieksekusi sepenuhnya setiap kali iterasi dari loop
+luar dijalankan.
 
-Berikut adalah contoh umum dari nested loop dalam JavaScript menggunakan `for`
-loop:
+Cara kerja nested loop:
+
+1. **Outer loop** dimulai dan menjalankan satu iterasi.
+2. Setiap kali outer loop menjalankan satu iterasi, **inner loop** akan
+   berjalan dari awal hingga selesai.
+3. Setelah inner loop selesai, outer loop akan melanjutkan iterasi berikutnya.
+
+Berikut adalah contoh penggunaan nested loop:
 
 ```javascript
-for (let i = 0; i < 3; i++) {
-  for (let j = 0; j < 3; j++) {
-    console.log(`i = ${i}, j = ${j}`);
+for (let i = 1; i <= 3; i++) {
+  // Outer loop
+  console.log(`Outer loop iteration: ${i}`);
+
+  for (let j = 1; j <= 2; j++) {
+    // Inner loop
+    console.log(`  Inner loop iteration: ${j}`);
   }
 }
 ```
-
-Penjelasan:
-
-1. Loop pertama (`for (let i = 0; i < 3; i++)`) mengulang sebanyak 3 kali
-   (dengan nilai `i` berturut-turut 0, 1, dan 2).
-2. Di dalam loop pertama, terdapat loop kedua (`for (let j = 0; j < 3; j++)`)
-   yang juga mengulang sebanyak 3 kali untuk setiap iterasi `i`.
-3. Di dalam tubuh loop kedua, program mencetak pasangan nilai `i` dan `j`.
 
 **Output:**
 
-```bash
-i = 0, j = 0
-i = 0, j = 1
-i = 0, j = 2
-i = 1, j = 0
-i = 1, j = 1
-i = 1, j = 2
-i = 2, j = 0
-i = 2, j = 1
-i = 2, j = 2
 ```
+Outer loop iteration: 1
+  Inner loop iteration: 1
+  Inner loop iteration: 2
+Outer loop iteration: 2
+  Inner loop iteration: 1
+  Inner loop iteration: 2
+Outer loop iteration: 3
+  Inner loop iteration: 1
+  Inner loop iteration: 2
+```
+
+**Penjelasan:**
+
+1. Outer loop berjalan sebanyak **3 kali** (nilai `i` dari 1 hingga 3).
+2. Setiap kali outer loop berjalan satu iterasi, inner loop berjalan sebanyak
+   **2 kali** (nilai `j` dari 1 hingga 2).
+3. Ini menghasilkan total **6 iterasi kombinasi** (`3 outer * 2 inner`).
+
+**Kapan menggunakan nested loop?**
+
+Nested loop biasanya digunakan untuk:
+
+- Mengakses **elemen multidimensi**, seperti array 2D atau matriks.
+- Menjalankan logika yang melibatkan pasangan atau kombinasi elemen.
+- Masalah iteratif yang membutuhkan pencocokan elemen atau pengulangan
+  kompleks.
 
 **[⬆ back to top](#table-of-contents)**
 
-### Penggunaan nested loop dalam JavaScript
+### Contoh penggunaan dalam kasus dunia nyata
 
-#### **1. Mengakses elemen dalam array dua dimensi**
+#### **1. Membuat tabel HTML secara dinamis:**
 
-Nested loop sering digunakan untuk mengakses elemen dalam array dua dimensi
-(array of arrays). Misalnya, untuk mencetak elemen-elemen dalam matriks:
+Misalkan kita ingin membuat sebuah tabel HTML yang menampilkan data dari sebuah
+array dua dimensi. Setiap baris dalam array mewakili satu baris dalam tabel,
+dan setiap elemen dalam baris mewakili satu kolom.
 
 ```javascript
-let matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
+let data = [
+  ["Nama", "Umur", "Kota"],
+  ["Budi", 25, "Jakarta"],
+  ["Ani", 30, "Bandung"],
+  ["Citra", 28, "Surabaya"],
 ];
 
-for (let i = 0; i < matrix.length; i++) {
-  for (let j = 0; j < matrix[i].length; j++) {
-    console.log(matrix[i][j]);
+let table = document.createElement("table");
+
+for (let i = 0; i < data.length; i++) {
+  let row = table.insertRow();
+  for (let j = 0; j < data[i].length; j++) {
+    let cell = row.insertCell();
+    cell.textContent = data[i][j];
   }
 }
+
+document.body.appendChild(table);
 ```
 
-#### **2. Membuat pola atau bentuk**
+- **Loop luar:** Mengiterasi setiap baris dalam array `data`.
+- **Loop dalam:** Mengiterasi setiap kolom dalam setiap baris.
+- **Hasil:** Sebuah tabel HTML akan dibuat dengan data yang sesuai.
 
-Nested loop digunakan untuk membuat pola seperti segitiga atau kotak di
-konsol.
+#### **2. Menampilkan pola bintang:**
 
-Contoh untuk membuat pola segitiga bintang:
+Contoh klasik penggunaan nested loop adalah untuk membuat pola-pola tertentu,
+misalnya segitiga bintang.
 
 ```javascript
 let rows = 5;
+
 for (let i = 1; i <= rows; i++) {
   let stars = "";
   for (let j = 1; j <= i; j++) {
@@ -95,209 +124,176 @@ for (let i = 1; i <= rows; i++) {
 }
 ```
 
-**Output:**
+- **Loop luar:** Mengontrol jumlah baris.
+- **Loop dalam:** Mengontrol jumlah bintang pada setiap baris.
+- **Hasil:** Sebuah segitiga bintang akan dicetak di konsol.
 
-```
-*
-**
-***
-****
-*****
-```
+#### **3. Memeriksa matriks:**
 
-**[⬆ back to top](#table-of-contents)**
-
-#### **3. Algoritma pencarian dan pengurutan**
-
-Nested loop juga dapat digunakan dalam algoritma pencarian dan pengurutan,
-misalnya dalam algoritma bubble sort yang mengurutkan elemen dalam array.
+Jika kita memiliki sebuah matriks (array dua dimensi) yang berisi angka, kita
+bisa menggunakan nested loop untuk mencari nilai tertentu, menghitung jumlah
+elemen yang memenuhi suatu kondisi, atau melakukan operasi matematika pada
+setiap elemen.
 
 ```javascript
-let arr = [5, 2, 9, 1, 5, 6];
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 
-for (let i = 0; i < arr.length; i++) {
-  for (let j = i + 1; j < arr.length; j++) {
-    if (arr[i] > arr[j]) {
-      let temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
+let sum = 0;
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < matrix[i].length; j++) {
+    sum += matrix[i][j];
   }
 }
 
-console.log(arr); // Output: [1, 2, 5, 5, 6, 9]
+console.log("Jumlah semua elemen:", sum);
 ```
-
-### Kinerja dan efisiensi
-
-- **Kompleksitas waktu**: Nested loop memiliki kompleksitas waktu yang lebih
-  tinggi dibandingkan dengan loop biasa. Jika loop luar berulang `n` kali dan
-  loop dalam berulang `m` kali, maka kompleksitas waktu keseluruhan adalah
-  O(n \* m).
-- Misalnya, dalam contoh pertama (mengakses matriks 3x3), jika ukuran matriks
-  bertambah, jumlah iterasi yang dilakukan akan bertambah secara signifikan,
-  terutama jika kedua loop bertumbuh secara besar-besaran.
 
 **[⬆ back to top](#table-of-contents)**
 
-## **`break` statement dan `continue` statement**
+### Perhatian
 
-**`break`** dan **`continue`** adalah dua pernyataan kontrol alur (flow control
-statements) yang sering digunakan dalam loop di JavaScript. Keduanya mengubah
-alur eksekusi dalam loop, tetapi dengan cara yang berbeda.
+Penggunaan nested loop yang berlebihan dapat menyebabkan penurunan performa,
+terutama jika data yang diproses sangat besar. Oleh karena itu, penting untuk
+memikirkan alternatif yang lebih efisien jika memungkinkan, seperti menggunakan
+metode array yang sudah tersedia atau algoritma yang lebih baik.
+
+**Kesimpulan**
+
+Nested loop adalah alat yang sangat kuat dalam pemrograman, tetapi harus
+digunakan dengan bijak. Dengan memahami konsep ini dan contoh-contoh
+penerapannya, Anda akan lebih siap untuk menyelesaikan berbagai macam
+masalah pemrograman yang melibatkan data multi-dimensi.
+
+**[⬆ back to top](#table-of-contents)**
+
+## **`break` Statement dan `continue` Statement**
+
+Dalam **JavaScript**, `break` dan `continue` adalah pernyataan yang digunakan
+untuk mengontrol alur eksekusi dalam **looping**. Berikut penjelasan perbedaan
+utamanya:
 
 ### 1. `break` statement
 
-Pernyataan **`break`** digunakan untuk menghentikan eksekusi loop secara
-**langsung** dan keluar dari loop, terlepas dari apakah kondisi loop masih
-terpenuhi atau tidak. Dengan kata lain, **`break`** menyebabkan penghentian
-**total** dari loop (atau switch statement jika digunakan di dalam switch).
+- **Fungsi:** Menghentikan eksekusi loop sepenuhnya dan keluar dari blok loop.
+- **Efek:** Semua iterasi berikutnya dalam loop **tidak akan dijalankan**, dan
+  program akan melanjutkan eksekusi di luar loop.
 
-#### **Penggunaan dalam loop**
-
-Misalnya, kita ingin menghentikan loop setelah menemukan elemen tertentu dalam
-array, maka kita bisa menggunakan `break`:
+**Contoh:**
 
 ```javascript
-let numbers = [1, 3, 5, 7, 9, 11];
-
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] === 7) {
-    console.log("Ditemukan angka 7");
-    break; // Keluar dari loop ketika angka 7 ditemukan
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    break; // Keluar dari loop ketika i bernilai 5
   }
-  console.log("Angka:", numbers[i]);
+  console.log(i);
 }
+// Output: 0, 1, 2, 3, 4
 ```
-
-**Output:**
-
-```
-Angka: 1
-Angka: 3
-Angka: 5
-Ditemukan angka 7
-```
-
-Pada contoh di atas, ketika angka `7` ditemukan dalam array, pernyataan `break`
-menyebabkan program keluar dari loop meskipun masih ada elemen yang tersisa
-dalam array.
-
-#### **Penggunaan `break` dalam `switch`:**
-
-`break` juga sering digunakan dalam `switch` statement untuk menghentikan
-eksekusi setelah menemukan case yang cocok:
-
-```javascript
-let day = 3;
-switch (day) {
-  case 1:
-    console.log("Senin");
-    break;
-  case 2:
-    console.log("Selasa");
-    break;
-  case 3:
-    console.log("Rabu");
-    break; // Keluar setelah case 3
-  default:
-    console.log("Hari tidak valid");
-}
-```
-
-**Output:**
-
-```
-Rabu
-```
-
-Jika tidak ada `break`, program akan melanjutkan untuk mengeksekusi semua blok
-kode berikutnya, bahkan setelah menemukan case yang cocok (proses yang disebut
-"fall-through").
 
 **[⬆ back to top](#table-of-contents)**
 
 ### 2. `continue` statement
 
-Pernyataan **`continue`** digunakan untuk **melewati** sisa blok kode dalam
-satu iterasi loop dan melanjutkan ke iterasi berikutnya. Artinya, pernyataan
-setelah `continue` dalam tubuh loop akan diabaikan untuk iterasi tersebut, dan
-kontrol alur akan langsung menuju ke iterasi berikutnya.
+- **Fungsi:** Menghentikan eksekusi iterasi **saat ini** dan langsung
+  melanjutkan ke iterasi berikutnya.
+- **Efek:** Loop tidak berhenti, tetapi kode setelah `continue` dalam iterasi
+  saat ini tidak akan dieksekusi.
 
-#### **Penggunaan dalam loop**
-
-Misalnya, kita ingin melewati angka yang tidak genap dalam sebuah array, dan
-hanya mencetak angka genap:
+**Contoh:**
 
 ```javascript
-let numbers = [1, 2, 3, 4, 5, 6];
-
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] % 2 !== 0) {
-    continue; // Lewati angka ganjil
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    continue; // Lewati iterasi ketika i bernilai 5
   }
-  console.log(numbers[i]); // Hanya mencetak angka genap
+  console.log(i);
 }
+// Output: 0, 1, 2, 3, 4, 6, 7, 8, 9
 ```
-
-**Output:**
-
-```
-2
-4
-6
-```
-
-Pada contoh di atas, ketika angka ganjil ditemukan, `continue` akan dilewatkan
-dan program melanjutkan ke iterasi berikutnya, tanpa menjalankan
-`console.log()` untuk angka ganjil.
 
 **[⬆ back to top](#table-of-contents)**
 
-### Perbedaan antara `break` dan `continue`
+### Perbedaan utama
 
-- **`break`** menghentikan eksekusi loop sepenuhnya dan keluar dari loop.
-- **`continue`** hanya melewati sisa blok kode dalam iterasi saat ini dan
-  melanjutkan ke iterasi berikutnya.
+| **Aspek**            | **`break`**                                 | **`continue`**                                                       |
+| -------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
+| **Penghentian Loop** | Menghentikan seluruh loop.                  | Melanjutkan ke iterasi berikutnya.                                   |
+| **Kode setelahnya**  | Tidak dieksekusi dan keluar.                | Tidak dieksekusi dalam iterasi saat ini, tetapi loop tetap berjalan. |
+| **Kegunaan Utama**   | Ketika perlu _keluar sepenuhnya_ dari loop. | Ketika perlu _melewati iterasi_ tertentu tanpa keluar dari loop.     |
 
-#### **Contoh kombinasi `break` dan `continue`:**
+**[⬆ back to top](#table-of-contents)**
 
-Misalnya, kita ingin mencetak angka yang genap dari 1 sampai 10, tetapi
-berhenti setelah mencetak angka 6.
+### Contoh penggunaan
+
+Berikut adalah contoh penggunaan nyata dari `break` dan `continue` dalam kasus
+dunia nyata:
+
+#### **Kasus 1: Mencari Item Tertentu dalam Array (Menggunakan `break`)**
+
+**Deskripsi:** Dalam sebuah aplikasi, Anda memiliki daftar produk dan ingin
+_menemukan produk pertama_ yang harganya lebih dari 100 ribu. Setelah
+ditemukan, Anda tidak perlu memeriksa produk lainnya.
 
 ```javascript
-for (let i = 1; i <= 10; i++) {
-  if (i === 6) {
-    break; // Hentikan loop setelah angka 6
+const products = [
+  { name: "Book", price: 50_000 },
+  { name: "Pen", price: 20_000 },
+  { name: "Bag", price: 150_000 },
+  { name: "Notebook", price: 80_000 },
+];
+
+for (const product of products) {
+  if (product.price > 100_000) {
+    console.log(`Found expensive product: ${product.name}`);
+    break; // Berhenti setelah menemukan produk pertama
   }
-  if (i % 2 !== 0) {
-    continue; // Lewati angka ganjil
-  }
-  console.log(i); // Cetak hanya angka genap
 }
+// Output: Found expensive product: Bag
 ```
 
-**Output:**
+**Penjelasan:**
 
+Setelah menemukan produk dengan harga lebih dari 100 ribu (`Bag`), loop
+dihentikan dengan `break`, sehingga tidak perlu memeriksa produk berikutnya.
+
+#### **Kasus 2: Melewati Item Tertentu dalam Proses Validasi (Menggunakan `continue`)**
+
+**Deskripsi:** Anda ingin memproses daftar pesanan, tetapi ingin melewati
+pesanan yang memiliki status "Pending".
+
+```javascript
+const orders = [
+  { id: 1, status: "Completed" },
+  { id: 2, status: "Pending" },
+  { id: 3, status: "Completed" },
+  { id: 4, status: "Pending" },
+];
+
+for (const order of orders) {
+  if (order.status === "Pending") {
+    continue; // Lewati pesanan dengan status Pending
+  }
+  console.log(`Processing order: ${order.id}`);
+}
+// Output:
+// Processing order: 1
+// Processing order: 3
 ```
-2
-4
-```
 
-- Pada iterasi pertama, angka `1` (ganjil) dilewati karena `continue`.
-- Angka `2` (genap) dicetak.
-- Begitu angka `6` ditemukan, `break` menghentikan loop.
+**Penjelasan:**
 
-Kedua pernyataan ini sangat berguna untuk mengontrol alur eksekusi dalam loop dan sering
-digunakan dalam pengolahan data atau ketika kondisi tertentu tercapai.
+Saat loop menemukan pesanan dengan status "Pending", `continue` digunakan untuk
+melewati iterasi tersebut dan langsung melanjutkan ke iterasi berikutnya.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## Resources
 
-**Nesting For Loops in JavaScript:**
-
-- [source-1](https://www.geeksforgeeks.org/nesting-for-loops-in-javascript/)
-- [source-2](https://www.freecodecamp.org/news/nesting-for-loops-in-javascript/)
+- [Nesting For Loops in JavaScript](https://www.geeksforgeeks.org/nesting-for-loops-in-javascript/)
+- [Nested Loop in JavaScript with Examples](https://www.scaler.com/topics/nested-loop-in-javascript/)
 
 **[⬆ back to top](#table-of-contents)**

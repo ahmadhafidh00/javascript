@@ -65,7 +65,6 @@ for (let i = 1; i <= rows4; i++) {
   }
   // reverse col
   for (let j = i - 1; j >= 1; j--) {
-    // console.log(i, j);
     line += j;
   }
   console.log(line);
