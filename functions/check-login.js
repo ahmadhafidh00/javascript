@@ -10,20 +10,22 @@
     - Jika iya, kembalikan message "login berhasil"
 
 */
+
 function checkLogin(username, password) {
   if (typeof username !== "string" || typeof password !== "string") {
     return "input salah";
   }
 
-  if (username === "Kosasih" && password === "k0s4s1h") {
-    return "login berhasil";
-  } else {
+  if (username !== "Kosasih" || password !== "k0s4s1h") {
     return "coba lagi";
   }
+
+  return "login berhasil";
 }
 
-console.log(checkLogin()); // input salah
-console.log(checkLogin("ddd", "idk123")); // coba lagi
-console.log(checkLogin("Kosasih", "admin#1234")); // coba lagi
-console.log(checkLogin("kosasih", "k0s4s1h")); // coba lagi
-console.log(checkLogin("Kosasih", "k0s4s1h")); // login berhasil
+// TEST CASES
+console.log(checkLogin(123, 123)); // "input salah"
+console.log(checkLogin("Kosasih", 123)); // "input salah"
+console.log(checkLogin("Kosasih", "admin#123")); // "coba lagi"
+console.log(checkLogin("kominfo", "k0s4s1h")); // "coba lagi"
+console.log(checkLogin("Kosasih", "k0s4s1h")); // "login berhasil"
