@@ -418,7 +418,7 @@ Function expression sering digunakan dalam berbagai skenario, seperti:
 
 ### Definisi arrow function
 
-Arrow function adalah cara singkat untuk menulis fungsi anonim (tidak bernama)
+Arrow function adalah cara singkat untuk menulis fungsi anonim (tanpa nama)
 di JavaScript. Fungsi ini diperkenalkan di ECMAScript 6 (ES6) dan menggunakan
 tanda panah (`=>`) untuk mendefinisikan fungsi.
 
@@ -519,7 +519,7 @@ Berikut adalah beberapa contohnya:
 
 3. **Tidak Ada `arguments` Object:**
    Arrow function tidak memiliki objek `arguments`. Jika butuh, Anda harus
-   menggunakan fungsi biasa atau spread syntax:
+   menggunakan fungsi biasa atau rest parameters:
 
    ```javascript
    const sum = (...args) => args.reduce((total, num) => total + num, 0);
