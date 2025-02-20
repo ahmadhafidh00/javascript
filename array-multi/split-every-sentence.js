@@ -1,11 +1,9 @@
-let kalimat = ["saya suka makan", "saya suka ngoding", "saya suka main game"];
-/* Expected Output:
-[
-  [ 'saya', 'suka', 'makan' ],
-  [ 'saya', 'suka', 'ngoding' ],
-  [ 'saya', 'suka', 'main', 'game' ]
-]
+/* 
+  Diberikan sebuah array yang berisi beberapa kalimat, tugas kalian adalah
+  mengubah setiap kalimat menjadi array dan menggabungkan semua array-array 
+  tersebut menjadi satu array multidimensi!
 */
+let kalimat = ["saya suka makan", "saya suka ngoding", "saya suka main game"];
 
 function splitEverySentence(arr) {
   const result = [];
@@ -34,4 +32,21 @@ function splitEverySentence(arr) {
   return result;
 }
 
+// others
+function splitEverySentence(arr) {
+  const array2D = [];
+  for (let i = 0; i < arr.length; i++) {
+    const subArray = arr[i].split(" "); // split setiap kalimat berdasarkan delimiter (spasi) -> return array of word
+    array2D.push(subArray);
+  }
+  return array2D;
+}
+
 console.log(splitEverySentence(kalimat));
+/* Expected Output:
+[
+  [ 'saya', 'suka', 'makan' ],
+  [ 'saya', 'suka', 'ngoding' ],
+  [ 'saya', 'suka', 'main', 'game' ]
+]
+*/
